@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FirebaseUISignInSuccessWithAuthResult } from 'firebaseui-angular';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public route: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  signInSuccess(e: FirebaseUISignInSuccessWithAuthResult) {
+    this.route.navigateByUrl('/task-overview');
   }
 
 }

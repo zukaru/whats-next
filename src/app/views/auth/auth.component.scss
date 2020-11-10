@@ -1,0 +1,19 @@
+.auth {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+
+    &__logo {
+        margin-top: 20vh;
+        margin-bottom: 8em;
+        height: 30vh;
+    }
+
+}
+
+.firebaseui-idp-button, .mdl-button, .mdl-js-button, .mdl-button--raised {
+    background: var(--color-primary) !important;
+}

@@ -1,8 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~firebaseui/dist/firebaseui.css';
 @import './styles/abstract/variables_.scss';
 html, body {
     margin: 0;
     padding: 0;
     font-size: 62.5%;
     background: var(--color-background);
+}
+
+.firebaseui-title {
+    color: var(--color-primary) !important;
+}
+.firebaseui-idp-password {
+    background: var(--color-primary) !important;
+}
+
+.firebaseui-idp-anonymous {
+    background: var(--color-secondary-dark) !important;
+}
+
+.progressbar {
+    background-color: var(--color-primary-dark) !important;
+}
+
+.mdl-button--raised.mdl-button--colored {
+    background-color: var(--color-secondary-dark) !important;
+}
+
+.mdl-button.mdl-js-button.mdl-button--primary {
+    color: var(--color-primary-dark) !important;}
+
+.firebaseui-textfield.mdl-textfield.firebaseui-label::after {
+    background-color: var(--color-primary-dark) !important;
+}
+
+a.firebaseui-link {
+    color: var(--color-primary-dark) !important;
 }
