@@ -11,7 +11,8 @@ html, body {
     
 }
 
-* {
+*, *:active {
+    outline: none;
     -webkit-tap-highlight-color: transparent;
 }
 

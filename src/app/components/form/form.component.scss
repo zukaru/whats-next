@@ -1,0 +1,118 @@
+.form {
+    width: 85%;
+    max-width: 30em;
+    position: relative;
+    padding-bottom: 4em;
+    margin: 0.5em;
+    
+
+
+    &__group{
+        position: relative;
+        height: 2em;
+        width: 100%;
+        
+        border: 3px solid var(--color-primary-light) ;
+        margin: 2em .5em;
+        border-radius: 3px;
+        z-index: 9;
+
+
+
+        &>label {
+            z-index: 10;
+            border-radius: 3px;
+            font-weight: bold;
+            position:absolute;
+            color: var(--color-secondary);
+            font-size: 0.7em;
+            padding: 0 0.5em;
+            top:-0.8em;
+            left:20px;
+            background: var(--color-background);
+        }
+
+        &>input {
+            border: none;
+            position: absolute;
+            width: 90%;
+            height: 100%;
+            background: none;
+            font-size: 1em;
+            color: var(--color-primary);
+            padding-left: 1em;
+
+            &:focus {
+                border: none;
+            }
+
+            &:active {
+                border: none;
+                
+            }
+        }
+
+
+
+        
+      }
+
+
+    &__group-textarea {
+        position: relative;
+        height: 15em;
+        width: 100%;
+        margin-left: 0.5em;
+        
+        border: 3px solid var(--color-primary-light) ;
+        border-radius: 3px;
+        z-index: 9;
+
+        &__label {
+
+            z-index: 10;
+            border-radius: 3px;
+            font-weight: bold;
+            position:absolute;
+            color: var(--color-secondary);
+            font-size: 0.7em;
+            padding: 0 0.5em;
+            top:-0.8em;
+            left:20px;
+            background: var(--color-background);
+
+        }
+        &__textarea {
+                font-family: Arial, Helvetica, sans-serif;
+                height: 90%;
+                width: 90%;
+                color: var(--color-primary);
+                padding: 0.5em;
+                font-size: 1em;
+                background: var(--color-background);
+                border: none;
+                resize: none;
+            }
+    }
+
+
+    
+
+    &__btn {
+        display: block;
+        position: absolute;
+        left: 1em;
+        bottom: 1em;
+        width: 40%;
+        max-width: 8em;
+        min-width: 6em;
+        height: 2em;
+        font-size: 1em;
+        background: var(--color-secondary);
+        color: var(--color-background-secondary);
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 0 5px var(--color-box-shadow);
+        
+    }
+}

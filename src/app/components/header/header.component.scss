@@ -3,15 +3,15 @@
     height: 9em;
     background-color: var(--color-background-secondary);
     position: relative;
-    box-shadow: 0 1px 2px var(--color-box-shadow);
+    box-shadow: 0 1px 5px var(--color-box-shadow);
 
 
 
     &__logo {
-        height: 7em;
+        height: 6em;
         position: absolute;
         left: 3em;
-        top: 1.3em;
+        top: 2em;
     }
 
     &__menu {

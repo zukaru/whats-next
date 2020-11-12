@@ -47,21 +47,26 @@ nav {
   position:fixed;
   z-index:10;
   right:2em;
-  top:2.5em;
+  top:1.5em;
+  width: 10em;
+  height: 5em;
+  padding: 1em;
+  border-radius: 50px;
+  background: var(--color-background-secondary);
   cursor:pointer;
   
   .bar {
     width:20px;
     height:3px;
     margin:5px auto;
-    background-color:var(--color-primary-light);
+    background-color:var(--color-primary);
     transition:all 0.3s ease-in-out;
     border-radius: 2px;
     transform: rotate(-45deg);
     
     &:nth-child(2) {
       width:40px;
-      background-color: var(--color-primary);
+      background-color: var(--color-secondary-dark);
     }
   }
 }
@@ -89,6 +94,8 @@ nav {
   }
   
   &+label.toggle-btn {
+
+    box-shadow: 0 0px 5px var(--color-box-shadow);
     .bar {
         width: 40px;
         background: var(--color-primary);

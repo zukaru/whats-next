@@ -12,6 +12,7 @@ import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { FormComponent } from './components/form/form.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -34,7 +35,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MenuComponent,
     AuthComponent,
     TaskOverviewComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    FormComponent
     
   ],
   imports: [

@@ -1,0 +1,9 @@
+.create-task {
+    font-size: 4em;
+
+
+    &__heading {
+        color: var(--color-primary);
+        margin: 2em;
+    }
+}
