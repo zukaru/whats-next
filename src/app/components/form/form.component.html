@@ -1,24 +1,68 @@
-<form class="form">
+<form autocomplete="nope" class="form" >
+    <h2 class="form__heading">Contact Info</h2>
     <div class="form__group">
-        <label for="" class="form__group__label">First Name</label>
-        <input type="text" class="form__group__input">
+        <label for="" class="form__group__label">First Name *</label>
+        <input required autocomplete="new-password" type="text" class="form__group__input">
     </div>
     <div class="form__group">
         <label for="" class="form__group__label">Last Name</label>
-        <input type="text" class="form__group__input">
+        <input autocomplete="new-password" type="text" class="form__group__input">
     </div>
     <div class="form__group">
-        <label for="" class="form__group__label">Phone Number</label>
-        <input type="text" class="form__group__input">
+        <label for="" class="form__group__label">Phone Number *</label>
+        <input required autocomplete="new-password" type="text" class="form__group__input">
     </div>
     <div class="form__group">
         <label for="" class="form__group__label">Email</label>
-        <input type="text" class="form__group__input">
+        <input autocomplete="new-password" type="text" class="form__group__input">
     </div>
 
+    <div class="form__group">
+        <label for="" class="form__group__label">Address</label>
+        <input autocomplete="new-password" type="text" class="form__group__input">
+    </div>
+
+    <h2 class="form__heading">Task Info</h2>
+
     <div class="form__group-textarea">
-        <label for="" class="form__group-textarea__label">Task Description</label>
-        <textarea type="text" class="form__group-textarea__textarea"></textarea>
+        <label for="" class="form__group-textarea__label">Task Description *</label>
+        <textarea required autocomplete="new-password" type="text" class="form__group-textarea__textarea"></textarea>
+    </div>
+
+    <div class="form__group">
+        <label for="" class="form__group__label">Price (without tax)</label>
+        <input autocomplete="new-password" type="text" class="form__group__input">
+    </div>
+
+    <div class="form__group">
+        <label for="" class="form__group__label">Payment</label>
+        <input autocomplete="new-password" type="text" class="form__group__input">
+    </div>
+
+    <h2 class="form__heading">Task Status</h2>
+
+    <div class="form__group">
+        <label for="" class="form__group__label">Status</label>
+        <select autocomplete="new-password" type="select" class="form__group__input">
+            <option id="select-placeholder" disabled selected value=""></option>
+            <option value="">Estimate Pending</option>
+            <option value="">Estimate Pending Approval</option>
+            <option value="">Materials Pending Order</option>
+            <option value="">Materials Pending Delivery</option>
+            <option value="">Work Started</option>
+            <option value="">Complete</option>
+            <option value="">Custom (describe in status notes)</option>
+        </select>
+    </div>
+
+    <div class="form__group">
+        <label for="" class="form__group__label">Status Notes</label>
+        <input autocomplete="new-password" type="select" class="form__group__input">
+    </div>
+
+    <div class="form__group">
+        <label for="" class="form__group__label">Due By Date</label>
+        <input autocomplete="new-password" type="datetime-local" class="form__group__input">
     </div>
     
     <button class="form__btn">Save Task</button>
