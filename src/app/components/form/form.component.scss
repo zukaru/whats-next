@@ -41,7 +41,7 @@
             padding: 0 0.5em;
             top:-0.8em;
             left:20px;
-            background: var(--color-background);
+            background: var(--color-background-secondary);
         }
 
         
@@ -56,6 +56,13 @@
             color: var(--color-primary);
             padding-left: 1em;
 
+            &:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active  {
+                background: transparent !important;
+            }
+
             
 
             &:focus {
@@ -69,6 +76,11 @@
 
             &__select-placeholder {
                 color: var(--color-primary-light);
+            }
+
+            & option {
+                background: var(--color-background-tertiary);
+                color: var(--color-primary);
             }
         }
 
@@ -106,7 +118,7 @@
             padding: 0 0.5em;
             top:-0.8em;
             left:20px;
-            background: var(--color-background);
+            background: var(--color-background-secondary);
 
         }
         &__textarea {
@@ -116,7 +128,7 @@
                 color: var(--color-primary);
                 padding: 0.5em;
                 font-size: 1em;
-                background: var(--color-background);
+                background: var(--color-background-secondary);
                 border: none;
                 resize: none;
             }

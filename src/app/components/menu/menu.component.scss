@@ -10,6 +10,10 @@ nav {
     visibility:hidden;
     transition:all 0.3s ease-in-out;
     z-index: 100;
+
+    
+
+    
     
     ul {
       list-style-type:none;
@@ -20,10 +24,23 @@ nav {
       top: 600%;
       transition:all 0.3s ease-in-out;
       transform:translate(-50%, -50%);
+      
     
       li {
+        display: flex;
         transform:translateY(50px);
         opacity:0;
+        justify-self: left;
+        margin: 0;
+
+  
+
+        span {
+          color: transparent;
+          text-shadow: 0 0 0 var(--color-primary);
+
+          font-size: 0.8em;
+        }
         
         a {
           display:block;
@@ -55,6 +72,7 @@ nav {
   border-radius: 50px;
   background: var(--color-background-secondary);
   cursor:pointer;
+  box-shadow: 0 0px 5px var(--color-box-shadow);
   
   .bar {
     width:20px;

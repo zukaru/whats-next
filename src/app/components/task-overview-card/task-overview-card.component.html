@@ -1,0 +1,19 @@
+<section class="card" #self>
+    <div class="card__contact">
+        <p class="card__contact__name">{{ fname | titlecase}} {{ lname | titlecase }}</p>
+        <p class="card__contact__phone">{{ phone }}</p>
+    </div>
+
+    <div class="card__task-info">
+        <p class="card__description">{{ description }}</p>
+    </div>
+    
+    <div class="card__pricing">
+        <p class="card__dueDate"> Deadline: <span>{{ dueDate | date: 'EEEE, MMMM d' }}</span></p>
+        <p class="card__pricing__status">Status: <span>{{ status }}</span></p>
+        <p class="card__price">Due: <span>{{ price }}</span></p>
+    </div>
+
+
+    
+</section>

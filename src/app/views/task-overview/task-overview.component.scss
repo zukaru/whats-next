@@ -1,4 +1,4 @@
-.over-view {   
+.task-overview {   
     position: relative;
 
 
@@ -6,6 +6,19 @@
     
 }
 
-.space {
-    height: 2000px;
-}
+
+app-search-bar {
+   margin-top: 30em;
+   margin-left: 36%;
+    
+    
+  }
+
+  app-task-overview-card {
+      margin-top: 3em;
+      font-size: 2.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }

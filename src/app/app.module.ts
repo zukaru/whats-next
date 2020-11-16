@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,11 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { FormComponent } from './components/form/form.component';
+import { TaskOverviewCardComponent } from './components/task-overview-card/task-overview-card.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SearchComponent } from './views/search/search.component';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -36,15 +43,20 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AuthComponent,
     TaskOverviewComponent,
     CreateTaskComponent,
-    FormComponent
+    FormComponent,
+    TaskOverviewCardComponent,
+    SearchBarComponent,
+    SearchComponent
     
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

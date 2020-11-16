@@ -1,0 +1,50 @@
+.search {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        45deg,
+        var(--color-primary-light),
+        var(--color-secondary-dark),
+        var(--color-secondary-light),
+        var(--color-primary-dark),
+
+        
+        );
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 15s ease infinite alternate-reverse;
+    -moz-animation: AnimationName 15s ease infinite alternate-reverse;
+    -o-animation: AnimationName 15s ease infinite alternate-reverse;
+    animation: AnimationName 15s ease infinite alternate-reverse;
+
+    
+}
+
+
+app-search-bar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1.5);
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}

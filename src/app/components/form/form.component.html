@@ -1,20 +1,41 @@
-<form autocomplete="nope" class="form" >
+<form autocomplete="false" class="form" #f="ngForm" (submit)="taskFormSubmit($event)" >
     <h2 class="form__heading">Contact Info</h2>
     <div class="form__group">
-        <label for="" class="form__group__label">First Name *</label>
-        <input required autocomplete="new-password" type="text" class="form__group__input">
+        <label for="fName" class="form__group__label">First Name *</label>
+        <input
+            #fName
+            name="fName"
+            ngModel
+            required 
+            autocomplete="no"
+            type="text" 
+        class="form__group__input">
     </div>
     <div class="form__group">
         <label for="" class="form__group__label">Last Name</label>
-        <input autocomplete="new-password" type="text" class="form__group__input">
+        <input
+            #lName
+            name="lName"
+            ngModel
+            autocomplete="new-password"
+            type="text" 
+        class="form__group__input">
     </div>
     <div class="form__group">
         <label for="" class="form__group__label">Phone Number *</label>
-        <input required autocomplete="new-password" type="text" class="form__group__input">
+        <input
+            mask="(000) 000-0000"
+            #phoneNums
+            name="phoneNums"
+            ngModel
+            required
+            autocomplete="new-password"
+            type="text"
+        class="form__group__input">
     </div>
     <div class="form__group">
         <label for="" class="form__group__label">Email</label>
-        <input autocomplete="new-password" type="text" class="form__group__input">
+        <input autocomplete="new-password" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" type="text" class="form__group__input">
     </div>
 
     <div class="form__group">
@@ -31,12 +52,20 @@
 
     <div class="form__group">
         <label for="" class="form__group__label">Price (without tax)</label>
-        <input autocomplete="new-password" type="text" class="form__group__input">
+        <input  
+            prefix="$"
+            mask="separator.2 decimal.2" 
+            decimalMarker="." thousandSeparator="," 
+            id="price" autocomplete="new-password" 
+            type="text" 
+        class="form__group__input">
     </div>
 
     <div class="form__group">
         <label for="" class="form__group__label">Payment</label>
-        <input autocomplete="new-password" type="text" class="form__group__input">
+        <input prefix="$"
+        mask="separator.2 decimal.2" 
+        decimalMarker="." thousandSeparator=","  autocomplete="new-password" type="text" class="form__group__input">
     </div>
 
     <h2 class="form__heading">Task Status</h2>
@@ -65,5 +94,5 @@
         <input autocomplete="new-password" type="datetime-local" class="form__group__input">
     </div>
     
-    <button class="form__btn">Save Task</button>
+    <button type="submit" class="form__btn">Save Task</button>
 </form>
