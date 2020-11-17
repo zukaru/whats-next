@@ -6,9 +6,9 @@
   </label>
   <nav>
     <ul>
-      <li><a href routerLink="/search"><span>🔎</span>  Search </a></li>
-      <li><a href routerLink="/create-task"><span>➕</span>  Create Task </a></li>
-      <li><a href routerLink="/task-overview"><span>✔️</span> View Tasks </a></li>
-      <li ><a href (click)="this.signOut()"><span>🔒 </span> Sign Out</a></li>
+      <li routerLinkActive="active"><a href routerLink="/search"><span>🔎</span>  Search </a></li>
+      <li routerLinkActive="active"><a href routerLink="/create-task"><span>➕</span>  Create Task </a></li>
+      <li routerLinkActive="active"><a href routerLink="/task-overview"><span>✔️</span> View Tasks </a></li>
+      <li routerLinkActive="active"><a href (click)="this.signOut()"><span>🔒 </span> Sign Out</a></li>
     </ul>
   </nav>

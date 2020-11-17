@@ -12,14 +12,14 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
   public innerWidth: number;
 
 
-  @Input() description = 'Replace 2 sections on front driver-side bottom bolster.';
+  @Input() description = `Task description will go here. You can make the description as detailed or brief as necessary. 🎉🎉🎉`;
   @Input() dateCreated = '11/14/20';
   @Input() dueDate = '12/4/20';
-  @Input() price = '$175.00';
+  @Input() price = '175.00';
   @Input() fname = 'Joe';
   @Input() lname = 'Shmoe';
   @Input() phone = '(555) 555-5555';
-  @Input() status = 'Work Started';
+  @Input() status = '✔️ Complete';
 
   @ViewChild('self') taskCard: ElementRef;
 
@@ -40,10 +40,10 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
 
   ngOnInit(): void {
     
-    this.innerWidth = window.innerWidth;
+    this.innerWidth = window.innerHeight;
     
     this.eventSubscription = fromEvent(document, "scroll", {passive: true})
-    .pipe(throttleTime(200))
+    .pipe(throttleTime(100))
     .subscribe(e => {
       this.animateOnScroll(this.taskCard);
     })
@@ -55,7 +55,7 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
 
   ngAfterViewInit() {
     this.renderer.setStyle(this.taskCard.nativeElement, 'opacity', 1);
-    this.renderer.setStyle(this.taskCard.nativeElement, 'transform', 'scale(1)');
+    this.renderer.setStyle(this.taskCard.nativeElement, 'transform', 'scale(1) translateY(0) ');
 
   }
 
@@ -64,17 +64,17 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
     let introPosition = el.nativeElement.getBoundingClientRect().top;
 
     if(this.innerWidth > 800) {
-      if(introPosition < this.innerWidth) {
+      if(introPosition > (this.innerWidth + 200)) {
         this.renderer.setStyle(el.nativeElement, 'opacity', 1);
-        this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1)');
-      } else if(introPosition > this.innerWidth * 0.5) {
+        this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1) translateY(0)');
+      } else if(introPosition < this.innerWidth ) {
         
         this.renderer.removeStyle(el.nativeElement, 'opacity');
-        this.renderer.removeStyle(el.nativeElement, 'transform');
+        this.renderer.removeStyle(el.nativeElement, 'transform',);
       }
     } else if(introPosition < this.innerWidth + 200) {
       this.renderer.setStyle(el.nativeElement, 'opacity', 1);
-      this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1)');
+      this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1) translateY(0)');
     } else if(introPosition > this.innerWidth + 200) {
       this.renderer.removeStyle(el.nativeElement, 'opacity');
       this.renderer.removeStyle(el.nativeElement, 'transform');

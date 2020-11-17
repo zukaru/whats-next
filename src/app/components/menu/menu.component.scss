@@ -10,12 +10,14 @@ nav {
     visibility:hidden;
     transition:all 0.3s ease-in-out;
     z-index: 100;
+    padding: 0;
 
     
 
     
     
     ul {
+      
       list-style-type:none;
       padding:0;
       margin:0;
@@ -32,6 +34,7 @@ nav {
         opacity:0;
         justify-self: left;
         margin: 0;
+        padding: 1em 2em;
 
   
 
@@ -46,7 +49,7 @@ nav {
           display:block;
           font-size:2em;
           text-decoration:none;
-          padding:10px 0;
+          padding:0;
           text-align:center;
           color:var(--color-secondary-dark);
           font-weight:bold;
@@ -132,5 +135,20 @@ nav {
         transform:translateY(-6px) rotate(-45deg);
       }
     }
+  }
+}
+
+.active {
+  background: var(--color-primary);
+  clip-path: polygon(10% 0, 100% 0, 100% 60%, 90% 100%, 0 100%, 0 40%);
+
+
+
+  a {
+  color: var(--color-background-tertiary) !important;
+  }
+  span {
+    color: transparent;
+    text-shadow: 0 0 0 var(--color-background-tertiary) !important;
   }
 }

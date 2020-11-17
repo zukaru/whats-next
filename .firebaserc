@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "whats-next-e8772": {
+      "hosting": {
+        "whats-next": [
+          "whats-next-e8772"
+        ]
+      }
+    }
+  }
+}

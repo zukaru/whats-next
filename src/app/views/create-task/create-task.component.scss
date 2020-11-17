@@ -1,14 +1,12 @@
 .create-task {
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding-left: em;
     font-size: 4em;
-    width: 100%;
     background: var(--color-background-secondary);
 
 
     &__heading {
         color: var(--color-secondary);
-        margin: 2em 1em;
+        margin: 0;
+        padding: 2em 0 2em 0.5em;
     }
 }

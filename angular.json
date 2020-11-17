@@ -121,8 +121,13 @@
               "devServerTarget": "whats-next:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "whats-next"
 }
