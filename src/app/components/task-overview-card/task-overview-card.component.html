@@ -1,7 +1,7 @@
 <section class="card" #self>
     <div class="card__contact">
         <p class="card__contact__name">{{ fname | titlecase}} {{ lname | titlecase }}</p>
-        <p class="card__contact__phone">{{ phone }}</p>
+        <p class="card__contact__phone">{{ phone | mask: '(000) 000-0000' }}</p>
     </div>
 
     <div class="card__task-info">
@@ -9,9 +9,15 @@
     </div>
     
     <div class="card__pricing">
-        <p class="card__pricing__deadline"><span>{{ dueDate | date: 'EEEE, MMMM d' }}</span></p>
+        <p *ngIf="dueDate" class="card__pricing__deadline"><span>{{ dueDate | date: 'EEEE, MMMM d' }}</span></p>
+        <p *ngIf="!dueDate" class="card__pricing__deadline"><span>None Listed</span></p>
         <p class="card__pricing__status"> <span>{{ status }}</span></p>
-        <p class="card__pricing__due"><span>{{ price }}</span></p>
+        <p *ngIf="price" class="card__pricing__due"><span>${{ price | mask: 'separator' : ',' }}</span></p>
+        <p *ngIf="!price" class="card__pricing__deadline"><span>None Listed</span></p>
+    </div>
+
+    <div class="card__whois">
+        <p class="card__whois__name">{{ whois | uppercase }}</p>
     </div>
 
 

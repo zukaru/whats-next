@@ -1,21 +1,23 @@
 .card {
-    opacity: 0.7;
+    opacity: 0.1;
     max-width: 40em;
     font-weight: 600;
     width: 85%;
     background: var(--color-background-secondary);
     font-size: 18px;
     box-shadow: 0 0 10px var(--color-box-shadow);
-    border-radius: 25px;
+    border-radius: 10px;
     overflow: hidden;
+    overflow-x: hidden;
+    
     user-select: none;
-    transition: all 0.4s ease-out 0.1s;
-    transform: scale(0.99) translateY(4em);
+    transition: all 0.3s ease-out 0.1s;
+    transform: scale(0.9) translateY(5em);
 
     color: var(--color-secondary);
 
     &:active {
-        transform: scale(0.98);
+        transform: scale(0.98) !important;
         transition: transform 0.1s;
     }
 
@@ -48,10 +50,11 @@
         width: 100%;
         background: var(--color-background-secondary);
         padding: 1em;
-        color: var(--color-primary);
+        color: var(--color-text-md);
         p {
             width: 90%;
             line-height: 1.5em;
+            white-space: pre-wrap;
         }
     }
 
@@ -60,15 +63,40 @@
    
 
     &__pricing {
+        position: relative;
         width: 100%;
         background: var(--color-background-tertiary);
         padding: 0.3em 0;
         color: var(--color-secondary);
+        border-bottom-left-radius: 30px;
+        background-clip: padding-box;
+        border-bottom: 2px solid transparent;
+        
+
+        &::after {
+            position: absolute;
+            top: -4px; bottom: -3px;
+            left: -3px; right: -25px;
+            background: linear-gradient(to left, var(--color-primary), var(--color-secondary-light));
+            content: '';
+            z-index: -1;
+            border-radius: 31px;
+
+            // -webkit-animation: AnimationName 15s ease infinite alternate-reverse;
+            // -moz-animation: AnimationName 15s ease infinite alternate-reverse;
+            // -o-animation: AnimationName 15s ease infinite alternate-reverse;
+            // animation: AnimationName 15s ease infinite alternate-reverse;
+        }
 
         p {
             width: 95%;
             padding: 1em 0;
             text-align: right;
+
+            @media only screen and (max-width: 600px) {
+                text-align: left;
+                padding-left: 1em;
+            }
         }
 
         span {
@@ -81,10 +109,15 @@
                 content: 'DEADLINE';
                 position: absolute;
                 left: 1em;
-                top: 50%;
-                transform: translateY(-50%);
+                top: 1em;
                 color: var(--color-secondary);
                 margin: 0;
+
+                @media only screen and (max-width: 600px) {
+                    top:0.25em;
+                    left: 1.7em;
+                    font-size: 11px;
+                }
 
             }
         }
@@ -98,6 +131,12 @@
                 top: 50%;
                 transform: translateY(-50%);
                 color: var(--color-secondary);
+
+                @media only screen and (max-width: 600px) {
+                    top:0.25em;
+                    left: 1.7em;
+                    font-size: 11px;
+                }
 
             }
             
@@ -113,7 +152,45 @@
                 transform: translateY(-50%);
                 color: var(--color-secondary);
 
+                @media only screen and (max-width: 600px) {
+                    top:0.25em;
+                    left: 2em;
+                    font-size: 11px;
+                }
+
             }
         }
     }
+
+    &__whois {
+
+        text-align: right;
+
+
+        &__name {
+            padding: 0 1em;
+            color: var(--color-text-md);
+        }
+    }
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 83%}
+    50%{background-position:100% 18%}
+    100%{background-position:0% 83%}
 }

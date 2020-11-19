@@ -1,5 +1,18 @@
-<form autocomplete="false" class="form" #f="ngForm" (submit)="taskFormSubmit($event)" >
-    <h2 class="form__heading">Contact Info</h2>
+<form  autocomplete="false" class="form" #f="ngForm" >
+
+    <div class="form__group">
+        <label for="whois" class="form__group__label">Task Creator Initials *</label>
+        <input
+            #whois
+            name="whois"
+            ngModel
+            required 
+            autocomplete="no"
+            type="text" 
+            maxlength="3"
+        class="form__group__input">
+    </div>
+    <h2 class="form__heading">Client's Contact Info</h2>
     <div class="form__group">
         <label for="fName" class="form__group__label">First Name *</label>
         <input
@@ -12,7 +25,7 @@
         class="form__group__input">
     </div>
     <div class="form__group">
-        <label for="" class="form__group__label">Last Name</label>
+        <label for="last_name" class="form__group__label">Last Name</label>
         <input
             #lName
             name="lName"
@@ -22,7 +35,7 @@
         class="form__group__input">
     </div>
     <div class="form__group">
-        <label for="" class="form__group__label">Phone Number *</label>
+        <label for="phoneNums" class="form__group__label">Phone Number *</label>
         <input
             mask="(000) 000-0000"
             #phoneNums
@@ -34,25 +47,59 @@
         class="form__group__input">
     </div>
     <div class="form__group">
-        <label for="" class="form__group__label">Email</label>
-        <input autocomplete="new-password" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" type="text" class="form__group__input">
+        <label for="email" class="form__group__label">Email</label>
+        <input 
+            #email
+            name="email"
+            ngModel
+            autocomplete="new-password"
+            pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" 
+            type="text" 
+        class="form__group__input">
     </div>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Address</label>
-        <input autocomplete="new-password" type="text" class="form__group__input">
+        <label for="address" class="form__group__label">Address</label>
+        <input 
+            #address
+            name="address"
+            ngModel
+            autocomplete="new-password" 
+            type="text" 
+        class="form__group__input">
     </div>
 
     <h2 class="form__heading">Task Info</h2>
 
     <div class="form__group-textarea">
-        <label for="" class="form__group-textarea__label">Task Description *</label>
-        <textarea required autocomplete="new-password" type="text" class="form__group-textarea__textarea"></textarea>
+        <label for="task_description" class="form__group-textarea__label">Task Description *</label>
+        <textarea
+            #task_description
+            name="task_description"
+            ngModel
+            required 
+            autocomplete="new-password" 
+            type="text" 
+        class="form__group-textarea__textarea"></textarea>
     </div>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Price (without tax)</label>
-        <input  
+        <label for="material" class="form__group__label">Material</label>
+        <input 
+            #material
+            name="material"
+            ngModel
+            autocomplete="new-password" 
+            type="text" 
+        class="form__group__input">
+    </div>
+
+    <div class="form__group">
+        <label for="price" class="form__group__label">Price (without tax)</label>
+        <input
+            #price
+            name="price"
+            ngModel  
             prefix="$"
             mask="separator.2 decimal.2" 
             decimalMarker="." thousandSeparator="," 
@@ -62,37 +109,65 @@
     </div>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Payment</label>
-        <input prefix="$"
-        mask="separator.2 decimal.2" 
-        decimalMarker="." thousandSeparator=","  autocomplete="new-password" type="text" class="form__group__input">
+        <label for="payment" class="form__group__label">Payment</label>
+        <input 
+            #payment
+            name="payment"
+            ngModel
+            prefix="$"
+            mask="separator.2 decimal.2" 
+            decimalMarker="." 
+            thousandSeparator=","  
+            autocomplete="new-password" 
+            type="text" 
+        class="form__group__input">
     </div>
 
     <h2 class="form__heading">Task Status</h2>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Status</label>
-        <select autocomplete="new-password" type="select" class="form__group__input">
+        <label for="status" class="form__group__label">Status *</label>
+        <select
+            required
+            #status
+            name="status"
+            ngModel
+            autocomplete="new-password" 
+            type="select" 
+        class="form__group__input">
             <option id="select-placeholder" disabled selected value=""></option>
-            <option value="">📋 Estimate Pending</option>
-            <option value="">🤔 Estimate Pending Approval</option>
-            <option value="">💳 Materials Pending Order</option>
-            <option value="">⏳ Materials Pending Delivery</option>
-            <option value="">🛠️ Work Started</option>
-            <option value="">✔️ Complete</option>
-            <option value="">Custom (describe in status notes)</option>
+            <option value="📋 Estimate Pending">📋 Estimate Pending</option>
+            <option value="🤔 Estimate Pending Approval">🤔 Estimate Pending Approval</option>
+            <option value="💳 Materials Pending Order">💳 Materials Pending Order</option>
+            <option value="🚚 Materials Pending Delivery">🚚 Materials Pending Delivery</option>
+            <option value="🛠️ Work Started">🛠️ Work Started</option>
+            <option value="✔️ Complete">✔️ Complete</option>
+            <option value="Custom (describe in status notes)">Custom (describe in status notes)</option>
         </select>
     </div>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Status Notes</label>
-        <input autocomplete="new-password" type="select" class="form__group__input">
+        <label for="status_notes" class="form__group__label">Status Notes</label>
+        <input 
+            #status_notes
+            name="status_notes"
+            ngModel
+            autocomplete="new-password" 
+            type="select" 
+        class="form__group__input">
     </div>
 
     <div class="form__group">
-        <label for="" class="form__group__label">Due By Date</label>
-        <input autocomplete="new-password" type="datetime-local" class="form__group__input">
+        <label for="due_date" class="form__group__label">Due By Date</label>
+        <input
+            #due_date
+            name="due_date"
+            ngModel
+            autocomplete="new-password" 
+            type="date" 
+        class="form__group__input">
     </div>
     
-    <button type="submit" class="form__btn">Save Task</button>
+    <button type="submit" class="form__btn" (click)="this.taskFormSubmit(f)">Submit</button>
+    <p *ngIf="taskSubmitted">Task Entry Submitted!</p>
 </form>

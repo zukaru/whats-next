@@ -5,6 +5,16 @@
     padding-bottom: 4em;
     margin: 0.5em;
 
+
+    p {
+        opacity: 0;
+        font-size: 1em;
+        font-weight: 600;
+        margin-left: 1em;
+        color: var(--color-primary);
+        animation: fade-in .5s forwards;
+    }
+
     &__heading {
         font-size: 0.8em;
         color: var(--color-primary);
@@ -170,4 +180,9 @@
         box-shadow: 0 0 5px var(--color-box-shadow);
         
     }
+}
+
+@keyframes fade-in {
+    from {opacity: 0}
+    to {opacity: 1}
 }

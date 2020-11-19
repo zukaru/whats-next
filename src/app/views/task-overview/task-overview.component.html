@@ -1,22 +1,16 @@
 <div class="task-overview">
     <app-header></app-header>
-    <!-- <app-task-overview-card
-    description=""
-    fname=""
-    lname=""
-    phone=""
-    dueDate=""
-    amountDue=""></app-task-overview-card> -->
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
-    <app-task-overview-card></app-task-overview-card>
+    <app-task-overview-card
+    *ngFor="let task of this.db.taskList"
+    [description]="task.task.taskDesc"
+    [fname]="task.task.fName"
+    [lname]="task.task.lName"
+    [phone]="task.task.phoneNums"
+    [dueDate]="task.task.deadline"
+    [status]="task.task.status"
+    [whois]="task.task.whois"
+    [price]="task.task.price"></app-task-overview-card>
+    
 
 </div>
 

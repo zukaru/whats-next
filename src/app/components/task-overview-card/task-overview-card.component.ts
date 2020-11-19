@@ -20,6 +20,7 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
   @Input() lname = 'Shmoe';
   @Input() phone = '(555) 555-5555';
   @Input() status = '✔️ Complete';
+  @Input() whois: string;
 
   @ViewChild('self') taskCard: ElementRef;
 

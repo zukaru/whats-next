@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FirebaseUISignInSuccessWithAuthResult } from 'firebaseui-angular';
+import { DatabaseService } from 'src/app/services/database.service';
+import { PersistService } from 'src/app/services/persist.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +14,9 @@ export class AuthComponent implements OnInit {
 
   constructor(
     public route: Router,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private persist: PersistService,
+    private db: DatabaseService
   ) { }
 
   ngOnInit(): void {
@@ -22,8 +26,10 @@ export class AuthComponent implements OnInit {
     )
   }
 
-  signInSuccess(e: FirebaseUISignInSuccessWithAuthResult) {
+  signInSuccess(event: FirebaseUISignInSuccessWithAuthResult) {
     this.route.navigateByUrl('/task-overview');
+    this.db.userId = event.authResult.user.uid;
+    this.persist.setPersist('USER_ID', this.db.userId);
   }
 
 }

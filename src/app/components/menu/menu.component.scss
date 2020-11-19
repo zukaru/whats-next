@@ -12,6 +12,10 @@ nav {
     z-index: 100;
     padding: 0;
 
+    @media screen and (max-width: 600px) {
+      font-size: 10px;
+    }
+
     
 
     
@@ -33,7 +37,7 @@ nav {
         transform:translateY(50px);
         opacity:0;
         justify-self: left;
-        margin: 0;
+        margin-top: 1em;
         padding: 1em 2em;
 
   
