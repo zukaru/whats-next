@@ -9,7 +9,8 @@ import { PersistService } from 'src/app/services/persist.service';
   styleUrls: ['./task-overview.component.scss']
 })
 export class TaskOverviewComponent implements OnInit, OnDestroy {
-  fetchEntrySub: Subscription
+  fetchEntrySub: Subscription;
+  hasTasks = false;
 
   constructor(
     public db: DatabaseService,
@@ -17,12 +18,15 @@ export class TaskOverviewComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     window.scrollTo(0, 0);
 
     if(this.persist.getPersist('USER_ID')) {
       this.fetchEntrySub = this.db.fetchEntries()
       .subscribe(
         (res) => {
+          console.log(res);
+          this.hasTasks = res.empty;
           this.db.taskList = res.docs.map(
             (d) => {
               let obj = {task: d.data(), id: d.id};

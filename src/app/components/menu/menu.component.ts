@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { PersistService } from 'src/app/services/persist.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public af: AngularFireAuth,
-    private route: Router
+    private route: Router,
+    private persist: PersistService
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class MenuComponent implements OnInit {
       .then(
         () => {
           this.route.navigateByUrl('');
+          this.persist.clearPersist('USER_ID')
           alert("You have logged out.");
             
         }

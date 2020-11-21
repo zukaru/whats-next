@@ -10,10 +10,10 @@
     
     <div class="card__pricing">
         <p *ngIf="dueDate" class="card__pricing__deadline"><span>{{ dueDate | date: 'EEEE, MMMM d' }}</span></p>
-        <p *ngIf="!dueDate" class="card__pricing__deadline"><span>None Listed</span></p>
+        <p *ngIf="!dueDate" class="card__pricing__deadline"><span>Not Listed</span></p>
         <p class="card__pricing__status"> <span>{{ status }}</span></p>
         <p *ngIf="price" class="card__pricing__due"><span>${{ price | mask: 'separator' : ',' }}</span></p>
-        <p *ngIf="!price" class="card__pricing__deadline"><span>None Listed</span></p>
+        <p *ngIf="!price" class="card__pricing__due"><span>Not Listed</span></p>
     </div>
 
     <div class="card__whois">

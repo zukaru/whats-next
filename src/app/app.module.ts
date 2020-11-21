@@ -18,6 +18,7 @@ import { FormComponent } from './components/form/form.component';
 import { TaskOverviewCardComponent } from './components/task-overview-card/task-overview-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchComponent } from './views/search/search.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -46,7 +47,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FormComponent,
     TaskOverviewCardComponent,
     SearchBarComponent,
-    SearchComponent
+    SearchComponent,
+    SpinnerComponent
     
   ],
   imports: [

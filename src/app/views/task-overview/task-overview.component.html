@@ -1,5 +1,16 @@
 <div class="task-overview">
     <app-header></app-header>
+    <p 
+        class="task-overview__no-tasks"
+        *ngIf="this.hasTasks && !this.db.taskList[0]"
+        routerLink="/create-task"
+        >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
+        <app-spinner *ngIf="!this.hasTasks && !this.db.taskList[0]" class="task-overview__no-tasks"></app-spinner>
+        <p 
+        class="task-overview__no-tasks"
+        *ngIf="false"
+        routerLink="/create-task"
+        >Initializing, please wait..</p>
     <app-task-overview-card
     *ngFor="let task of this.db.taskList"
     [description]="task.task.taskDesc"

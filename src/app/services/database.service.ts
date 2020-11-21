@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { PersistService } from './persist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,13 @@ export class DatabaseService {
   temporaryEntry: any;
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private persist: PersistService
   ) { }
 
 
    fetchEntries() {
-    return this.afs.collection('tasks')
+    return this.afs.collection('tasks', ref => ref.where('userId', '==', this.persist.getPersist('USER_ID')))
       .get()
   }
 

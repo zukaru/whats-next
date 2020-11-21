@@ -89,8 +89,8 @@
             }
 
             & option {
-                background: var(--color-background-tertiary);
-                color: var(--color-primary);
+                background: var(--color-background-quarternary);
+                color: var(--color-background-secondary);
             }
         }
 
@@ -109,7 +109,7 @@
     &__group-textarea {
         margin-top: 2em;
         position: relative;
-        height: 15em;
+        height: 12em;
         width: 100%;
         margin-left: 0.5em;
         
@@ -133,7 +133,7 @@
         }
         &__textarea {
                 font-family: Arial, Helvetica, sans-serif;
-                height: 90%;
+                height: 85%;
                 width: 90%;
                 color: var(--color-primary);
                 padding: 0.5em;

@@ -2,6 +2,23 @@
     position: relative;
     padding-bottom: 100px;
 
+    &__no-tasks {
+        margin-top: 5em;
+        font-size: 30px;
+        font-weight: 500;
+        position: absolute;
+        line-height: 1.5em;
+        left: 50%;
+        top: 50%;
+        white-space: pre-wrap;
+        transform: translate(-50%, -50%);
+        color: var(--color-primary);
+        width: 80%;
+        text-decoration: underline;
+        cursor: pointer;
+
+    }
+
 
 
     
