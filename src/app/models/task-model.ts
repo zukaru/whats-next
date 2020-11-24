@@ -1,6 +1,6 @@
 export interface TaskModel{
     fName: string;
-    lname?: string;
+    lName: string;
     phoneNums: [string];
     description: string;
     dateCreated: string;
@@ -11,14 +11,12 @@ export interface TaskModel{
             status: string; 
         }
     ];
-    address?: string;
-    dueBy: string;
-    price?: string;
-    payments: [
-        {
-            amount: string;
-            date: string;
-        }
-    ];
+    address: string;
+    deadline: string;
+    price: string;
+    payments: string[];
+    userID: string;
+    docID: string;
+    whoIs: string
 
 }

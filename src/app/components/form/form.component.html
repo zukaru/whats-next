@@ -1,28 +1,33 @@
-<form  autocomplete="false" class="form" #f="ngForm" >
+<form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.taskFormSubmit(f)" >
 
     <div class="form__group">
-        <label for="whois" class="form__group__label">Task Creator Initials *</label>
+        <label for="whoIs" class="form__group__label">Task Creator Initials *</label>
         <input
-            #whois
-            name="whois"
+            #whoIs="ngModel"
+            name="whoIs"
             ngModel
             required 
             autocomplete="no"
             type="text" 
             maxlength="3"
         class="form__group__input">
+        <p class="error" *ngIf="whoIs.invalid && (whoIs.dirty || whoIs.touched)">Please fill with your initials.</p>
     </div>
+
+   
+    
     <h2 class="form__heading">Client's Contact Info</h2>
     <div class="form__group">
         <label for="fName" class="form__group__label">First Name *</label>
         <input
-            #fName
+            #fName="ngModel"
             name="fName"
             ngModel
             required 
             autocomplete="no"
             type="text" 
         class="form__group__input">
+        <p class="error" *ngIf="fName.invalid && (fName.dirty || fName.touched)">Please fill with client's first name.</p>
     </div>
     <div class="form__group">
         <label for="last_name" class="form__group__label">Last Name</label>
@@ -38,13 +43,14 @@
         <label for="phoneNums" class="form__group__label">Phone Number *</label>
         <input
             mask="(000) 000-0000"
-            #phoneNums
+            #phoneNums="ngModel"
             name="phoneNums"
             ngModel
             required
             autocomplete="new-password"
             type="text"
         class="form__group__input">
+        <p class="error" *ngIf="phoneNums.invalid && (phoneNums.dirty || phoneNums.touched)">Please fill with client's phone number.</p>
     </div>
     <div class="form__group">
         <label for="email" class="form__group__label">Email</label>
@@ -74,13 +80,14 @@
     <div class="form__group-textarea">
         <label for="task_description" class="form__group-textarea__label">Task Description *</label>
         <textarea
-            #task_description
+            #task_description="ngModel"
             name="task_description"
             ngModel
             required 
             autocomplete="new-password" 
             type="text" 
         class="form__group-textarea__textarea"></textarea>
+        <p class="error" *ngIf="task_description.invalid && (task_description.dirty || task_description.touched)">Please fill with a description of the task.</p>
     </div>
 
     <div class="form__group">
@@ -129,7 +136,7 @@
         <label for="status" class="form__group__label">Status *</label>
         <select
             required
-            #status
+            #status="ngModel"
             name="status"
             ngModel
             autocomplete="new-password" 
@@ -144,6 +151,7 @@
             <option value="✔️ Complete">✔️ Complete</option>
             <option value="Custom (describe in status notes)">Custom (describe in status notes)</option>
         </select>
+        <p class="error" *ngIf="status.invalid && (status.dirty || status.touched)">Please select a status.</p>
     </div>
 
     <div class="form__group">
@@ -158,16 +166,22 @@
     </div>
 
     <div class="form__group">
-        <label for="due_date" class="form__group__label">Due By Date</label>
+        <label for="deadline" class="form__group__label">Due By Date</label>
         <input
-            #due_date
-            name="due_date"
+            #deadline
+            name="deadline"
             ngModel
             autocomplete="new-password" 
             type="date" 
         class="form__group__input">
     </div>
     
-    <button type="submit" class="form__btn" (click)="this.taskFormSubmit(f)">Submit</button>
+    <button [disabled]="f.invalid" type="submit" class="form__btn" >Submit</button>
     <p *ngIf="taskSubmitted">Task Entry Submitted!</p>
+    <p class="error-color" *ngIf="task_description.invalid && (task_description.dirty || task_description.touched)">Missing task description.</p>
+    <p class="error-color" *ngIf="phoneNums.invalid && (phoneNums.dirty || phoneNums.touched)">Missing client's phone number.</p>
+    <p class="error-color" *ngIf="fName.invalid && (fName.dirty || fName.touched)">Missing client's first name.</p>
+    <p class="error-color" *ngIf="whoIs.invalid && (whoIs.dirty || whoIs.touched)">Missing task creator's initials</p>
+    <p class="error-color" *ngIf="status.invalid && (status.dirty || status.touched)">Missing a status.</p>
+
 </form>

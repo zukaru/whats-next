@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TaskModel } from '../models/task-model';
 import { PersistService } from './persist.service';
 
 @Injectable({
@@ -7,9 +8,8 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
-  userId: string
 
-  taskList = [];
+  taskList: TaskModel[] ;
   activeEntryId: string;
   temporaryEntry: any;
 
@@ -20,15 +20,21 @@ export class DatabaseService {
 
 
    fetchEntries() {
-    return this.afs.collection('tasks', ref => ref.where('userId', '==', this.persist.getPersist('USER_ID')))
+    return this.afs.collection('tasks', ref => ref.where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
       .get()
   }
 
   // where('userId', '==', this.userId)
 
+  getTotalPayments(payments: string[]) {
+    return payments.reduce((acc, val) => {
+      return acc + Number(val);
+    }, 0)
+  }
+
 
   getEntry(entryId: string) {
-    return this.taskList.find((el) => el.id === entryId);
+    return this.taskList.find((el) => el.userID === entryId);
   }
 
   deleteEntry(entryId: string): Promise<void> {

@@ -9,6 +9,8 @@
     box-shadow: 0 1px 5px var(--color-box-shadow);
     border-radius: 0 25px 25px 0;
 
+    
+
 
 
     &__logo {
@@ -16,6 +18,11 @@
         position: absolute;
         left: 1.5em;
         top: 2em;
+        user-select: none;
+        -webkit-user-select:none;
+        -webkit-touch-callout:none;
+
+       
     }
 
     &__search {

@@ -62,3 +62,16 @@ select:-webkit-autofill:focus {
 a.firebaseui-link {
     color: var(--color-primary-dark) !important;
 }
+
+.error {
+    color: var(--color-error) !important;
+    font-size: 14px !important;
+    position: absolute;
+    left: 1em;
+    bottom: -3em;
+}
+
+.error-color {
+    color: var(--color-error) !important;
+    font-size: 14px !important
+}

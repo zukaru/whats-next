@@ -30,25 +30,42 @@ export class FormComponent implements OnInit {
   taskFormSubmit(f: NgForm) {
     
 
-    const task = {
-      userId: this.persist.getPersist('USER_ID'),
+    console.log()
+
+    const task: TaskModel = {
+      userID: this.persist.getPersist('USER_ID'),
       fName: f.value.fName,
       lName: f.value.lName,
-      phoneNums: f.value.phoneNums,
-      taskDesc: f.value.task_description,
-      status: f.value.status,
+      phoneNums: [f.value.phoneNums],
+      description: f.value.task_description,
       price: f.value.price,
-      deadline: f.value.due_date,
-      whois: f.value.whois,
+      payments: [f.value.payment],
+      dateCreated: new Date().toLocaleDateString(),
+      statusUpdates: [{
+        status: f.value.status,
+        date: new Date().toLocaleDateString(),
+        notes: f.value.status_notes
+      }],
+      docID: '',
+      address: f.value.address,
+      deadline: f.value.deadline,
+      whoIs: f.value.whoIs
 
-      entryId: '',
       }
-      if ( this.persist.getPersist('USER_ID') ){
-          this.afs.collection('tasks')
+
+      if ( this.persist.getPersist(this.persist.USER_ID) ){
+        console.log(task);
+        this.afs.collection('tasks')
         .add(task)
         .then((docRef) => {
-          let addTaskId = {...task};
-          addTaskId.entryId = docRef.id;
+
+          this.taskSubmitted = true;
+          setTimeout(() => {
+            this.taskSubmitted = false;
+          }, 4000)
+
+
+
           f.reset();
         })
         .then(() => {
@@ -57,7 +74,7 @@ export class FormComponent implements OnInit {
             this.taskSubmitted = false;
           }, 4000)
         } )
-        .catch(() => alert('Something went wrong, try again.'))
+        .catch((e) => console.log('Something went wrong, try again.', e))
     } else {
       let redirect = confirm("You're not signed in. You must be signed in to submit a journal entry. Do you want to be redirected to sign in or sign up?");
       if (redirect) {

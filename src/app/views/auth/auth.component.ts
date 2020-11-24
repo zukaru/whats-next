@@ -28,8 +28,8 @@ export class AuthComponent implements OnInit {
 
   signInSuccess(event: FirebaseUISignInSuccessWithAuthResult) {
     this.route.navigateByUrl('/task-overview');
-    this.db.userId = event.authResult.user.uid;
-    this.persist.setPersist('USER_ID', this.db.userId);
+    const userID = event.authResult.user.uid;
+    this.persist.setPersist(this.persist.USER_ID, userID);
   }
 
 }

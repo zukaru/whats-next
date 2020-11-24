@@ -14,13 +14,13 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
 
   @Input() description = `Task description will go here. You can make the description as detailed or brief as necessary. 🎉🎉🎉`;
   @Input() dateCreated = '11/14/20';
-  @Input() dueDate = '12/4/20';
-  @Input() price = '175.00';
-  @Input() fname = 'Joe';
-  @Input() lname = 'Shmoe';
+  @Input() deadline = '12/4/20';
+  @Input() amtDue = '175.00';
+  @Input() fName = 'Joe';
+  @Input() lName = 'Shmoe';
   @Input() phone = '(555) 555-5555';
   @Input() status = '✔️ Complete';
-  @Input() whois: string;
+  @Input() whoIs: string;
 
   @ViewChild('self') taskCard: ElementRef;
 
@@ -59,6 +59,9 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
     this.renderer.setStyle(this.taskCard.nativeElement, 'transform', 'scale(1) translateY(0) ');
 
   }
+
+
+  
 
 
   animateOnScroll(el: ElementRef) {

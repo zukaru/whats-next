@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
       .then(
         () => {
           this.route.navigateByUrl('');
-          this.persist.clearPersist('USER_ID')
+          this.persist.clearPersist(this.persist.USER_ID)
           alert("You have logged out.");
             
         }

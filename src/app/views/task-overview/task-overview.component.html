@@ -5,7 +5,7 @@
         *ngIf="this.hasTasks && !this.db.taskList[0]"
         routerLink="/create-task"
         >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
-        <app-spinner *ngIf="!this.hasTasks && !this.db.taskList[0]" class="task-overview__no-tasks"></app-spinner>
+        <app-spinner *ngIf="!this.hasTasks && !this.db.taskList" class="task-overview__no-tasks"></app-spinner>
         <p 
         class="task-overview__no-tasks"
         *ngIf="false"
@@ -13,14 +13,14 @@
         >Initializing, please wait..</p>
     <app-task-overview-card
     *ngFor="let task of this.db.taskList"
-    [description]="task.task.taskDesc"
-    [fname]="task.task.fName"
-    [lname]="task.task.lName"
-    [phone]="task.task.phoneNums"
-    [dueDate]="task.task.deadline"
-    [status]="task.task.status"
-    [whois]="task.task.whois"
-    [price]="task.task.price"></app-task-overview-card>
+    [description]="task.description"
+    [fName]="task.fName"
+    [lName]="task.lName"
+    [phone]="task.phoneNums"
+    [deadline]="task.deadline"
+    [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
+    [whoIs]="task.whoIs"
+    [amtDue]="this.calcAmtDue(task.price, task.payments)"></app-task-overview-card>
     
 
 </div>

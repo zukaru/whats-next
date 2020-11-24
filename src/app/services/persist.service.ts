@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class PersistService {
+  USER_ID = 'USER_ID';
   
 
   constructor(
