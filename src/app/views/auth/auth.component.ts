@@ -12,6 +12,7 @@ import { PersistService } from 'src/app/services/persist.service';
 })
 export class AuthComponent implements OnInit {
 
+  uiShown = false;
   constructor(
     public route: Router,
     public afAuth: AngularFireAuth,

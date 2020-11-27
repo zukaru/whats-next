@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, CollectionReference } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TaskModel } from '../models/task-model';
 import { PersistService } from './persist.service';
 
@@ -20,8 +22,14 @@ export class DatabaseService {
 
 
    fetchEntries() {
-    return this.afs.collection('tasks', ref => ref.where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
-      .get()
+    return this.afs.collection<TaskModel>('tasks', ref => ref.where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
+    .snapshotChanges()
+  }
+
+  getTaskByID(id: string) {
+    return this.taskList.filter(el => {
+      return el.docID === id;
+    });
   }
 
   // where('userId', '==', this.userId)

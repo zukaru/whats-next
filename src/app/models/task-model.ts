@@ -8,7 +8,8 @@ export interface TaskModel{
         {
             date: string;
             notes: string;
-            status: string; 
+            status: string;
+            whoIs: string
         }
     ];
     address: string;
@@ -17,6 +18,5 @@ export interface TaskModel{
     payments: string[];
     userID: string;
     docID: string;
-    whoIs: string
 
 }

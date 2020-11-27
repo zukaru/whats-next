@@ -4,11 +4,15 @@
    alt="What's next logo. Task tracker."
    class="auth__logo"> 
 
-   <app-spinner *ngIf=""></app-spinner>
+   
 
    <firebase-ui
-   
+
+
+   (uiShown)="this.uiShown = true"
+
    (signInSuccessWithAuthResult)="signInSuccess($event)"
    ></firebase-ui>
+   <app-spinner *ngIf="!this.uiShown"></app-spinner>
 </div>
 

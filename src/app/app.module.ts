@@ -19,6 +19,7 @@ import { TaskOverviewCardComponent } from './components/task-overview-card/task-
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchComponent } from './views/search/search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { TaskDetailsComponent } from './views/task-details/task-details.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -48,7 +49,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TaskOverviewCardComponent,
     SearchBarComponent,
     SearchComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    TaskDetailsComponent
     
   ],
   imports: [

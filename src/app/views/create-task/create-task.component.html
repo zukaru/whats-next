@@ -2,6 +2,6 @@
     <h2 class="create-task__heading">Create Task</h2>
    
 
-    <app-form></app-form>
+    <app-form (isFormDirty)="this.isChildFormDirty($event)"></app-form>
 </section>
 <app-menu></app-menu>
