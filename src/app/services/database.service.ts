@@ -10,6 +10,8 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
+  hasTasks = false;
+
 
   taskList: TaskModel[] ;
   activeEntryId: string;

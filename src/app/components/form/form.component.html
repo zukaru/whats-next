@@ -55,11 +55,11 @@
     <div class="form__group">
         <label for="email" class="form__group__label">Email</label>
         <input 
-            #email
+            #email="ngModel"
             name="email"
             ngModel
             autocomplete="new-password"
-            pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" 
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+(?<!\.)\.(?!\.)[A-Za-z]{2,4}" 
             type="text" 
         class="form__group__input">
         <p class="error" *ngIf="email.invalid && (email.dirty || email.touched)">Please fill with valid email.</p>
@@ -183,6 +183,7 @@
     <p *ngIf="taskSubmitted">Task Entry Submitted!</p>
     <p class="error-color" *ngIf="task_description.invalid">Missing task description.</p>
     <p class="error-color" *ngIf="phoneNums.invalid ">Missing client's phone number.</p>
+    <p class="error-color" *ngIf="email.invalid ">Missing client's email address.</p>
     <p class="error-color" *ngIf="fName.invalid ">Missing client's first name.</p>
     <p class="error-color" *ngIf="whoIs.invalid ">Missing task creator's initials</p>
     <p class="error-color" *ngIf="status.invalid">Missing a status.</p>

@@ -56,6 +56,7 @@ export class FormComponent implements OnInit, CanComponentDeactivate {
       price: f.value.price,
       payments: [f.value.payment],
       dateCreated: new Date().toLocaleDateString(),
+      email: f.value.email,
       statusUpdates: [{
         status: f.value.status,
         date: new Date().toLocaleDateString(),

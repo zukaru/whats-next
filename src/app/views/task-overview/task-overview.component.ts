@@ -12,7 +12,7 @@ import { PersistService } from 'src/app/services/persist.service';
 })
 export class TaskOverviewComponent implements OnInit, OnDestroy {
   fetchEntrySub: Subscription;
-  hasTasks = false;
+  
 
   constructor(
     public db: DatabaseService,
@@ -25,7 +25,7 @@ export class TaskOverviewComponent implements OnInit, OnDestroy {
 
 
 
-
+if(!this.db.taskList) { 
     this.fetchEntrySub = this.db.fetchEntries()
       .pipe(
         map(actions => actions.map(a => a.payload.doc))
@@ -33,7 +33,7 @@ export class TaskOverviewComponent implements OnInit, OnDestroy {
       .subscribe(
         (res) => {
           console.log(res)
-          this.hasTasks = res.length > 0;
+          this.db.hasTasks = res.length > 0;
           this.db.taskList = res.map(
             (d) => {
               const id = d.id;
@@ -45,6 +45,7 @@ export class TaskOverviewComponent implements OnInit, OnDestroy {
           )
         }
       )
+}
     
 
     // if (this.db.taskList) {
@@ -74,9 +75,8 @@ export class TaskOverviewComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    if (this.fetchEntrySub) {
-      this.fetchEntrySub.unsubscribe();
-    }
+    
+
 
   }
 

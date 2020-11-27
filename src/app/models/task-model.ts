@@ -4,6 +4,7 @@ export interface TaskModel{
     phoneNums: [string];
     description: string;
     dateCreated: string;
+    email: string;
     statusUpdates: [
         {
             date: string;
