@@ -23,7 +23,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.afAuth.user
     .subscribe(
-      v => v !== null ? this.route.navigate(['/task-overview']) : false
+      v => v !== null ? this.route.navigateByUrl('/task-overview') : false
     )
   }
 

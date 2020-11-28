@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Navigation, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,17 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 export class HeaderComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(
+    public location: Location,
+    public route: Router
+  ) { 
+  }
 
   ngOnInit(): void {
+  }
+
+  previousRoute() {
+    window.history.back();
   }
 
 }

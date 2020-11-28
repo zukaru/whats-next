@@ -5,10 +5,20 @@
         <p>{{ this.taskDetails.phoneNums[0] | mask: '(000) 000-0000' }}</p>
         <p>{{ this.taskDetails.email }}</p>
     </div>
+    
     <div class="task-details__info">
+
+        <p>{{ this.taskDetails.description }}</p>
 
     </div>
     <div class="task-details__status">
+        <p>{{taskDetails.deadline}}</p>
+        <div *ngFor="let update of taskDetails.statusUpdates">
+            <p>{{update.status}}</p>
+            <p>{{update.notes}}</p>
+            <p>{{update.date}}</p>
+        </div>
 
     </div>
 </section>
+<app-header></app-header>

@@ -10,8 +10,9 @@
             autocomplete="no"
             type="text" 
             maxlength="3"
+            minlength="3"
         class="form__group__input">
-        <p class="error" *ngIf="whoIs.invalid && (whoIs.dirty || whoIs.touched)">Please fill with your initials.</p>
+        <p class="error" *ngIf="whoIs.invalid && (whoIs.dirty || whoIs.touched)">Please fill with your 3 initials.</p>
     </div>
 
    

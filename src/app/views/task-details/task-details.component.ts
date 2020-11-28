@@ -19,6 +19,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
    if(this.persist.getPersist('TASK_DOC')) {
      this.taskDetails = this.persist.getPersist('TASK_DOC');
    } else {

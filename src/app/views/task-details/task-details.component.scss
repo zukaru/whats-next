@@ -3,18 +3,16 @@
     height: 200em;
 
     p {
-        margin: 0.4em 0 0.4em 0;
         color: var(--color-background);
         font-size: 22px;
         font-weight: bold;
         letter-spacing: 2px;
+        margin: 0;
+        padding: 0.3em 10%;
     }
     &__contact {
-        padding: 2em;
-        height: 20em;
-        position: fixed;
-        top: 0;
-        left: 0;
+        padding: 10em 0;
+        padding-top: 17em;
         width: 100%;
         background: linear-gradient(
             to bottom right,
@@ -23,16 +21,38 @@
         );
     }
 
-    &__info {
-        height: 150em;
-        width: 100%;
-        background: var(--color-background-secondary);
 
+
+    &__info {
+        width: 100%;
+        
+        background: var(--color-background-secondary);
+        color: var(--color-background-quarternary);
+        margin: 0;
+        padding: 5em 0;
+
+
+        p {
+            padding: 0.2em 10%;
+            padding-top: 2em;
+            color: var(--color-text-md);
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
     }
 
     &__status {
         height: 300em;
         width: 100%;
         background: var(--color-background-tertiary);
+
+        p {
+            color: var(--color-secondary);
+            padding: 0.2em 10%;
+            padding-top: 2em;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
     }
 }

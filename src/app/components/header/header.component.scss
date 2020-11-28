@@ -1,13 +1,34 @@
 .header {
-    position: absolute;
+    position: fixed;
     left: 0;
-    top: 1.5em;
+    top: 10px;
     width: 12em;
     height: 8em;
     background-color: var(--color-background-secondary);
-    position: relative;
     box-shadow: 0 1px 5px var(--color-box-shadow);
     border-radius: 0 25px 25px 0;
+    z-index: 1000;
+    color: var(--color-text-md);
+
+    &__arrow {
+        font-size: 3em;
+        font-weight: 800;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        padding: 0;
+
+        a {
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+            &:visited {
+                color: inherit;
+            }
+        }
+    }
 
     
 

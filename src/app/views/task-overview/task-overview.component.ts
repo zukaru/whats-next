@@ -10,18 +10,16 @@ import { PersistService } from 'src/app/services/persist.service';
   templateUrl: './task-overview.component.html',
   styleUrls: ['./task-overview.component.scss']
 })
-export class TaskOverviewComponent implements OnInit, OnDestroy {
+export class TaskOverviewComponent implements OnInit {
   fetchEntrySub: Subscription;
   
 
   constructor(
-    public db: DatabaseService,
-    private persist: PersistService,
+    public db: DatabaseService
   ) { }
 
   ngOnInit(): void {
 
-    window.scrollTo(0, 0);
 
 
 
@@ -45,40 +43,8 @@ if(!this.db.taskList) {
           )
         }
       )
+  }
 }
-    
-
-    // if (this.db.taskList) {
-
-    // } else if(this.persist.getPersist(this.persist.USER_ID)) {
-    //   this.fetchEntrySub = this.db.fetchEntries()
-      
-    // .subscribe(
-    //   (res) => {
-    //     this.hasTasks = res.empty;
-    //     this.db.taskList = res.docs.map(
-    //       (d) => {
-    //         const id = d.id as string;
-    //         let task = d.data() as TaskModel;
-    //         task.docID = id;
-    //         console.log(task);
-    //         return task;
-    //       });
-    //   }
-
-    // );
-      
-    // } 
-
-
-  }
-
-
-  ngOnDestroy(): void {
-    
-
-
-  }
 
   calcAmtDue(price: string, payments: string[]) {
     
@@ -88,21 +54,3 @@ if(!this.db.taskList) {
   }
 
 }
-
-
-
-
-// .subscribe(
-//   (res) => {
-//     this.hasTasks = res.empty;
-//     this.db.taskList = res.docs.map(
-//       (d) => {
-//         const id = d.id as string;
-//         let task = d.data() as TaskModel;
-//         task.docID = id;
-//         console.log(task);
-//         return task;
-//       });
-//   }
-
-// );

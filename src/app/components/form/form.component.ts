@@ -78,12 +78,14 @@ export class FormComponent implements OnInit, CanComponentDeactivate {
           this.taskSubmitted = true;
           setTimeout(() => {
             this.taskSubmitted = false;
+            f.resetForm();
           }, 4000)
 
-
-
-          f.resetForm();
           this.emitIsFormDirty(false);
+
+
+
+         
         })
         .then(() => {
           this.taskSubmitted = true;
