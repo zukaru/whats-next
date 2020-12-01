@@ -61,11 +61,11 @@ export class FormComponent implements OnInit, CanComponentDeactivate {
         status: f.value.status,
         date: new Date().toLocaleDateString(),
         notes: f.value.status_notes,
-        whoIs: f.value.whoIs
+        whoIs: f.value.whoIs,
+        deadline: f.value.deadline
       }],
       docID: '',
       address: f.value.address,
-      deadline: f.value.deadline,
 
       }
 

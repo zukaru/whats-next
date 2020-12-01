@@ -61,7 +61,7 @@
             ngModel
             autocomplete="new-password"
             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+(?<!\.)\.(?!\.)[A-Za-z]{2,4}" 
-            type="text" 
+            type="email" 
         class="form__group__input">
         <p class="error" *ngIf="email.invalid && (email.dirty || email.touched)">Please fill with valid email.</p>
     </div>

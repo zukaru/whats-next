@@ -5,15 +5,15 @@ export interface TaskModel{
     description: string;
     dateCreated: string;
     email: string;
-    statusUpdates: Array<
+    statusUpdates: [
         {
             date: string;
             notes: string;
             status: string;
-            whoIs: string
-        }>;
+            whoIs: string;
+            deadline: string;
+        }];
     address: string;
-    deadline: string;
     price: string;
     payments: string[];
     userID: string;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DirtyFormGuard } from './guards/dirty-form.guard';
+import { IsLoggedInGuard } from './guards/is-logged-in.guard';
 import { AuthComponent } from './views/auth/auth.component';
 import { CreateTaskComponent } from './views/create-task/create-task.component';
 import { SearchComponent } from './views/search/search.component';
@@ -12,20 +13,24 @@ const routes: Routes = [
   
   {
     path: 'task-overview',
-    component: TaskOverviewComponent
+    component: TaskOverviewComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path: 'create-task',
     component: CreateTaskComponent,
+    canActivate: [IsLoggedInGuard],
     canDeactivate: [DirtyFormGuard],
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path:'task-details/:docID',
-    component: TaskDetailsComponent
+    component: TaskDetailsComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path: '',

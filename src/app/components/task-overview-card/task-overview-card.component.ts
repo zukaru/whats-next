@@ -69,7 +69,7 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
     let introPosition = el.nativeElement.getBoundingClientRect().top;
 
     if(this.innerWidth > 800) {
-      if(introPosition > (this.innerWidth )) {
+      if(introPosition > (this.innerWidth / 2)) {
         this.renderer.setStyle(el.nativeElement, 'opacity', 1);
         this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1) translateY(0)');
       } else if(introPosition < this.innerWidth - 200) {

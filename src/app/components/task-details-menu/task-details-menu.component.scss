@@ -1,0 +1,37 @@
+.menu {
+    position: absolute;
+    margin: 0;
+    bottom: 10px;
+    right: 20px;
+
+
+     &__toggle {
+        font-family: 'Courier New', Courier, monospace;
+        background: none;
+        border: none;
+        color: var(--color-background-secondary);
+        font-size: 9em;
+        font-weight: 200;
+         
+        text-shadow: 0 0 2px var(--color-box-shadow);
+     }
+
+     &__list {
+         position: absolute;
+         left: -4em;
+         bottom: -100%;
+         background: var(--color-background-secondary);
+         color: var(--color-text-md);
+         font-size: 3em;
+         padding: 1em;
+         border-radius: 25px;
+         font-weight: bolder;
+        box-shadow: 0 0 5px 1px var(--color-box-shadow);
+
+         &__item {
+             margin: 0.7em 0;
+             list-style: none;
+             
+         }
+     }
+}

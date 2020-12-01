@@ -10,7 +10,7 @@
     overflow: hidden;
     overflow-x: hidden;
     cursor: pointer;
-    
+    animation: fadein .7s ease;
     user-select: none;
     transition: all 0.4s ease-out 0.1s;
     transform: scale(0.9) translateY(5em);
@@ -145,7 +145,7 @@
         &__due {
             position: relative;
             ::after {
-                content: 'DUE';
+                content: 'BALANCE';
                 position: absolute;
                 left: 1em;
                 top: 50%;
@@ -172,4 +172,9 @@
             color: var(--color-text-md);
         }
     }
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1}
 }

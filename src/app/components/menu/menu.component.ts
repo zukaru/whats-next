@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { fromEvent, Subscription } from 'rxjs';
 import { PersistService } from 'src/app/services/persist.service';
 
 @Component({
@@ -10,6 +11,10 @@ import { PersistService } from 'src/app/services/persist.service';
 })
 export class MenuComponent implements OnInit {
 
+  
+
+  
+
   constructor(
     public af: AngularFireAuth,
     private route: Router,
@@ -18,6 +23,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   signOut() {
     this.af.signOut()

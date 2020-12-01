@@ -48,9 +48,24 @@ if(!this.db.taskList) {
 
   calcAmtDue(price: string, payments: string[]) {
     
-    let totalPayments = Number(this.db.getTotalPayments(payments));    
+    let totalPayments = Number(this.db.getTotalPayments(payments));  
+    
+    console.log(price)
 
-    return (price === '' || price === '0') ? '' : `${Number(price) - totalPayments}`;
+      if (( !price || price === '0')) {
+
+      return 'Not Listed';
+
+    } else if(  (Number(price) - Number(totalPayments) === 0)) {
+
+      return 'Paid In Full';
+
+    } else {
+
+      return `${Number(price) - totalPayments}`;
+      
+    }
+    
   }
 
 }

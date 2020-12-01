@@ -20,6 +20,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchComponent } from './views/search/search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TaskDetailsComponent } from './views/task-details/task-details.component';
+import { TaskDetailsMenuComponent } from './components/task-details-menu/task-details-menu.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -50,7 +51,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     SearchBarComponent,
     SearchComponent,
     SpinnerComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    TaskDetailsMenuComponent
     
   ],
   imports: [
