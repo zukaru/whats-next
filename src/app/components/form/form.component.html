@@ -1,7 +1,7 @@
 <form  autocomplete="false" class="form" #f="ngForm"(keyup)="this.emitIsFormDirty(f.dirty)" (ngSubmit)="this.taskFormSubmit(f)" >
 
     <div class="form__group">
-        <label for="whoIs" class="form__group__label">Task Creator Initials *</label>
+        <label for="whoIs" class="form__group__label">Task Creator Initials <span class="red">*</span></label>
         <input
             #whoIs="ngModel"
             name="whoIs"
@@ -19,7 +19,7 @@
     
     <h2 class="form__heading">Client's Contact Info</h2>
     <div class="form__group">
-        <label for="fName" class="form__group__label">First Name *</label>
+        <label for="fName" class="form__group__label">First Name <span class="red">*</span></label>
         <input
             #fName="ngModel"
             name="fName"
@@ -41,7 +41,7 @@
         class="form__group__input">
     </div>
     <div class="form__group">
-        <label for="phoneNums" class="form__group__label">Phone Number *</label>
+        <label for="phoneNums" class="form__group__label">Phone Number <span class="red">*</span></label>
         <input
             mask="(000) 000-0000"
             #phoneNums="ngModel"
@@ -80,7 +80,7 @@
     <h2 class="form__heading">Task Info</h2>
 
     <div class="form__group-textarea">
-        <label for="task_description" class="form__group-textarea__label">Task Description *</label>
+        <label for="task_description" class="form__group-textarea__label">Task Description <span class="red">*</span></label>
         <textarea
             #task_description="ngModel"
             name="task_description"
@@ -135,7 +135,7 @@
     <h2 class="form__heading">Task Status</h2>
 
     <div class="form__group">
-        <label for="status" class="form__group__label">Status *</label>
+        <label for="status" class="form__group__label">Status <span class="red">*</span></label>
         <select
             required
             #status="ngModel"
@@ -149,6 +149,7 @@
             <option value="🤔 Estimate Pending Approval">🤔 Estimate Pending Approval</option>
             <option value="💳 Materials Pending Order">💳 Materials Pending Order</option>
             <option value="🚚 Materials Pending Delivery">🚚 Materials Pending Delivery</option>
+            <option value="📆 Task Scheduled">📆 Task Scheduled</option>
             <option value="🟢 Ready to Start">🟢 Ready to Start</option>
             <option value="🛠️ Work Started">🛠️ Work Started</option>
             <option value="✔️ Complete">✔️ Complete</option>
@@ -181,7 +182,7 @@
     </div>
     
     <button [disabled]="f.invalid || f.submitted" type="submit" class="form__btn" >Submit</button>
-    <p *ngIf="taskSubmitted">Task Entry Submitted!</p>
+    <p *ngIf="taskSubmitted">Task Entry Submitted, cleaning form.</p>
     <p class="error-color" *ngIf="task_description.invalid">Missing task description.</p>
     <p class="error-color" *ngIf="phoneNums.invalid ">Missing client's phone number.</p>
     <p class="error-color" *ngIf="email.invalid ">Missing client's email address.</p>

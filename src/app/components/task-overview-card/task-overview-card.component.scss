@@ -1,8 +1,8 @@
 .card {
-    opacity: 0.1;
+    position: relative;
     max-width: 50em;
     font-weight: 600;
-    width: 85%;
+    width: 85vw;
     background: var(--color-background-secondary);
     font-size: 18px;
     box-shadow: 0 0 10px var(--color-box-shadow);
@@ -12,18 +12,22 @@
     cursor: pointer;
     animation: fadein .7s ease;
     user-select: none;
-    transition: all 0.4s ease-out 0.1s;
-    transform: scale(0.9) translateY(5em);
+    
+    transform: scale(0.99);
+
+    
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     color: var(--color-secondary);
 
     &:active {
-        transform: scale(0.98) !important;
+        transform: scale(0.97) !important;
         transition: transform 0.1s;
     }
 
     p {
-        margin: 0.4em 0 0.4em 0;
+        margin: 0.5em 0 0.5em 0;
     }
 
 
@@ -71,7 +75,8 @@
         color: var(--color-secondary);
         border-bottom-left-radius: 30px;
         background-clip: padding-box;
-        border-bottom: 2px solid transparent;
+        border-bottom: 3px solid transparent;
+        
 
         p {
             width: 95%;

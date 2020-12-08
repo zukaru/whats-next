@@ -10,7 +10,7 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
-  hasTasks = false;
+  hasTasks: boolean;
 
 
   taskList: TaskModel[] ;
@@ -26,6 +26,10 @@ export class DatabaseService {
    fetchEntries() {
     return this.afs.collection<TaskModel>('tasks', ref => ref.where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
     .snapshotChanges()
+  }
+
+  getIndexByID(id: string) {
+    return this.taskList.findIndex(el => el.docID === id);
   }
 
   getTaskByID(id: string) {

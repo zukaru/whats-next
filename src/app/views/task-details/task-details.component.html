@@ -1,28 +1,28 @@
-<section class="task-details">
+<section *ngIf="this.db.taskList" class="task-details">
     <div class="task-details__contact">
-        <p (dblclick)="updateField('First Name', 'fName', taskDetails.docID)" >{{ this.taskDetails.fName | titlecase }} {{ (this.taskDetails.lName | titlecase)}} </p>
-        <p>{{ this.taskDetails.phoneNums[0] | mask: '(000) 000-0000' }}</p>
-        <p *ngIf="this.taskDetails.email">{{ this.taskDetails.email }}</p>
-        <p *ngIf="this.taskDetails.address"> {{ this.taskDetails.address }}</p>
-        <app-task-details-menu docID="{{this.taskDetails.docID}}" class="task-details__contact__menu">&hellip;</app-task-details-menu>
+        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >{{ this.db.taskList[this.taskIndex].fName | titlecase }} {{ (this.db.taskList[this.taskIndex].lName | titlecase)}} </p>
+        <p>{{ this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' }}</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].email">{{ this.db.taskList[this.taskIndex].email }}</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].address"> {{ this.db.taskList[this.taskIndex].address }}</p>
+        <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>
     </div>
     
     <div class="task-details__info">
 
-        <p>{{ this.taskDetails.description }}</p>
+        <p>{{ this.db.taskList[this.taskIndex].description }}</p>
 
     </div>
     <div class="task-details__status">
         <div class="task-details__status__item"
         [style]="(i % 2 === 0) ? 'background: var(--color-background-tertiary-dk)' : 'background: var(--color-background-tertiary)'"
-            *ngFor="let update of taskDetails.statusUpdates.slice().reverse(); let i = index">
+            *ngFor="let update of db.taskList[this.taskIndex].statusUpdates.slice().reverse(); let i = index">
             
-            <p>Update No. {{ taskDetails.statusUpdates.length - i }}</p>
-            <p>Updated on {{update.date |date: 'fullDate'}}</p>
-            <p>  {{update.status }}</p>
-            <p *ngIf="update.notes">Notes: {{update.notes}}</p>
-            <p>{{update.whoIs | uppercase}}</p>
-            <p *ngIf="update.deadline">Deadline is {{update.deadline | date: 'fullDate'}}</p>
+            <h3>Update No. {{ db.taskList[this.taskIndex].statusUpdates.length - i }}</h3>
+            <p><span class="label">Updated On </span> {{update.date |date: 'fullDate'}}</p>
+            <p><span class="label">Status </span>  {{update.status }}</p>
+            <p *ngIf="update.notes"><span class="label">Notes</span> {{update.notes}}</p>
+            <p *ngIf="update.deadline"><span class="label">Deadline Is</span> {{update.deadline | date: 'fullDate'}}</p>
+            <p><span class="label">Updated By</span>{{update.whoIs | uppercase}}</p>
             
         </div>
 

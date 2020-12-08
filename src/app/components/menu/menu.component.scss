@@ -73,9 +73,9 @@ nav {
   z-index:1110;
   right:2em;
   top:1.5em;
-  width: 10em;
-  height: 5em;
-  padding: 1em;
+  width: 60px;
+  height: 30px;
+  padding: 10px;
   border-radius: 50px;
   background: var(--color-background-secondary);
   cursor:pointer;
@@ -85,6 +85,7 @@ nav {
     width:20px;
     height:3px;
     margin:5px auto;
+    padding: 0;
     background-color:var(--color-primary);
     transition:all 0.3s ease-in-out;
     border-radius: 2px;

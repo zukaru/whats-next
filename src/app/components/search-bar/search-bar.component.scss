@@ -1,7 +1,8 @@
 input {
     position: relative;
-    max-width: 20em;
-    width: 100%;
+    width: 50vw;
+    max-width: 25em;
+    min-width: 18em;
     height: 3em;
     border-radius: 25px;
     border: 3px solid var(--color-primary-light);

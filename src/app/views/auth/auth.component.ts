@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FirebaseUISignInSuccessWithAuthResult } from 'firebaseui-angular';
+import { map } from 'rxjs/operators';
 import { DatabaseService } from 'src/app/services/database.service';
 import { PersistService } from 'src/app/services/persist.service';
 
@@ -31,6 +32,24 @@ export class AuthComponent implements OnInit {
     this.route.navigateByUrl('/task-overview');
     const userID = event.authResult.user.uid;
     this.persist.setPersist(this.persist.USER_ID, userID);
+
+    this.db.fetchEntries()
+      .pipe(
+        map(actions => actions.map(a => a.payload.doc))
+      )
+      .subscribe(
+        (res) => {
+          this.db.hasTasks = res.length > 0;
+          this.db.taskList = res.map(
+            (d) => {
+              const id = d.id;
+              let task = d.data();
+              task.docID = id;
+              return task;
+            }
+          )
+        }
+      )
   }
 
 }

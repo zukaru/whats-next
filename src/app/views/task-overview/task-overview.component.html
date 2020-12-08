@@ -2,26 +2,25 @@
     
     <p 
         class="task-overview__no-tasks"
-        *ngIf="!this.db.hasTasks && this.db.taskList"
+        *ngIf="this.db.hasTasks === false"
         routerLink="/create-task"
         >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
-        <app-spinner *ngIf="!this.db.hasTasks && !this.db.taskList" class="task-overview__no-tasks"></app-spinner>
-        <p 
-        class="task-overview__no-tasks"
-        *ngIf="false"
-        routerLink="/create-task"
-        >Initializing, please wait..</p>
-    <app-task-overview-card
-    *ngFor="let task of this.db.taskList"
-    [routerLink]="['/task-details', task.docID]"
-    [description]="task.description"
-    [fName]="task.fName"
-    [lName]="task.lName"
-    [phone]="task.phoneNums"
-    [deadline]="task.deadline"
-    [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
-    [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"
-    [amtDue]="this.calcAmtDue(task.price, task.payments)"></app-task-overview-card>
+        <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__no-tasks"></app-spinner>
+    <ng-container *ngIf="this.db.taskList && (this.db.taskList?.length - 1) >= 0">
+        <app-task-overview-card
+        *ngFor="let task of this.db.taskList; let i = index"
+        appAnimateOnView
+        [routerLink]="['/task-details', i]"
+        [description]="task.description"
+        [fName]="task.fName"
+        [lName]="task.lName"
+        [phone]="task.phoneNums"
+        [deadline]="task.statusUpdates[task.statusUpdates.length - 1].deadline"
+        [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
+        [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"
+        [amtDue]="this.calcAmtDue(task.price, task.payments)"></app-task-overview-card>
+    </ng-container>
+    
     
 
 </div>

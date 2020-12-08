@@ -1,9 +1,10 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-task-details-menu',
@@ -11,14 +12,15 @@ import { throttleTime } from 'rxjs/operators';
   styleUrls: ['./task-details-menu.component.scss']
 })
 export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
+  docID: string;
   toggleMenuObs = fromEvent(window, 'scroll');
   toggleMenuSub: Subscription;
   isOpen = false;
-  @Input() docID: string;
 
   constructor(
     private afs: AngularFirestore,
-    private route: Router
+    private activatedRoute: ActivatedRoute,
+    private db: DatabaseService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
     .subscribe(() => {
       this.isOpen = false;
     });
+
+    this.activatedRoute.params .subscribe((v)=> {
+      this.docID = this.db.taskList[v.docID].docID;
+    })
     
   }
 
@@ -41,6 +47,10 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
+  }
+
+  edit() {
+    
   }
 
   delete(id: string) {

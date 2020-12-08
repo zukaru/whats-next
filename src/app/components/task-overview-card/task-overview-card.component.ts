@@ -1,17 +1,11 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-task-overview-card',
   templateUrl: './task-overview-card.component.html',
   styleUrls: ['./task-overview-card.component.scss']
 })
-export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewInit {
-  eventSubscription: Subscription;
-  public innerWidth: number;
-
-
+export class TaskOverviewCardComponent implements OnInit {
   @Input() description = `Task description will go here. You can make the description as detailed or brief as necessary. 🎉🎉🎉`;
   @Input() dateCreated = '11/14/20';
   @Input() deadline = '12/4/20';
@@ -22,69 +16,8 @@ export class TaskOverviewCardComponent implements OnInit, OnDestroy, AfterViewIn
   @Input() status = '✔️ Complete';
   @Input() whoIs: string;
 
-  @ViewChild('self') taskCard: ElementRef;
+  constructor( ) { }
 
-
-  @HostListener('window:resize', ['$event'])
-    onResize() {
-    this.innerWidth = window.innerWidth;
-    }
-
-
-
-
-
-
-  constructor(
-    public renderer: Renderer2
-  ) { }
-
-  ngOnInit(): void {
-    
-    this.innerWidth = window.innerHeight;
-    
-    this.eventSubscription = fromEvent(document, "scroll", {passive: true})
-    .pipe(throttleTime(100))
-    .subscribe(e => {
-      this.animateOnScroll(this.taskCard);
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe();
-  }
-
-  ngAfterViewInit() {
-    this.renderer.setStyle(this.taskCard.nativeElement, 'opacity', 1);
-    this.renderer.setStyle(this.taskCard.nativeElement, 'transform', 'scale(1) translateY(0) ');
-
-  }
-
-
-
+  ngOnInit(): void {  }
   
-
-
-  animateOnScroll(el: ElementRef) {
-    let introPosition = el.nativeElement.getBoundingClientRect().top;
-
-    if(this.innerWidth > 800) {
-      if(introPosition > (this.innerWidth / 2)) {
-        this.renderer.setStyle(el.nativeElement, 'opacity', 1);
-        this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1) translateY(0)');
-      } else if(introPosition < this.innerWidth - 200) {
-        
-        this.renderer.removeStyle(el.nativeElement, 'opacity');
-        this.renderer.removeStyle(el.nativeElement, 'transform',);
-      }
-    } else if(introPosition < this.innerWidth + 200) {
-      this.renderer.setStyle(el.nativeElement, 'opacity', 1);
-      this.renderer.setStyle(el.nativeElement, 'transform', 'scale(1) translateY(0)');
-    } else if(introPosition > this.innerWidth + 200) {
-      this.renderer.removeStyle(el.nativeElement, 'opacity');
-      this.renderer.removeStyle(el.nativeElement, 'transform');
-    }
-
-  }
-
 }

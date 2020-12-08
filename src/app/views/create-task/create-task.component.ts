@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CanComponentDeactivate } from 'src/app/guards/dirty-form.guard';
 
 @Component({
@@ -9,7 +10,9 @@ import { CanComponentDeactivate } from 'src/app/guards/dirty-form.guard';
 export class CreateTaskComponent implements OnInit, CanComponentDeactivate {
   childFormDirty = false;
 
-  constructor() { }
+  constructor(
+    public route: Router
+  ) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0);

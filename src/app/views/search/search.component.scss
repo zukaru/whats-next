@@ -1,6 +1,10 @@
 .search {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(
         45deg,
         var(--color-primary-light),
@@ -15,18 +19,30 @@
     -webkit-animation: AnimationName 15s ease infinite alternate-reverse;
     -moz-animation: AnimationName 15s ease infinite alternate-reverse;
     -o-animation: AnimationName 15s ease infinite alternate-reverse;
-    animation: AnimationName 15s ease infinite alternate-reverse;
+    animation: AnimationName 15s ease infinite alternate-reverse;  
+
+    &__no-results {
+        color: var(--color-background-secondary);
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+
+
+    app-search-bar {
+        margin-top: 15em;
+        margin-bottom: 4em;
+        font-size: 7px;
+    }
+
+    app-task-overview-card {
+        margin: 5em 0;
+    }
 
     
 }
 
 
-app-search-bar {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) scale(1.5);
-}
 
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 83%}

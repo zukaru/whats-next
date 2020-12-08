@@ -1,8 +1,8 @@
 <menu class="menu">
     <button (click)="toggleMenu()" class="menu__toggle">&hellip;</button>
     <ul *ngIf="this.isOpen" class="menu__list">
-        <li class="menu__list__item">Edit</li>
-        <li class="menu__list__item">Update</li>
+        <li [routerLink]="['/task-details', this.docID, 'edit']" class="menu__list__item">Edit</li>
+        <li  class="menu__list__item">Update</li>
         <li (click)="this.delete(this.docID)" class="menu__list__item">Delete</li>
     </ul>
 </menu>

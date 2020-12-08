@@ -33,6 +33,11 @@ const routes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   {
+    path:'task-details/:docID/edit',
+    component: CreateTaskComponent,
+    canActivate: [IsLoggedInGuard]
+  },
+  {
     path: '',
     component: AuthComponent
   },

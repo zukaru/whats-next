@@ -2,8 +2,6 @@ import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/cor
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CanComponentDeactivate } from 'src/app/guards/dirty-form.guard';
-import { DatabaseService } from 'src/app/services/database.service';
 import { PersistService } from 'src/app/services/persist.service';
 import { TaskModel } from '../../models/task-model'
 
@@ -12,7 +10,7 @@ import { TaskModel } from '../../models/task-model'
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit, CanComponentDeactivate {
+export class FormComponent implements OnInit  {
   taskSubmitted = false;
   @ViewChild('f') public form: NgForm;
   @Output() isFormDirty = new EventEmitter<boolean>();
@@ -35,19 +33,14 @@ export class FormComponent implements OnInit, CanComponentDeactivate {
   }
 
 
-  public canDeactivate() {
-    console.log('it is working');
-    return true;
-  }
 
 
 
   taskFormSubmit(f: NgForm) {
     
 
-    console.log()
 
-    const task: TaskModel = {
+    let task: TaskModel = {
       userID: this.persist.getPersist('USER_ID'),
       fName: f.value.fName,
       lName: f.value.lName,
@@ -87,17 +80,12 @@ export class FormComponent implements OnInit, CanComponentDeactivate {
 
          
         })
-        .then(() => {
-          this.taskSubmitted = true;
-          setTimeout(() => {
-            this.taskSubmitted = false;
-          }, 4000)
-        } )
+        
         .catch((e) => console.log('Something went wrong, try again.', e))
     } else {
-      let redirect = confirm("You're not signed in. You must be signed in to submit a journal entry. Do you want to be redirected to sign in or sign up?");
+      let redirect = confirm("You're not signed in. You must be signed in to submit a task entry. Do you want to be redirected to sign in or sign up?");
       if (redirect) {
-        this.persist.setPersist('TEMP_ENTRY', {...task});
+        this.persist.setPersist('TEMP_TASK', {...task});
         this.route.navigateByUrl('/auth')
       }
     }

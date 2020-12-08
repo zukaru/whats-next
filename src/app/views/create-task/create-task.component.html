@@ -2,7 +2,8 @@
 
 <section class="create-task">
    
-    <h2 class="create-task__heading">Create Task</h2>
+    <h2 *ngIf="this.route.url === '/create-task'" class="create-task__heading">Create Task</h2>
+    <h2 *ngIf="!(this.route.url === '/create-task')" class="create-task__heading">Edit Task</h2>
    
 
     <app-form (isFormDirty)="this.isChildFormDirty($event)"></app-form>
