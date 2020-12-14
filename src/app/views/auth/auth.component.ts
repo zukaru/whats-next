@@ -39,7 +39,7 @@ export class AuthComponent implements OnInit {
       )
       .subscribe(
         (res) => {
-          this.db.hasTasks = res.length > 0;
+          this.db.hasTasks = (res.length > 0);
           this.db.taskList = res.map(
             (d) => {
               const id = d.id;

@@ -2,7 +2,7 @@
     
     <p 
         class="task-overview__no-tasks"
-        *ngIf="this.db.hasTasks === false"
+        *ngIf="this.db.hasTasks !== undefined && this.db.hasTasks === false "
         routerLink="/create-task"
         >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
         <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__no-tasks"></app-spinner>

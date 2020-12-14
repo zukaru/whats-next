@@ -1,0 +1,96 @@
+<section class="modal" >
+    <div (click)="this.emitCloseModal()" class="modal__close">&#10005;</div>
+
+
+
+        <form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.statusFormSubmit(f)" >
+
+        
+            <h2 class="form__heading">Task Status</h2>
+    
+            <div class="form__group">
+                <label for="whoIs" class="form__group__label">Task Updater Initials <span class="red">*</span></label>
+                <input
+                    #whoIs="ngModel"
+                    name="whoIs"
+                    ngModel
+                    required 
+                    autocomplete="no"
+                    type="text" 
+                    maxlength="3"
+                    minlength="3"
+                class="form__group__input">
+                <p class="error" *ngIf="whoIs.invalid && (whoIs.dirty || whoIs.touched)">Please fill with your 3 initials.</p>
+            </div>
+        
+            <div class="form__group">
+                <label for="payment" class="form__group__label">Payment</label>
+                <input 
+                    #payment
+                    name="payment"
+                    ngModel
+                    prefix="$"
+                    mask="separator.2 decimal.2" 
+                    decimalMarker="." 
+                    thousandSeparator=","  
+                    autocomplete="new-password" 
+                    type="text" 
+                class="form__group__input">
+            </div>
+        
+            <div class="form__group">
+                <label for="status" class="form__group__label">Status <span class="red">*</span></label>
+                <select
+                    required
+                    #status="ngModel"
+                    name="status"
+                    ngModel
+                    autocomplete="new-password" 
+                    type="select" 
+                class="form__group__input">
+                    <option id="select-placeholder" disabled selected value=""></option>
+                    <option value="📋 Estimate Pending">📋 Estimate Pending</option>
+                    <option value="🤔 Estimate Pending Approval">🤔 Estimate Pending Approval</option>
+                    <option value="💳 Materials Pending Order">💳 Materials Pending Order</option>
+                    <option value="🚚 Materials Pending Delivery">🚚 Materials Pending Delivery</option>
+                    <option value="📆 Task Scheduled">📆 Task Scheduled</option>
+                    <option value="🟢 Ready to Start">🟢 Ready to Start</option>
+                    <option value="🛠️ Work Started">🛠️ Work Started</option>
+                    <option value="✔️ Complete">✔️ Complete</option>
+                    <option value="🏁 Paid, Picked up / Delivered">🏁 Paid, Picked up / Delivered</option>
+                    <option value="Custom (describe in status notes)">Custom (describe in status notes)</option>
+                </select>
+                <p class="error" *ngIf="status.invalid && (status.dirty || status.touched)">Please select a status.</p>
+            </div>
+        
+            <div class="form__group">
+                <label for="status_notes" class="form__group__label">Status Notes</label>
+                <input 
+                    #status_notes
+                    name="status_notes"
+                    ngModel
+                    autocomplete="new-password" 
+                    type="select" 
+                class="form__group__input">
+            </div>
+        
+            <div class="form__group">
+                <label for="deadline" class="form__group__label">Due By Date</label>
+                <input
+                    #deadline
+                    name="deadline"
+                    ngModel
+                    autocomplete="new-password" 
+                    type="date" 
+                class="form__group__input">
+            </div>
+            
+            <button [disabled]="f.invalid || f.submitted" type="submit" class="form__btn" >Submit</button>
+            <p *ngIf="taskSubmitted">Task Entry Submitted, cleaning form.</p>
+            <p class="error-color" *ngIf="whoIs.invalid ">Missing task creator's initials</p>
+            <p class="error-color" *ngIf="status.invalid">Missing a status.</p>
+        
+        </form>
+  
+    
+</section>

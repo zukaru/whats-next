@@ -12,6 +12,7 @@ import { PersistService } from 'src/app/services/persist.service';
   styleUrls: ['./task-details.component.scss']
 })
 export class TaskDetailsComponent implements OnInit, OnDestroy {
+  isopen = false;
   taskDetails: TaskModel;
   docID: string;
   taskIndex: string;
@@ -43,6 +44,10 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  closeModal(v) {
+    this.isopen = false;
   }
 
   updateField(name: string, field: string, id: string) {

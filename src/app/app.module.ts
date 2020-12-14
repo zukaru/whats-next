@@ -22,6 +22,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TaskDetailsComponent } from './views/task-details/task-details.component';
 import { TaskDetailsMenuComponent } from './components/task-details-menu/task-details-menu.component';
 import { AnimateOnViewDirective } from './directives/animate-on-view.directive';
+import { StatusFormModalComponent } from './components/status-form-modal/status-form-modal.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -54,7 +55,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     SpinnerComponent,
     TaskDetailsComponent,
     TaskDetailsMenuComponent,
-    AnimateOnViewDirective
+    AnimateOnViewDirective,
+    StatusFormModalComponent
     
   ],
   imports: [

@@ -10,7 +10,7 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
-  hasTasks: boolean;
+  hasTasks: boolean | undefined = undefined;
 
 
   taskList: TaskModel[] ;

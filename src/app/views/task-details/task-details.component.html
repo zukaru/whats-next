@@ -1,4 +1,5 @@
 <section *ngIf="this.db.taskList" class="task-details">
+    
     <div class="task-details__contact">
         <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >{{ this.db.taskList[this.taskIndex].fName | titlecase }} {{ (this.db.taskList[this.taskIndex].lName | titlecase)}} </p>
         <p>{{ this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' }}</p>
@@ -16,6 +17,10 @@
         <div class="task-details__status__item"
         [style]="(i % 2 === 0) ? 'background: var(--color-background-tertiary-dk)' : 'background: var(--color-background-tertiary)'"
             *ngFor="let update of db.taskList[this.taskIndex].statusUpdates.slice().reverse(); let i = index">
+            <div class="task-details__status__item__controls">
+                <button (click)="this.isopen = !this.isopen"><i class="fa fa-pencil"></i></button>
+                 <button><i class="fa fa-trash"></i></button> 
+             </div>
             
             <h3>Update No. {{ db.taskList[this.taskIndex].statusUpdates.length - i }}</h3>
             <p><span class="label">Updated On </span> {{update.date |date: 'fullDate'}}</p>
@@ -24,8 +29,11 @@
             <p *ngIf="update.deadline"><span class="label">Deadline Is</span> {{update.deadline | date: 'fullDate'}}</p>
             <p><span class="label">Updated By</span>{{update.whoIs | uppercase}}</p>
             
+            
+            
         </div>
 
     </div>
 </section>
+<app-status-form-modal *ngIf="this.isopen" (closeModal)="this.isopen = !this.isopen"></app-status-form-modal>
 <app-header></app-header>

@@ -52,11 +52,12 @@
 
     &__status {
         width: 100%;
+        background: var(--color-background-tertiary-dk);
 
         h3 {
             color: var(--color-secondary-dark);
-            padding: 0.2em 11%;
-            padding-top: 2em;
+            padding: 0.2em 9%;
+            padding-top: 4em;
             font-size: 22px;
             letter-spacing: 1px;
             margin: 0;
@@ -74,11 +75,11 @@
             letter-spacing: 1px;
             margin: 6px 0;
             margin-bottom: 0;
-            border-left: solid 10px var(--color-secondary-lighter);
+            // border-left: solid 3px var(--color-secondary-lighter);
 
             &:not(:last-child) {
                 
-                margin-bottom: 6px;
+                margin-bottom: 10px;
             }
             
 
@@ -92,6 +93,29 @@
 
         &__item {
             width: 100%;
+            position: relative;
+            padding-bottom: 15em;
+
+
+            &__controls {
+                position: absolute;
+                top: 1em;
+                right: 4%;
+
+                button {
+                    background: hsla(0, 0%, 96%, 0.5);
+                    padding: 0.5em 0.5em;
+                    margin: 1em 0;
+                    margin-right: 1em;
+                    color: var(--color-text-md);
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 16px;
+
+                    
+                }
+            }
         }
     }
 }
