@@ -47,7 +47,7 @@ export class FormComponent implements OnInit  {
       phoneNums: [f.value.phoneNums],
       description: f.value.task_description,
       price: f.value.price,
-      payments: [f.value.payment],
+      
       dateCreated: new Date().toLocaleDateString(),
       email: f.value.email,
       statusUpdates: [{
@@ -55,6 +55,7 @@ export class FormComponent implements OnInit  {
         date: new Date().toLocaleDateString(),
         notes: f.value.status_notes,
         whoIs: f.value.whoIs,
+        payment: f.value.payment,
         deadline: f.value.deadline
       }],
       docID: '',
@@ -72,7 +73,7 @@ export class FormComponent implements OnInit  {
           setTimeout(() => {
             this.taskSubmitted = false;
             f.resetForm();
-          }, 4000)
+          }, 4000);
 
           this.emitIsFormDirty(false);
 
@@ -81,12 +82,12 @@ export class FormComponent implements OnInit  {
          
         })
         
-        .catch((e) => console.log('Something went wrong, try again.', e))
+        .catch((e) => console.log('Something went wrong, try again.', e));
     } else {
       let redirect = confirm("You're not signed in. You must be signed in to submit a task entry. Do you want to be redirected to sign in or sign up?");
       if (redirect) {
         this.persist.setPersist('TEMP_TASK', {...task});
-        this.route.navigateByUrl('/auth')
+        this.route.navigateByUrl('/auth');
       }
     }
   }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 
@@ -6,6 +6,13 @@ import { throttleTime } from 'rxjs/operators';
   selector: '[appAnimateOnView]'
 })
 export class AnimateOnViewDirective implements OnInit, OnDestroy, AfterViewInit {
+
+  //
+
+
+
+
+  
   innerHeight: number;
   eventSubscription: Subscription;
 

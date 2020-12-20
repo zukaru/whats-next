@@ -3,7 +3,7 @@
 
 
 
-        <form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.statusFormSubmit(f)" >
+        <form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.onFormSubmit(f)" >
 
         
             <h2 class="form__heading">Task Status</h2>
@@ -55,6 +55,7 @@
                     <option value="🚚 Materials Pending Delivery">🚚 Materials Pending Delivery</option>
                     <option value="📆 Task Scheduled">📆 Task Scheduled</option>
                     <option value="🟢 Ready to Start">🟢 Ready to Start</option>
+                    <option value="💵 Made Payment">💵 Made Payment</option>
                     <option value="🛠️ Work Started">🛠️ Work Started</option>
                     <option value="✔️ Complete">✔️ Complete</option>
                     <option value="🏁 Paid, Picked up / Delivered">🏁 Paid, Picked up / Delivered</option>
@@ -66,8 +67,8 @@
             <div class="form__group">
                 <label for="status_notes" class="form__group__label">Status Notes</label>
                 <input 
-                    #status_notes
-                    name="status_notes"
+                    #status_notes="ngModel"
+                    name="notes"
                     ngModel
                     autocomplete="new-password" 
                     type="select" 

@@ -16,6 +16,7 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
   toggleMenuObs = fromEvent(window, 'scroll');
   toggleMenuSub: Subscription;
   isOpen = false;
+  closeStatusModal = false;
 
   constructor(
     private afs: AngularFirestore,
@@ -65,6 +66,18 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
         window.history.back();
       }
     )
+  }
+
+  addUpdate(event, docID: string) {
+
+    event.date = new Date().toLocaleDateString()
+    let updatedDoc = [...this.db.getTaskByID(docID).statusUpdates, event];
+    this.afs.doc(`tasks/${docID}`)
+    .update({statusUpdates : updatedDoc})
+    .then(() => {
+      this.closeStatusModal = false;
+      this.toggleMenu();
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-<input type='checkbox' aria-roledescription="open and close menu" id='toggle' style='opacity: 0' />
+<input (click)="this.toggleMenu()" type='checkbox' aria-roledescription="open and close menu" id='toggle' style='opacity: 0' />
   <label class='toggle-btn toggle-btn__cross' for='toggle'>
     <div class="bar"></div>
     <div class="bar"></div>
@@ -6,9 +6,9 @@
   </label>
   <nav>
     <ul>
-      <li routerLinkActive="active"><a href routerLink="/search"><span>🔎</span>  Search </a></li>
-      <li routerLinkActive="active"><a href routerLink="/create-task"><span>➕</span>  Create Task </a></li>
-      <li routerLinkActive="active"><a href routerLink="/task-overview"><span>✔️</span> View Tasks </a></li>
-      <li routerLinkActive="active"><a href (click)="this.signOut()"><span>🔒 </span> Sign Out</a></li>
+      <li routerLinkActive="active"><a href routerLink="/search"><span><i class="fa fa-search"></i></span>  Search </a></li>
+      <li routerLinkActive="active"><a href routerLink="/create-task"><span><i class="fa fa-plus"></i></span>  Create Task </a></li>
+      <li routerLinkActive="active"><a href routerLink="/task-overview"><span><i class="fa fa-check"></i></span> View Tasks </a></li>
+      <li routerLinkActive="active"><a href (click)="this.signOut()"><span><i class="fa fa-lock"></i></span> Sign Out</a></li>
     </ul>
   </nav>

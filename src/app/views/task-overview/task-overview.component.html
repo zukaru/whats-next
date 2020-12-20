@@ -18,7 +18,7 @@
         [deadline]="task.statusUpdates[task.statusUpdates.length - 1].deadline"
         [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
         [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"
-        [amtDue]="this.calcAmtDue(task.price, task.payments)"></app-task-overview-card>
+        [amtDue]="task.amountDue"></app-task-overview-card>
     </ng-container>
     
     

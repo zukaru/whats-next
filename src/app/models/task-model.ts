@@ -12,11 +12,12 @@ export interface TaskModel{
             status: string;
             whoIs: string;
             deadline: string;
+            payment: string;
         }];
     address: string;
     price: string;
-    payments: string[];
     userID: string;
     docID: string;
+    amountDue?: string;
 
 }

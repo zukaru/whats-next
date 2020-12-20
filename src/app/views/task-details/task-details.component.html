@@ -1,10 +1,19 @@
 <section *ngIf="this.db.taskList" class="task-details">
     
     <div class="task-details__contact">
-        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >{{ this.db.taskList[this.taskIndex].fName | titlecase }} {{ (this.db.taskList[this.taskIndex].lName | titlecase)}} </p>
-        <p>{{ this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' }}</p>
-        <p *ngIf="this.db.taskList[this.taskIndex].email">{{ this.db.taskList[this.taskIndex].email }}</p>
-        <p *ngIf="this.db.taskList[this.taskIndex].address"> {{ this.db.taskList[this.taskIndex].address }}</p>
+        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" > <span class="label">First Name</span> {{ this.db.taskList[this.taskIndex].fName | titlecase }} </p>
+        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"  *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name</span> {{ this.db.taskList[this.taskIndex].lName | titlecase }} </p>
+        
+        
+        <p >
+        <span class="label">Phone</span>
+        {{ this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' }}</p>
+
+
+        <p *ngIf="this.db.taskList[this.taskIndex].email"><span class="label">Email</span>{{ this.db.taskList[this.taskIndex].email }}</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].address"><span class="label">Address</span> {{ this.db.taskList[this.taskIndex].address }}</p>
+        <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)"><span class="label">Price</span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') || 'NOT LISTED'}}</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].price "> <span class="label">Amount Due</span> {{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator' : ','}}</p>
         <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>
     </div>
     
@@ -14,24 +23,28 @@
 
     </div>
     <div class="task-details__status">
-        <div class="task-details__status__item"
-        [style]="(i % 2 === 0) ? 'background: var(--color-background-tertiary-dk)' : 'background: var(--color-background-tertiary)'"
-            *ngFor="let update of db.taskList[this.taskIndex].statusUpdates.slice().reverse(); let i = index">
-            <div class="task-details__status__item__controls">
-                <button (click)="this.isopen = !this.isopen"><i class="fa fa-pencil"></i></button>
-                 <button><i class="fa fa-trash"></i></button> 
+        <div class="task-details__status__wrapper">
+            <div class="task-details__status__wrapper__item"
+             [style]="(i % 2 === 0) ? 'background: var(--color-background-tertiary-dk)' : 'background: var(--color-background-tertiary)'"
+            *ngFor="let update of db.taskList[this.taskIndex].statusUpdates; let i = index">
+            <div class="task-details__status__wrapper__item__controls">
+                <!-- <button (click)="this.isopen = !this.isopen"><i class="fa fa-pencil"></i></button> -->
+                 <button (click)="this.deleteStatusUpdate(this.db.taskList[this.taskIndex].docID, i, db.taskList[this.taskIndex].statusUpdates.length)"><i class="fa fa-trash"></i></button> 
              </div>
             
-            <h3>Update No. {{ db.taskList[this.taskIndex].statusUpdates.length - i }}</h3>
+            <h3>Update No. {{ i + 1 }}</h3>
             <p><span class="label">Updated On </span> {{update.date |date: 'fullDate'}}</p>
             <p><span class="label">Status </span>  {{update.status }}</p>
             <p *ngIf="update.notes"><span class="label">Notes</span> {{update.notes}}</p>
             <p *ngIf="update.deadline"><span class="label">Deadline Is</span> {{update.deadline | date: 'fullDate'}}</p>
+            <p *ngIf="update.payment"><span class="label">Payment</span> ${{ (update.payment | mask: 'separator' : ',')}}</p>
             <p><span class="label">Updated By</span>{{update.whoIs | uppercase}}</p>
             
             
             
         </div>
+        </div>
+        
 
     </div>
 </section>

@@ -46,18 +46,21 @@
         &__phone {
             font-size: 16px;
             letter-spacing: 2px;
+            width: 80%;
         }
 
         
     }
 
     &__task-info {
-        width: 100%;
+        margin-right: 0;
+        width: 80%;
         background: var(--color-background-secondary);
         padding: 1em;
         color: var(--color-text-md);
         p {
-            width: 90%;
+            margin: 0;
+            width: 100%;
             line-height: 1.5em;
             white-space: pre-wrap;
         }

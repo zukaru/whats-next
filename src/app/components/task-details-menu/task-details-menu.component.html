@@ -1,8 +1,9 @@
 <menu class="menu">
     <button (click)="toggleMenu()" class="menu__toggle">&hellip;</button>
     <ul *ngIf="this.isOpen" class="menu__list">
-        <li [routerLink]="['/task-details', this.docID, 'edit']" class="menu__list__item">Edit Task</li>
-        <li  class="menu__list__item">Add Update</li>
+        <!-- <li [routerLink]="['/task-details', this.docID, 'edit']" class="menu__list__item">Edit Task</li> -->
+        <li (click)="this.closeStatusModal = !this.closeStatusModal" class="menu__list__item">Add Update</li>
         <li (click)="this.delete(this.docID)" class="menu__list__item">Delete Task</li>
     </ul>
 </menu>
+<app-status-form-modal *ngIf="this.closeStatusModal" (submitForm)="this.addUpdate($event, docID)" (closeModal)="this.closeStatusModal = !this.closeStatusModal"></app-status-form-modal>

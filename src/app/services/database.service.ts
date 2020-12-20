@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, CollectionReference } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { TaskModel } from '../models/task-model';
 import { PersistService } from './persist.service';
 
@@ -10,6 +8,7 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
+  //  Used for UI features to determine if there are Tasks
   hasTasks: boolean | undefined = undefined;
 
 
@@ -24,7 +23,8 @@ export class DatabaseService {
 
 
    fetchEntries() {
-    return this.afs.collection<TaskModel>('tasks', ref => ref.where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
+    return this.afs.collection<TaskModel>('tasks', ref => ref
+    .where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
     .snapshotChanges()
   }
 
@@ -32,32 +32,39 @@ export class DatabaseService {
     return this.taskList.findIndex(el => el.docID === id);
   }
 
-  getTaskByID(id: string) {
-    return this.taskList.filter(el => {
+
+  getTaskByID(id: string): TaskModel {
+    return this.taskList.find(el => {
       return el.docID === id;
     });
   }
 
-  // where('userId', '==', this.userId)
 
-  getTotalPayments(payments: string[]) {
+  getTotalPayments(payments) {
     return payments.reduce((acc, val) => {
-      return acc + Number(val);
+      return acc + Number(val.payment || 0);
     }, 0)
   }
 
 
-  getEntry(entryId: string) {
-    return this.taskList.find((el) => el.userID === entryId);
+  calcAmtDue(price: string, payments) {
+    
+    let totalPayments = Number(this.getTotalPayments(payments));  
+
+      if (( !price || price === '0')) {
+
+      return 'Not Listed';
+
+    } else if(  (Number(price) - Number(totalPayments) === 0)) {
+
+      return 'Paid In Full';
+
+    } else {
+
+      return `${Number(price) - totalPayments}`;
+      
+    }
+    
   }
 
-  deleteEntry(entryId: string): Promise<void> {
-    return this.afs.doc(`entries/${entryId}`).delete()
-  }
-
-
-
-  updateEntry(entryId: string, data: unknown): Promise<void> {
-    return this.afs.doc(`entries/${entryId}`).set(data)
-  }
 }

@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-status-form-modal',
@@ -11,6 +11,9 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
   @Input() isOpen = false;
   taskSubmitted = false;
   @Output() closeModal = new EventEmitter<boolean>();
+  @Output() submitForm = new EventEmitter();
+
+
   
 
   // date: string;
@@ -20,7 +23,6 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
   // deadline: string;
 
   constructor(
-    private elRef: ElementRef,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
   ) { }
@@ -29,9 +31,6 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
     this.renderer.setStyle(this.document.body, 'overflow', 'hidden')
     this.renderer.setStyle(this.document.body, 'height', '100%')
 
-    fromEvent(window, 'scroll')
-    .subscribe(e => e.preventDefault())
-
   }
 
   ngOnDestroy() {
@@ -39,17 +38,13 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
     this.renderer.removeStyle(this.document.body, 'height')
   }
 
-  statusFormSubmit() {
-  }
-
   emitCloseModal() {
     this.closeModal.emit(false);
   }
 
-  
-
-  preventScroll() {
-
+  onFormSubmit(e: NgForm) {
+    this.submitForm.emit(e.value);
   }
+
 
 }

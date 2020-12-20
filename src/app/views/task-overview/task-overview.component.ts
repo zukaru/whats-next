@@ -17,24 +17,6 @@ export class TaskOverviewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  calcAmtDue(price: string, payments: string[]) {
-    
-    let totalPayments = Number(this.db.getTotalPayments(payments));  
 
-      if (( !price || price === '0')) {
-
-      return 'Not Listed';
-
-    } else if(  (Number(price) - Number(totalPayments) === 0)) {
-
-      return 'Paid In Full';
-
-    } else {
-
-      return `${Number(price) - totalPayments}`;
-      
-    }
-    
-  }
 
 }

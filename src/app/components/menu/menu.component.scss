@@ -8,7 +8,6 @@ nav {
     height:100%;
     opacity:0;
     visibility:hidden;
-    transition:all 0.3s ease-in-out;
     z-index: 100;
     padding: 0;
 
@@ -28,7 +27,7 @@ nav {
       position:absolute;
       left:50%;
       top: 600%;
-      transition:all 0.3s ease-in-out;
+      transition: transform 0.3s ease-in, opacity 0.3s ease-in;
       transform:translate(-50%, -50%);
       
     
@@ -37,15 +36,16 @@ nav {
         transform:translateY(50px);
         opacity:0;
         justify-self: left;
-        margin-top: 1em;
+        margin-top: 1.5em;
         padding: 1em 2em;
+        
 
   
 
         span {
           color: transparent;
           text-shadow: 0 0 0 var(--color-primary);
-
+          margin-right: 1em;
           font-size: 0.8em;
         }
         
@@ -57,7 +57,6 @@ nav {
           text-align:center;
           color:var(--color-secondary-dark);
           font-weight:bold;
-          transition:all 0.2s ease-in-out;
           
           &:hover {
             // color:var(--color-secondary);
@@ -87,7 +86,7 @@ nav {
     margin:5px auto;
     padding: 0;
     background-color:var(--color-primary);
-    transition:all 0.3s ease-in-out;
+    transition: transform  0.3s ease-in-out, opacity 0.3s ease-in-out, width 0.3s ease-in-out;
     border-radius: 2px;
     transform: rotate(-45deg);
     
@@ -125,7 +124,6 @@ nav {
     box-shadow: 0 0px 5px var(--color-box-shadow);
     .bar {
         width: 40px;
-        background: var(--color-primary);
 
       &:nth-child(2) {
         transform:translate(50px,-50px) rotate(-45deg);
@@ -145,7 +143,7 @@ nav {
 
 .active {
   background: var(--color-primary);
-  clip-path: polygon(10% 0, 100% 0, 100% 60%, 90% 100%, 0 100%, 0 40%);
+  border-radius: 5px 25px 25px 5px;
 
 
 
@@ -153,6 +151,7 @@ nav {
   color: var(--color-background-tertiary) !important;
   }
   span {
+    
     color: transparent;
     text-shadow: 0 0 0 var(--color-background-tertiary) !important;
   }
