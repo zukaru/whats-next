@@ -28,7 +28,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
 
 
     this.activatedRoute.params
-      .subscribe( v =>  {this.taskIndex = v.docID; console.log(this.taskIndex)})
+      .subscribe( v => this.taskIndex = v.docID)
 
     // this.activatedRoute.params.pipe(
     //   concatMap(
@@ -69,7 +69,6 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     // remove selected update from statusUpdate array
     // 
     let confirmDelete = false;
-    console.log(length)
     confirmDelete = confirm(`You're about to delete status update NO. ${index + 1} `);
 
     if (!confirmDelete || length <= 1) {

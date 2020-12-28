@@ -64,7 +64,6 @@ export class FormComponent implements OnInit  {
       }
 
       if ( this.persist.getPersist(this.persist.USER_ID) ){
-        console.log(task);
         this.afs.collection('tasks')
         .add(task)
         .then((docRef) => {
@@ -82,7 +81,7 @@ export class FormComponent implements OnInit  {
          
         })
         
-        .catch((e) => console.log('Something went wrong, try again.', e));
+        .catch((e) => alert(`Something went wrong, try again. ${e}`));
     } else {
       let redirect = confirm("You're not signed in. You must be signed in to submit a task entry. Do you want to be redirected to sign in or sign up?");
       if (redirect) {

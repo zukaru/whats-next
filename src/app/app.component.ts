@@ -20,13 +20,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    console.log(this.router.url)
 
 
     // Fetch tasks (data respresenting to-do tasks) from database
     // If the task list array is empty and it's not the base URL
     if(this.db.taskList === undefined && this.router.url !== '') { 
-      console.log('working...')
       this.db.fetchEntries()
         .pipe(
           // Extracts data from response
@@ -41,10 +39,8 @@ export class AppComponent implements OnInit{
                 const id = d.id;
                 let task = d.data();
                 const amountDue = this.db.calcAmtDue(task.price, task.statusUpdates);
-                console.log({name: task.fName, due: task.amountDue})
 
                 task.amountDue = amountDue;
-                console.log({name: task.fName, due: task.amountDue})
 
                 task.docID = id;
                 console.dir(task);
@@ -54,7 +50,6 @@ export class AppComponent implements OnInit{
 
             // Assigns boolean to hasTasks property of DataService for UI features
             this.db.hasTasks = res.length > 0;
-            console.log(this.db.hasTasks = res.length > 0)
           }
         )
     }

@@ -39,17 +39,6 @@
         </p>
 
 
-
-
-
-
-
-
-
-
-        <!-- FIX LOGIC ERRORS BELOW -->
-
-
         <!-- PRICE -->
         <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
             <span class="label">Price (No Tax)</span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
@@ -79,73 +68,6 @@
             <span class="label">Total Paid</span>
             {{ 'NOT LISTED'}}
         </p>
-
-
-        <!-- DUE (no tax) positive integer-->
-        <!-- <p 
-        *ngIf="this.db.taskList[this.taskIndex].price &&
-                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' &&
-                  !(this.db.taskList[this.taskIndex].amountDue <= 0)"> 
-            <span class="label">Amount Due (If No Tax)</span>
-            {{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator.2':','}}
-        </p> -->
-
-        <!-- DUE (no tax) negative integer-->
-        <!-- <p 
-        *ngIf="this.db.taskList[this.taskIndex].price &&
-                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' &&
-                  !(this.db.taskList[this.taskIndex].amountDue >= 0)"> 
-            <span class="label">Amount Due (If No Tax)</span>
-            -{{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator.2':','}}
-        </p> -->
-
-        
-
-        <!-- DUE WITH TAX  negative integer-->
-        <!-- <p 
-        *ngIf="this.db.taskList[this.taskIndex].price &&
-                  this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' && 
-                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' && 
-                  (this.db.taskList[this.taskIndex].price * 1.06) - 
-                (this.db.taskList[this.taskIndex].price -
-                this.db.taskList[this.taskIndex].amountDue) < 0">
-            <span class="label">Amount Due (With Tax)</span>
-            -{{ 
-                (this.db.taskList[this.taskIndex].price * 1.06) - 
-                (this.db.taskList[this.taskIndex].price -
-                this.db.taskList[this.taskIndex].amountDue) | mask: 'separator.2':',' 
-            }}
-        </p> -->
-        <!-- DUE WITH TAX  positive integer-->
-        <!-- <p 
-        *ngIf="this.db.taskList[this.taskIndex].price &&
-                  this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' && 
-                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' && 
-                  (this.db.taskList[this.taskIndex].price * 1.06) - 
-                (this.db.taskList[this.taskIndex].price -
-                this.db.taskList[this.taskIndex].amountDue) >= 0">
-            <span class="label">Amount Due (With Tax)</span>
-            {{ 
-                (this.db.taskList[this.taskIndex].price * 1.06) - 
-                (this.db.taskList[this.taskIndex].price -
-                this.db.taskList[this.taskIndex].amountDue) | mask: 'separator.2':',' 
-            }}
-        </p> -->
-
-
-        <!-- END OF LOGIC ERRORS -->
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>

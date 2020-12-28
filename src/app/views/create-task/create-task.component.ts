@@ -19,7 +19,6 @@ export class CreateTaskComponent implements OnInit, CanComponentDeactivate {
   }
 
   isChildFormDirty(bool: boolean) {
-    console.log(bool)
     this.childFormDirty = bool;
   }
 

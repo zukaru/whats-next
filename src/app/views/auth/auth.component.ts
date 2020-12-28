@@ -59,7 +59,6 @@ export class AuthComponent implements OnInit {
 
           // Assigns boolean to hasTasks property of DataService for UI features
           this.db.hasTasks = res.length > 0;
-          console.log(this.db.hasTasks = res.length > 0)
         }
       )
   }

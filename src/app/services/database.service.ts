@@ -54,7 +54,7 @@ export class DatabaseService {
     
     let totalPayments = Number(this.getTotalPayments(payments));  
 
-      if (( !price || price === '0')) {
+      if (( !price )) {
 
       return 'Not Listed';
 

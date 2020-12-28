@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { TaskModel } from 'src/app/models/task-model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -38,7 +37,6 @@ export class SearchComponent implements OnInit {
     )
     
     this.querying = false;
-    console.log(query)
   }
 
 }
