@@ -2,7 +2,7 @@
     
     <p 
         class="task-overview__no-tasks"
-        *ngIf="this.db.hasTasks !== undefined && this.db.hasTasks === false "
+        *ngIf="this.db.taskList && (this.db.taskList?.length) < 0"
         routerLink="/create-task"
         >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
         <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__no-tasks"></app-spinner>
@@ -18,7 +18,7 @@
         [deadline]="task.statusUpdates[task.statusUpdates.length - 1].deadline"
         [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
         [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"
-        [amtDue]="task.amountDue"></app-task-overview-card>
+        [price]="task.price"></app-task-overview-card>
     </ng-container>
     
     

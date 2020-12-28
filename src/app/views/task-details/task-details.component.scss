@@ -10,7 +10,6 @@
 
     p {
         position: relative;
-        color: var(--color-background);
 
         font-size: 18px;
         font-weight: bold;
@@ -18,11 +17,9 @@
         margin: 0;
         padding: 2em 10%;
 
-        span {
-            color: var(--color-background-secondary);
-        }
     }
     &__contact {
+        color: var(--color-background-secondary);
         position: relative;
         padding: 10em 0;
         padding-top: 17em;
@@ -70,7 +67,6 @@
         background: var(--color-background-tertiary-dk);
 
         h3 {
-            color: var(--color-secondary-dark);
             padding: 0.2em 9%;
             padding-top: 4em;
             font-size: 22px;
@@ -84,7 +80,6 @@
 
         p {
             position: relative;
-            color: var(--color-secondary);
             padding-bottom: 1.5em;
             font-size: 18px;
             letter-spacing: 1px;
@@ -97,9 +92,6 @@
                 margin-bottom: 10px;
             }
 
-            span {
-                color: var(--color-secondary);
-            }
             
 
             text-align: right;

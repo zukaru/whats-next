@@ -1,7 +1,7 @@
 export interface TaskModel{
     fName: string;
     lName: string;
-    phoneNums: [string];
+    phoneNums: string;
     description: string;
     dateCreated: string;
     email: string;

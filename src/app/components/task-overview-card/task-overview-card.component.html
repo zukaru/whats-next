@@ -12,9 +12,9 @@
         <p *ngIf="deadline" class="card__pricing__deadline"><span>{{ deadline | date: 'EEEE, MMMM d' }}</span></p>
         <p *ngIf="!deadline" class="card__pricing__deadline"><span>Not Listed</span></p>
         <p class="card__pricing__status"> <span>{{ status }}</span></p>
-        <p *ngIf="amtDue !== 'Not Listed' && amtDue !== 'Paid In Full'" class="card__pricing__due"><span>${{ (amtDue | mask: 'separator' : ',')}}</span></p>
-        <p *ngIf="amtDue === 'Not Listed' " class="card__pricing__due"><span>Not Listed</span></p>
-        <p *ngIf="amtDue === 'Paid In Full' " class="card__pricing__due"><span>🤑Paid In Full🤑</span></p>
+        <p *ngIf="price !== '' && price !== 'Paid In Full'" class="card__pricing__due"><span>${{ (price | mask: 'separator' : ',')}}</span></p>
+        <p *ngIf="price === '' " class="card__pricing__due"><span>Not Listed</span></p>
+        <!-- <p *ngIf="amtDue === 'Paid In Full' " class="card__pricing__due"><span>🤑Paid In Full🤑</span></p> -->
     </div>
     <div class="card__whois">
         <p class="card__whois__name">{{ whoIs | uppercase }}</p>

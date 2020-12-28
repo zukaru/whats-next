@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { concatMap } from 'rxjs/operators';
 import { TaskModel } from 'src/app/models/task-model';
 import { DatabaseService } from 'src/app/services/database.service';
-import { PersistService } from 'src/app/services/persist.service';
 
 @Component({
   selector: 'app-task-details',
@@ -54,14 +52,13 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     let newInfo = prompt(`Please update the ${name}`);
 
     if(!newInfo) {
-      return;
+      return
     }
 
     this.afs.doc(`tasks/${id}`)
     .update({[field]: `${newInfo}`})
     .then((v) => {
-      this.taskDetails[field] = newInfo;
-      console.log(v)
+      alert(`Successfully updated ${name}.`)
     })
 
 

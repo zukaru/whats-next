@@ -9,11 +9,12 @@
             [routerLink]="['/task-details', this.db.getIndexByID(this.task.docID)]"
             [fName]="this.task.fName"
             [lName]="this.task.lName"
-            [phone]="this.task.phoneNums[0]"
+            [phone]="this.task.phoneNums || this.task.phoneNums[0]"
             [description]="this.task.description"
             [deadline]="this.task.statusUpdates[0].deadline"
             [status]="this.task.statusUpdates[0].status"
             [whoIs]="this.task.statusUpdates[0].whoIs"
+            [price]="task.price"
             *ngFor="let task of this.queriedTaskList"
         ></app-task-overview-card>
     </ng-container>

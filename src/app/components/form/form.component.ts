@@ -44,7 +44,7 @@ export class FormComponent implements OnInit  {
       userID: this.persist.getPersist('USER_ID'),
       fName: f.value.fName,
       lName: f.value.lName,
-      phoneNums: [f.value.phoneNums],
+      phoneNums: f.value.phoneNums,
       description: f.value.task_description,
       price: f.value.price,
       

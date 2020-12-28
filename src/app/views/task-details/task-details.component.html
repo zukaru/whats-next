@@ -1,19 +1,153 @@
 <section *ngIf="this.db.taskList" class="task-details">
     
     <div class="task-details__contact">
-        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" > <span class="label">First Name</span> {{ this.db.taskList[this.taskIndex].fName | titlecase }} </p>
-        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"  *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name</span> {{ this.db.taskList[this.taskIndex].lName | titlecase }} </p>
+
+        <!-- FIRST NAME -->
+        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >
+            <span class="label">First Name</span> 
+            {{ this.db.taskList[this.taskIndex].fName | titlecase }}
+        </p>
+
+        <!-- LAST NAME -->
+        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+            *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name</span>
+            {{ this.db.taskList[this.taskIndex].lName | titlecase }}
+        </p>
+        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+            *ngIf="!(this.db.taskList[this.taskIndex].lName)"> <span class="label">Last Name</span>
+            NOT LISTED
+        </p>
         
-        
-        <p >
-        <span class="label">Phone</span>
-        {{ this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' }}</p>
+        <!-- PHONE -->
+        <p  (dblclick)="updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].docID)">
+            <span class="label">Phone</span>
+            {{ this.db.taskList[this.taskIndex].phoneNums | mask: '(000) 000-0000' ||
+            this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' ||
+            'NOT LISTED'}}
+        </p>
+
+        <!-- EMAIL -->
+        <p (dblclick)="updateField('Email', 'email', this.db.taskList[this.taskIndex].docID)">
+            <span class="label">Email</span>
+            {{ this.db.taskList[this.taskIndex].email || 'NOT LISTED' }}
+        </p>
+
+        <!-- ADDRESS -->
+        <p (dblclick)="updateField('Address', 'address', this.db.taskList[this.taskIndex].docID)">
+            <span class="label">Address</span> 
+            {{ this.db.taskList[this.taskIndex].address || 'NOT LISTED' }}
+        </p>
 
 
-        <p *ngIf="this.db.taskList[this.taskIndex].email"><span class="label">Email</span>{{ this.db.taskList[this.taskIndex].email }}</p>
-        <p *ngIf="this.db.taskList[this.taskIndex].address"><span class="label">Address</span> {{ this.db.taskList[this.taskIndex].address }}</p>
-        <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)"><span class="label">Price</span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') || 'NOT LISTED'}}</p>
-        <p *ngIf="this.db.taskList[this.taskIndex].price "> <span class="label">Amount Due</span> {{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator' : ','}}</p>
+
+
+
+
+
+
+
+
+        <!-- FIX LOGIC ERRORS BELOW -->
+
+
+        <!-- PRICE -->
+        <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
+            <span class="label">Price (No Tax)</span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
+             'NOT LISTED'}}
+        </p>
+
+
+        <!-- SALES TAX -->
+        <p *ngIf="this.db.taskList[this.taskIndex].price &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' ">
+            <span class="label">Sales Tax</span>
+            {{ (this.db.taskList[this.taskIndex].price * 0.06) | mask: 'separator.2':','}}
+        </p>
+
+        <!-- PAID -->
+        <p *ngIf="this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' ">
+            <span class="label">Total Paid</span>
+            {{ (this.db.taskList[this.taskIndex].price - this.db.taskList[this.taskIndex].amountDue | mask: 'separator' : ',') ||
+            'NOT LISTED'}}
+        </p>
+        <p *ngIf="this.db.taskList[this.taskIndex].amountDue === 'Paid In Full'">
+            <span class="label">Total Paid</span>
+            {{ 'PAID IN FULL'}}
+        </p>
+        <p *ngIf="this.db.taskList[this.taskIndex].amountDue === 'Not Listed'">
+            <span class="label">Total Paid</span>
+            {{ 'NOT LISTED'}}
+        </p>
+
+
+        <!-- DUE (no tax) positive integer-->
+        <!-- <p 
+        *ngIf="this.db.taskList[this.taskIndex].price &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' &&
+                  !(this.db.taskList[this.taskIndex].amountDue <= 0)"> 
+            <span class="label">Amount Due (If No Tax)</span>
+            {{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator.2':','}}
+        </p> -->
+
+        <!-- DUE (no tax) negative integer-->
+        <!-- <p 
+        *ngIf="this.db.taskList[this.taskIndex].price &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' &&
+                  !(this.db.taskList[this.taskIndex].amountDue >= 0)"> 
+            <span class="label">Amount Due (If No Tax)</span>
+            -{{ this.db.taskList[this.taskIndex].amountDue | mask: 'separator.2':','}}
+        </p> -->
+
+        
+
+        <!-- DUE WITH TAX  negative integer-->
+        <!-- <p 
+        *ngIf="this.db.taskList[this.taskIndex].price &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' && 
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' && 
+                  (this.db.taskList[this.taskIndex].price * 1.06) - 
+                (this.db.taskList[this.taskIndex].price -
+                this.db.taskList[this.taskIndex].amountDue) < 0">
+            <span class="label">Amount Due (With Tax)</span>
+            -{{ 
+                (this.db.taskList[this.taskIndex].price * 1.06) - 
+                (this.db.taskList[this.taskIndex].price -
+                this.db.taskList[this.taskIndex].amountDue) | mask: 'separator.2':',' 
+            }}
+        </p> -->
+        <!-- DUE WITH TAX  positive integer-->
+        <!-- <p 
+        *ngIf="this.db.taskList[this.taskIndex].price &&
+                  this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' && 
+                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' && 
+                  (this.db.taskList[this.taskIndex].price * 1.06) - 
+                (this.db.taskList[this.taskIndex].price -
+                this.db.taskList[this.taskIndex].amountDue) >= 0">
+            <span class="label">Amount Due (With Tax)</span>
+            {{ 
+                (this.db.taskList[this.taskIndex].price * 1.06) - 
+                (this.db.taskList[this.taskIndex].price -
+                this.db.taskList[this.taskIndex].amountDue) | mask: 'separator.2':',' 
+            }}
+        </p> -->
+
+
+        <!-- END OF LOGIC ERRORS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>
     </div>
     
@@ -25,7 +159,8 @@
     <div class="task-details__status">
         <div class="task-details__status__wrapper">
             <div class="task-details__status__wrapper__item"
-             [style]="(i % 2 === 0) ? 'background: var(--color-background-tertiary-dk)' : 'background: var(--color-background-tertiary)'"
+             [style.background]="(i % 2 === 0) ? 'var(--color-background-tertiary)' : 'var(--color-background)'"
+             [style.color]="(i % 2 === 0) ? 'var(--color-secondary-dark)' : 'var(--color-primary)'"
             *ngFor="let update of db.taskList[this.taskIndex].statusUpdates; let i = index">
             <div class="task-details__status__wrapper__item__controls">
                 <!-- <button (click)="this.isopen = !this.isopen"><i class="fa fa-pencil"></i></button> -->

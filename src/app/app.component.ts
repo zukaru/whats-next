@@ -1,3 +1,4 @@
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -19,13 +20,13 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    console.log(this.router.url)
 
 
     // Fetch tasks (data respresenting to-do tasks) from database
-
-
-    // If the task list array is empty and its not the base URL
+    // If the task list array is empty and it's not the base URL
     if(this.db.taskList === undefined && this.router.url !== '') { 
+      console.log('working...')
       this.db.fetchEntries()
         .pipe(
           // Extracts data from response
@@ -34,30 +35,26 @@ export class AppComponent implements OnInit{
         .subscribe(
           (res) => {
 
-            // Assigns boolean to hasTasks property for UI features
-            this.db.hasTasks = res.length > 0;
-
-
-            
-  // getTotalPayments(payments) {
-  //   return payments.reduce((acc, val) => {
-  //     return acc + Number(val.payment);
-  //   }, 0)
-  // }
-
-            // Assigns an array of Tasks to taskList
+            // Assigns an array of Tasks to taskList property of DataService
             this.db.taskList = res.map(
               (d) => {
                 const id = d.id;
                 let task = d.data();
                 const amountDue = this.db.calcAmtDue(task.price, task.statusUpdates);
+                console.log({name: task.fName, due: task.amountDue})
 
                 task.amountDue = amountDue;
+                console.log({name: task.fName, due: task.amountDue})
 
                 task.docID = id;
+                console.dir(task);
                 return task;
               }
             )
+
+            // Assigns boolean to hasTasks property of DataService for UI features
+            this.db.hasTasks = res.length > 0;
+            console.log(this.db.hasTasks = res.length > 0)
           }
         )
     }

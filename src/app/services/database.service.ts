@@ -41,13 +41,16 @@ export class DatabaseService {
 
 
   getTotalPayments(payments) {
-    return payments.reduce((acc, val) => {
+    return payments.reduce((acc: number, val) => {
       return acc + Number(val.payment || 0);
     }, 0)
   }
 
-
-  calcAmtDue(price: string, payments) {
+  // Possible return values
+  // Number with a type of string
+  // 'Paid In Full'
+  // 'Not Listed'
+  calcAmtDue(price: string, payments): string {
     
     let totalPayments = Number(this.getTotalPayments(payments));  
 
@@ -55,9 +58,10 @@ export class DatabaseService {
 
       return 'Not Listed';
 
-    } else if(  (Number(price) - Number(totalPayments) === 0)) {
+    } else if(  (Number(price) - Number(totalPayments) <= 0)) {
 
-      return 'Paid In Full';
+      // return 'Paid In Full';
+      return `${Number(price) - totalPayments}`;
 
     } else {
 
