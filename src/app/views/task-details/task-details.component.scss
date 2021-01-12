@@ -1,4 +1,6 @@
 .task-details {
+
+    
     width: 100%;
     a {
         color: inherit;
@@ -19,6 +21,11 @@
 
     }
     &__contact {
+        overflow-wrap: break-word;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
         color: var(--color-background-secondary);
         position: relative;
         padding: 10em 0;
@@ -30,7 +37,21 @@
             var(--color-secondary-light),
         );
 
-        p {padding-left: 9%;}
+        p {
+            
+            text-align: center;
+            width: 10em;
+            height: 2em;
+            margin-right: 1em;
+            margin-left: 1em;
+            margin-bottom: 2em;
+
+            .label {
+                top: 1em;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
 
         app-task-details-menu {
         }

@@ -4,23 +4,23 @@
 
         <!-- FIRST NAME -->
         <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >
-            <span class="label">First Name</span> 
+            <span class="label">First Name <i class="fa fa-pencil"></i></span> 
             {{ this.db.taskList[this.taskIndex].fName | titlecase }}
         </p>
 
         <!-- LAST NAME -->
         <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
-            *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name</span>
+            *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].lName | titlecase }}
         </p>
         <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
-            *ngIf="!(this.db.taskList[this.taskIndex].lName)"> <span class="label">Last Name</span>
+            *ngIf="!(this.db.taskList[this.taskIndex].lName)"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             NOT LISTED
         </p>
         
         <!-- PHONE -->
         <p  (dblclick)="updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Phone</span>
+            <span class="label">Phone <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].phoneNums | mask: '(000) 000-0000' ||
             this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' ||
             'NOT LISTED'}}
@@ -28,20 +28,20 @@
 
         <!-- EMAIL -->
         <p (dblclick)="updateField('Email', 'email', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Email</span>
+            <span class="label">Email <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].email || 'NOT LISTED' }}
         </p>
 
         <!-- ADDRESS -->
         <p (dblclick)="updateField('Address', 'address', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Address</span> 
+            <span class="label">Address <i class="fa fa-pencil"></i></span> 
             {{ this.db.taskList[this.taskIndex].address || 'NOT LISTED' }}
         </p>
 
 
         <!-- PRICE -->
         <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Price (No Tax)</span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
+            <span class="label">Price (No Tax) <i class="fa fa-pencil"></i></span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
              'NOT LISTED'}}
         </p>
 

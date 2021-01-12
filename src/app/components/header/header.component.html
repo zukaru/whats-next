@@ -1,5 +1,5 @@
 <div class="header">
-    <img *ngIf="this.route.url === '/task-overview'" oncontextmenu="return false" src="../../../assets/images/logo1.png" alt="What's next logo" class="header__logo">
+    <img *ngIf="this.route.url === '/task-overview'" oncontextmenu="return false" src="../../../assets/images/wntt-logo.png" alt="What's next logo" class="header__logo">
     <!-- <app-search-bar class="header__search"></app-search-bar> -->
     <div *ngIf="!(this.route.url === '/task-overview')" class="header__arrow" aria-roledescription="go to previous page">
         <a (click)="previousRoute()">back</a>
