@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 import { PersistService } from 'src/app/services/persist.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   constructor(
     public af: AngularFireAuth,
     private route: Router,
+    private db: DatabaseService,
     private persist: PersistService,
     private renderer: Renderer2,
     @Inject (DOCUMENT) private document: Document
@@ -54,10 +56,10 @@ export class MenuComponent implements OnInit, OnDestroy {
         () => {
           this.route.navigateByUrl('');
           this.persist.clearPersist(this.persist.USER_ID)
-          alert("You have logged out.");
-            
+          this.db.taskList = undefined;
         }
       )
+      .catch(() => alert("Something went wrong. Try to log out again."))
   }
 
 }

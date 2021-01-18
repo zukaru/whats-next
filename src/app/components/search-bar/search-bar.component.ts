@@ -1,8 +1,6 @@
-import { Target } from '@angular/compiler';
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ValueProvider, ViewChild, EventEmitter } from '@angular/core';
-import { fromEvent, interval } from 'rxjs';
-import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
-import { debounce, debounceTime, map } from 'rxjs/operators';
+import { AfterViewInit, Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { fromEvent } from 'rxjs';
+import {  debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -29,7 +27,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
      )
     .subscribe(
       data => this.query.emit(data)
-    )
+    );
   }
   
 

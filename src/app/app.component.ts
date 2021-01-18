@@ -38,18 +38,21 @@ export class AppComponent implements OnInit{
               (d) => {
                 const id = d.id;
                 let task = d.data();
-                const amountDue = this.db.calcAmtDue(task.price, task.statusUpdates);
+                // const amountDue = this.db.calcAmtDue(task.price, task.statusUpdates);
 
-                task.amountDue = amountDue;
+                // task.amountDue = amountDue;
 
                 task.docID = id;
-                console.dir(task);
+                console.log(task.dateCreated)
                 return task;
               }
             )
 
             // Assigns boolean to hasTasks property of DataService for UI features
             this.db.hasTasks = res.length > 0;
+            if(this.db.hasTasks) {
+              this.db.hasTasksObs$.next(true);
+            }
           }
         )
     }

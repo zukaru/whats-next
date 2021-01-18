@@ -2,8 +2,8 @@
     position: fixed;
     left: 0;
     top: 10px;
-    width: 12em;
-    height: 8em;
+    width: 10em;
+    height: 6.5em;
     background-color: var(--color-background-secondary);
     box-shadow: 0 1px 5px var(--color-box-shadow);
     border-radius: 0 25px 25px 0;
@@ -11,7 +11,7 @@
     color: var(--color-text-md);
 
     &__arrow {
-        font-size: 3em;
+        font-size: 18px;
         font-weight: 800;
         position: absolute;
         left: 50%;
@@ -35,10 +35,10 @@
 
 
     &__logo {
-        height: 5em;
+        height: 4em;
         position: absolute;
-        left: 1.5em;
-        top: 2em;
+        left: 2em;
+        top: 1em;
         user-select: none;
         -webkit-user-select:none;
         -webkit-touch-callout:none;
@@ -53,9 +53,6 @@
         transform: translate(-50%, -50%);
     }
 
-    &__menu {
-        position: absolute;
-        right: 0em;
-        top: 0em;
-    }
+    
+
 }

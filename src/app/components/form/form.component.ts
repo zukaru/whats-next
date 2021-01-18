@@ -3,7 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PersistService } from 'src/app/services/persist.service';
-import { TaskModel } from '../../models/task-model'
+import { TaskModel } from '../../models/task-model';
+import  firebase from 'firebase/app';
 
 @Component({
   selector: 'app-form',
@@ -48,7 +49,7 @@ export class FormComponent implements OnInit  {
       description: f.value.task_description,
       price: f.value.price,
       
-      dateCreated: new Date().toLocaleDateString(),
+      dateCreated: new Date().toISOString(),
       email: f.value.email,
       statusUpdates: [{
         status: f.value.status,

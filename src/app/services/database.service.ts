@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { TaskModel } from '../models/task-model';
 import { PersistService } from './persist.service';
 
@@ -10,6 +11,8 @@ export class DatabaseService {
 
   //  Used for UI features to determine if there are Tasks
   hasTasks: boolean | undefined = undefined;
+
+  hasTasksObs$ = new BehaviorSubject(false);
 
 
   taskList: TaskModel[] ;

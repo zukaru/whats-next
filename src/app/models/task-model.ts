@@ -3,7 +3,7 @@ export interface TaskModel{
     lName: string;
     phoneNums: string;
     description: string;
-    dateCreated: string;
+    dateCreated: object | string;
     email: string;
     statusUpdates: [
         {

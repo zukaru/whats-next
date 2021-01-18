@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { from, merge, Subscription } from 'rxjs';
+import { concatMap, mergeAll } from 'rxjs/operators';
 import { TaskModel } from 'src/app/models/task-model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -15,6 +17,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   docID: string;
   taskIndex: string;
   amountDue: string;
+  hasTaskObSub: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,26 +28,25 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
 
-
-
+    // Synchronously get doc ID from params
     this.activatedRoute.params
-      .subscribe( v => this.taskIndex = v.docID)
+    .subscribe(v => this.docID = v.docID);
 
-    // this.activatedRoute.params.pipe(
-    //   concatMap(
-    //     (v) => {
-    //       this.docID = v.docID;
-    //       return this.afs.doc(`tasks/${v.docID}`).snapshotChanges()
-    //     }
-    //   )
-    // )
-    // .subscribe( v =>  this.taskDetails = v.payload.data() as TaskModel )
+    // Asynchronously get notified when
+    // taskList array is populated in Database Service
+    // and update index of current task detail
+    this.hasTaskObSub = this.db.hasTasksObs$
+    .subscribe(
+      v =>  v === false ? null : this.taskIndex = this.db.getIndexByID(this.docID).toString()
+    )
+
   }
 
   ngOnDestroy() {
+    this.hasTaskObSub.unsubscribe();
   }
 
-  closeModal(v) {
+  closeModal() {
     this.isopen = false;
   }
 

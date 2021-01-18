@@ -1,16 +1,34 @@
 <div class="task-overview">
-    
+    <app-menu></app-menu>
+    <app-search-bar (query)="this.searchTasks($event)" ></app-search-bar>
+    <app-spinner *ngIf="this.querying"></app-spinner>
+    <p class="search__no-results" *ngIf="this.queriedTaskList && (this.queriedTaskList.length <= 0) && !this.querying">No results</p>
+    <div *ngIf="this.queriedTaskList">
+        <app-task-overview-card
+            appAnimateOnView
+            [routerLink]="['/task-details', this.task.docID]"
+            [fName]="this.task.fName"
+            [lName]="this.task.lName"
+            [phone]="this.task.phoneNums || this.task.phoneNums[0]"
+            [description]="this.task.description"
+            [deadline]="this.task.statusUpdates[0].deadline"
+            [status]="this.task.statusUpdates[0].status"
+            [whoIs]="this.task.statusUpdates[0].whoIs"
+            [price]="task.price"
+            *ngFor="let task of this.queriedTaskList"
+        ></app-task-overview-card>
+    </div>
     <p 
         class="task-overview__no-tasks"
         *ngIf="this.db.taskList && (this.db.taskList?.length) < 0"
         routerLink="/create-task"
         >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
         <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__no-tasks"></app-spinner>
-    <ng-container *ngIf="this.db.taskList && (this.db.taskList?.length - 1) >= 0">
+    <ng-container *ngIf="this.sortedTaskList && (this.sortedTaskList?.length - 1) >= 0 && !this.hideSortedTaskList">
         <app-task-overview-card
-        *ngFor="let task of this.db.taskList; let i = index"
+        *ngFor="let task of this.sortedTaskList; let i = index;"
         appAnimateOnView
-        [routerLink]="['/task-details', i]"
+        [routerLink]="['/task-details', task.docID]"
         [description]="task.description"
         [fName]="task.fName"
         [lName]="task.lName"
@@ -18,12 +36,12 @@
         [deadline]="task.statusUpdates[task.statusUpdates.length - 1].deadline"
         [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
         [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"
+        
         [price]="task.price"></app-task-overview-card>
     </ng-container>
     
     
 
 </div>
-<app-header></app-header>
 
 

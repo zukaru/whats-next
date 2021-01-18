@@ -3,7 +3,7 @@ import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { concatMap, throttleTime } from 'rxjs/operators';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -32,8 +32,9 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
       this.isOpen = false;
     });
 
-    this.activatedRoute.params .subscribe((v)=> {
-      this.docID = this.db.taskList[v.docID].docID;
+    this.activatedRoute.params
+    .subscribe((v)=> {
+      this.docID = v.docID;
     })
     
   }

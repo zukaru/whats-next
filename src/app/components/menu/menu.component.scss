@@ -70,28 +70,28 @@ nav {
   display:block;
   position:fixed;
   z-index:1110;
-  right:2em;
+  right:0;
   top:1.5em;
-  width: 60px;
-  height: 30px;
+  width: 50px;
+  height: 20px;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 50px 0 0 50px;
   background: var(--color-background-secondary);
   cursor:pointer;
   box-shadow: 0 0px 5px var(--color-box-shadow);
   
   .bar {
-    width:20px;
+    width:15px;
     height:3px;
     margin:5px auto;
     padding: 0;
     background-color:var(--color-primary);
     transition: transform  0.3s ease-in-out, opacity 0.3s ease-in-out, width 0.3s ease-in-out;
     border-radius: 2px;
-    transform: rotate(-45deg);
+    transform: rotate(-35deg) translateY(-5px);
     
     &:nth-child(2) {
-      width:40px;
+      width:30px;
       background-color: var(--color-secondary-dark);
     }
   }
@@ -123,7 +123,7 @@ nav {
 
     box-shadow: 0 0px 5px var(--color-box-shadow);
     .bar {
-        width: 40px;
+        width: 30px;
 
       &:nth-child(2) {
         transform:translate(50px,-50px) rotate(-45deg);
@@ -131,11 +131,11 @@ nav {
       }
 
       &:nth-child(1) {
-        transform:translateY(10px) rotate(45deg);
+        transform:translateY(4px) rotate(45deg);
       }
 
       &:nth-child(3) {
-        transform:translateY(-6px) rotate(-45deg);
+        transform:translateY(-12px) rotate(-45deg);
       }
     }
   }
