@@ -23,6 +23,7 @@ import { TaskDetailsComponent } from './views/task-details/task-details.componen
 import { TaskDetailsMenuComponent } from './components/task-details-menu/task-details-menu.component';
 import { AnimateOnViewDirective } from './directives/animate-on-view.directive';
 import { StatusFormModalComponent } from './components/status-form-modal/status-form-modal.component';
+import { EditTaskDescriptionModalComponent } from './components/edit-task-description-modal/edit-task-description-modal.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -56,7 +57,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TaskDetailsComponent,
     TaskDetailsMenuComponent,
     AnimateOnViewDirective,
-    StatusFormModalComponent
+    StatusFormModalComponent,
+    EditTaskDescriptionModalComponent
     
   ],
   imports: [

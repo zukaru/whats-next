@@ -20,10 +20,10 @@
     </div>
     <p 
         class="task-overview__no-tasks"
-        *ngIf="this.db.taskList && (this.db.taskList?.length) < 0"
+        *ngIf="(this.db.taskList?.length == 0) && showNoTaskMsg && !this.db.hasTasks"
         routerLink="/create-task"
-        >Psst... YOU HAVE NO TASKS YET! Click or tap to create your first task.</p>
-        <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__no-tasks"></app-spinner>
+        >Psst... you have no tasks yet. Follow this link to create your first task.</p>
+        <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__spinner"></app-spinner>
     <ng-container *ngIf="this.sortedTaskList && (this.sortedTaskList?.length - 1) >= 0 && !this.hideSortedTaskList">
         <app-task-overview-card
         *ngFor="let task of this.sortedTaskList; let i = index;"

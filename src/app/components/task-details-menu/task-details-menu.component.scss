@@ -1,8 +1,5 @@
 .menu {
-    position: absolute;
     margin: 0;
-    bottom: 10px;
-    right: 20px;
 
 
      &__toggle {
@@ -18,8 +15,8 @@
 
      &__list {
          position: absolute;
-         left: -8em;
-         bottom: -100%;
+         right: -8em;
+         top: -150%;
          background: var(--color-background-secondary);
          color: var(--color-text-md);
          font-size: 3em;

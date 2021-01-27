@@ -30,6 +30,8 @@ export class AnimateOnViewDirective implements OnInit, OnDestroy, AfterViewInit 
   ngOnInit() {
     this.innerHeight = window.innerHeight;
 
+    this.animateOnScroll(this.elRef);
+
     
     this.eventSubscription = fromEvent(document, "scroll", {passive: true})
     .pipe(throttleTime(100))

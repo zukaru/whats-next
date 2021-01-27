@@ -87,4 +87,12 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
+  editDescription(e, id: string) {
+    this.afs.doc(`tasks/${id}`)
+    .update({description: `${e.task_description}`})
+    .then((v) => {
+      alert(`Successfully updated Task Description.`)
+    })
+  }
+
 }

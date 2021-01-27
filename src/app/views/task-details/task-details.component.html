@@ -41,7 +41,7 @@
 
         <!-- PRICE -->
         <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Price (No Tax) <i class="fa fa-pencil"></i></span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
+            <span class="label">Price No Tax <i class="fa fa-pencil"> </i> </span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
              'NOT LISTED'}}
         </p>
 
@@ -74,6 +74,8 @@
     </div>
     
     <div class="task-details__info">
+
+        <app-edit-task-description-modal   (submitForm)="this.editDescription($event, this.docID)" [textAreaVal]="this.db.taskList[this.taskIndex].description"></app-edit-task-description-modal>
 
         <p>{{ this.db.taskList[this.taskIndex].description }}</p>
 

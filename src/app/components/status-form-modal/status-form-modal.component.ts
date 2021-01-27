@@ -13,15 +13,6 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() submitForm = new EventEmitter();
 
-
-  
-
-  // date: string;
-  // notes: string;
-  // status: string;
-  // whoIs: string;
-  // deadline: string;
-
   constructor(
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document

@@ -14,6 +14,7 @@ export class TaskOverviewComponent implements OnInit {
   queriedTaskList: TaskModel[] | undefined;
   hideSortedTaskList = false;
   querying = false;
+  showNoTaskMsg = false;
   
 
   constructor(
@@ -32,10 +33,13 @@ export class TaskOverviewComponent implements OnInit {
     this.queriedTaskList = this.db.taskList
     .filter (
       (el) => {
-       return el.fName.toLowerCase().includes(query.toLowerCase())  ||
-       el.lName.toLowerCase().includes(query.toLowerCase())  ||
-       el.phoneNums[0].includes(query) || 
-       el.description.toLowerCase().includes(query.toLowerCase());
+        //Concats first and last names to query them together
+       return (
+        `${el.fName} ${el.lName}`.toLowerCase().includes(query.toLowerCase())  ||
+        `${el.lName} ${el.fName}`.toLowerCase().includes(query.toLowerCase())  ||
+        el.phoneNums[0].includes(query) || 
+        el.description.toLowerCase().includes(query.toLowerCase())
+       )
       }
     )
     
@@ -46,13 +50,14 @@ export class TaskOverviewComponent implements OnInit {
     this.db.hasTasksObs$
     .subscribe((v) => {
       if(v) {
+        this.showNoTaskMsg = false;
         this.sortedTaskList = [...this.db.taskList];
         this.sortedTaskList.sort((a,b) => {
           let dateA = new Date(a.dateCreated as string).getTime();
           let dateB = new Date(b.dateCreated as string).getTime();
           return dateB - dateA;
         })  
-      }
+      } else { this.showNoTaskMsg = true}
       
     })
   }

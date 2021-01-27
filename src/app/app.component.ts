@@ -50,6 +50,8 @@ export class AppComponent implements OnInit{
 
             // Assigns boolean to hasTasks property of DataService for UI features
             this.db.hasTasks = res.length > 0;
+
+            // Emits true to subscribers of hasTasksObs$ (BehaviourSubject) property of DataService
             if(this.db.hasTasks) {
               this.db.hasTasksObs$.next(true);
             }

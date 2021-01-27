@@ -27,6 +27,7 @@
         align-items: stretch;
         justify-content: center;
         color: var(--color-background-secondary);
+        
         position: relative;
         padding: 10em 0;
         padding-top: 17em;
@@ -45,16 +46,29 @@
             height: 2em;
             margin-right: 1em;
             margin-left: 1em;
-            margin-bottom: 4em;
+            margin-bottom: 5em;
+            border: 2px solid var(--color-background-secondary);
+            border-radius: 50px;
+            padding: 3em 10%;
 
             .label {
-                top: 1em;
+                top: -1.25em;
                 left: 50%;
-                transform: translate(-50%, -50%);
+                transform: translateX(-50%);
+                background: var(--color-background-secondary);
+                color: var(--color-primary);
+                padding: 0.5em 1em;
+                border-radius: 10px;
+                margin: 0;
+                font-size: 15px;
+
             }
         }
 
         app-task-details-menu {
+            position: absolute;
+            bottom: 2em;
+            left: -2em;
         }
     }
 
@@ -62,11 +76,20 @@
 
     &__info {
         width: 100%;
+        position: relative;
         
         background: var(--color-background-secondary);
         color: var(--color-background-quarternary);
         margin: 0;
-        padding: 5em 0;
+        padding: 10em 0;
+
+
+
+        app-edit-task-description-modal {
+            position: absolute;
+            top: 1em;
+            right: 4%;
+        }
 
 
         p {

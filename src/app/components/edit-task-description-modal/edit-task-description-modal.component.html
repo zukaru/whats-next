@@ -1,0 +1,35 @@
+<div class="task-details__status__wrapper__item__controls">
+     <button class="button" (click)="this.isOpen = true"><i class="fa fa-pencil"></i></button> 
+ </div>
+
+
+ <section class="modal" *ngIf="isOpen" >
+    <div (click)="this.isOpen = false" class="modal__close">&#10005;</div>
+
+
+
+        <form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.onFormSubmit(f)" >
+
+        
+            <h2 class="form__heading">Edit Task Description</h2>
+    
+            <div class="form__group-textarea">
+                <label for="task_description" class="form__group-textarea__label">Task Description <span class="red">*</span></label>
+                <textarea
+                    #task_description="ngModel"
+                    name="task_description"
+                    ngModel="{{this.textAreaVal}}"
+                    required 
+                    autocomplete="new-password" 
+                    type="text" 
+                class="form__group-textarea__textarea"></textarea>
+                <p class="error" *ngIf="task_description.invalid && (task_description.dirty || task_description.touched)">Please fill with a description of the task.</p>
+            </div>
+            
+            <button [disabled]="f.invalid || f.submitted" type="submit" class="form__btn" >Submit</button>
+            <p *ngIf="taskSubmitted">Task Entry Submitted, cleaning form.</p>
+        
+        </form>
+  
+    
+</section>
