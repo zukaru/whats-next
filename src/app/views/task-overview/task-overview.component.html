@@ -20,7 +20,7 @@
     </div>
     <p 
         class="task-overview__no-tasks"
-        *ngIf="(this.db.taskList?.length == 0) && showNoTaskMsg && !this.db.hasTasks"
+        *ngIf="showNoTaskMsg"
         routerLink="/create-task"
         >Psst... you have no tasks yet. Follow this link to create your first task.</p>
         <app-spinner *ngIf="this.db.hasTasks === undefined" class="task-overview__spinner"></app-spinner>

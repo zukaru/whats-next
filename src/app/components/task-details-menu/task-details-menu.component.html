@@ -3,6 +3,7 @@
     <ul *ngIf="this.isOpen" class="menu__list">
         <!-- <li [routerLink]="['/task-details', this.docID, 'edit']" class="menu__list__item">Edit Task</li> -->
         <li (click)="this.closeStatusModal = !this.closeStatusModal" class="menu__list__item">Add Update</li>
+        <li (click)="this.hideTask(this.docID)" class="menu__list__item">Hide Task</li>
         <li (click)="this.delete(this.docID)" class="menu__list__item">Delete Task</li>
     </ul>
 </menu>

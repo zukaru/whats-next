@@ -69,6 +69,17 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
     )
   }
 
+  hideTask(docID: string) {
+    let conf = confirm('Are you sure you want to hide this task?');
+    if (!conf) { return }
+    this.afs.doc(`tasks/${docID}`)
+    .update({hideTask: true})
+    .then(() => {
+      alert('Task hidden successfully');
+      history.back();
+    })
+  }
+
   addUpdate(event, docID: string) {
 
     event.date = new Date().toLocaleDateString()

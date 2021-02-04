@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { from, merge, Subscription } from 'rxjs';
-import { concatMap, mergeAll } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { TaskModel } from 'src/app/models/task-model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -37,7 +36,17 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     // and update index of current task detail
     this.hasTaskObSub = this.db.hasTasksObs$
     .subscribe(
-      v =>  v === false ? null : this.taskIndex = this.db.getIndexByID(this.docID).toString()
+      v =>  {
+        
+        if(v !== true) {
+          return
+        }
+        let index = this.db.getIndexByID(this.docID).toString();
+        if(index === '-1') {
+          history.back()
+        }
+        v !== true ? null : this.taskIndex = index;
+      }
     )
 
   }

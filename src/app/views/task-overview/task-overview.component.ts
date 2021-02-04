@@ -50,14 +50,18 @@ export class TaskOverviewComponent implements OnInit {
     this.db.hasTasksObs$
     .subscribe((v) => {
       if(v) {
-        this.showNoTaskMsg = false;
         this.sortedTaskList = [...this.db.taskList];
         this.sortedTaskList.sort((a,b) => {
           let dateA = new Date(a.dateCreated as string).getTime();
           let dateB = new Date(b.dateCreated as string).getTime();
           return dateB - dateA;
-        })  
-      } else { this.showNoTaskMsg = true}
+        }) 
+        this.showNoTaskMsg = false;
+      } 
+
+      if(v === false) {
+        this.showNoTaskMsg = true;
+      }
       
     })
   }

@@ -12,10 +12,10 @@ export class DatabaseService {
   //  Used for UI features to determine if there are Tasks
   hasTasks: boolean | undefined = undefined;
 
-  hasTasksObs$ = new BehaviorSubject(false);
+  hasTasksObs$ = new BehaviorSubject<boolean | undefined>(undefined);
 
 
-  taskList: TaskModel[] ;
+  taskList: TaskModel[];
   activeEntryId: string;
   temporaryEntry: any;
 
@@ -27,7 +27,11 @@ export class DatabaseService {
 
    fetchEntries() {
     return this.afs.collection<TaskModel>('tasks', ref => ref
-    .where('userID', '==', this.persist.getPersist(this.persist.USER_ID)))
+    .where('userID', '==', this.persist.getPersist(this.persist.USER_ID))
+    .where('hideTask', '!=', true)
+    //Query last index of taskUpdates array status does not equal 'hide'
+    )
+    
     .snapshotChanges()
   }
 

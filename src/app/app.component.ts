@@ -52,7 +52,7 @@ export class AppComponent implements OnInit{
             this.db.hasTasks = res.length > 0;
 
             // Emits true to subscribers of hasTasksObs$ (BehaviourSubject) property of DataService
-            if(this.db.hasTasks) {
+            if(this.db.taskList !== undefined) {
               this.db.hasTasksObs$.next(true);
             }
           }
