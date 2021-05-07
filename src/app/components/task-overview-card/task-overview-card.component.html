@@ -4,10 +4,10 @@
         <p class="card__contact__phone">{{ phone | mask: '(000) 000-0000' }}</p>
     </div>
 
-    <div class="card__task-info">
-        <p class="card__description">{{ description }}</p>
+   
+     <div class="card__whois">
+        <p class="card__whois__name">{{ whoIs | uppercase }}</p>
     </div>
-    
     <div class="card__pricing">
         <p *ngIf="deadline" class="card__pricing__deadline"><span>{{ deadline | date: 'EEEE, MMMM d' }}</span></p>
         <p *ngIf="!deadline" class="card__pricing__deadline"><span>Not Listed</span></p>
@@ -16,7 +16,7 @@
         <p *ngIf="price === '' " class="card__pricing__due"><span>Not Listed</span></p>
         <!-- <p *ngIf="amtDue === 'Paid In Full' " class="card__pricing__due"><span>🤑Paid In Full🤑</span></p> -->
     </div>
-    <div class="card__whois">
-        <p class="card__whois__name">{{ whoIs | uppercase }}</p>
+    <div class="card__task-info">
+        <p class="card__description">{{ description }}</p>
     </div>
 </section>

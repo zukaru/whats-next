@@ -18,6 +18,7 @@ export interface TaskModel{
     price: string;
     userID: string;
     docID: string;
+    hideTask: boolean;
     amountDue?: string;
 
 }

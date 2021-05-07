@@ -1,12 +1,36 @@
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-background-primary);
+
+}
+
+
+
 .create-task {
+    box-shadow: 0 0 5px black;
     padding-top: 2.5em;
     font-size: 4em;
     background: var(--color-background-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    app-form {
+        width: 90%;
+    }
 
 
     &__heading {
         color: var(--color-secondary);
         margin: 0;
+        margin-left: 2em;
         padding: 2em 0 2em 0.5em;
+        align-self: flex-start;
     }
 }

@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PersistService } from 'src/app/services/persist.service';
 import { TaskModel } from '../../models/task-model';
-import  firebase from 'firebase/app';
 
 @Component({
   selector: 'app-form',
@@ -48,6 +47,7 @@ export class FormComponent implements OnInit  {
       phoneNums: f.value.phoneNums,
       description: f.value.task_description,
       price: f.value.price,
+      hideTask: false,
       
       dateCreated: new Date().toISOString(),
       email: f.value.email,
@@ -68,6 +68,7 @@ export class FormComponent implements OnInit  {
         this.afs.collection('tasks')
         .add(task)
         .then((docRef) => {
+          console.log(docRef)
 
           this.taskSubmitted = true;
           setTimeout(() => {

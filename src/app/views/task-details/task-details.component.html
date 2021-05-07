@@ -54,7 +54,7 @@
         </p>
 
         <!-- PAID -->
-        <p *ngIf="this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' &&
+        <!-- <p *ngIf="this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' &&
                   this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' ">
             <span class="label">Total Paid</span>
             {{ (this.db.taskList[this.taskIndex].price - this.db.taskList[this.taskIndex].amountDue | mask: 'separator' : ',') ||
@@ -67,7 +67,7 @@
         <p *ngIf="this.db.taskList[this.taskIndex].amountDue === 'Not Listed'">
             <span class="label">Total Paid</span>
             {{ 'NOT LISTED'}}
-        </p>
+        </p> -->
 
 
         <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>

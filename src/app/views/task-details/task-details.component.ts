@@ -45,7 +45,9 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
         if(index === '-1') {
           history.back()
         }
-        v !== true ? null : this.taskIndex = index;
+        
+        this.taskIndex = index;
+        console.log(this.db.taskList[this.taskIndex]);
       }
     )
 
