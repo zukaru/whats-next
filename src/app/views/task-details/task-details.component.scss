@@ -67,8 +67,9 @@
 
         app-task-details-menu {
             position: absolute;
-            bottom: 2em;
+            bottom: 4em;
             left: -2em;
+            z-index: 100;
         }
     }
 

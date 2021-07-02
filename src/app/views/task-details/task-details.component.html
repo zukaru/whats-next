@@ -3,23 +3,23 @@
     <div class="task-details__contact">
 
         <!-- FIRST NAME -->
-        <p (dblclick)="updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >
+        <p (dblclick)="this.db.updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >
             <span class="label">First Name <i class="fa fa-pencil"></i></span> 
             {{ this.db.taskList[this.taskIndex].fName | titlecase }}
         </p>
 
         <!-- LAST NAME -->
-        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+        <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
             *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].lName | titlecase }}
         </p>
-        <p (dblclick)="updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+        <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
             *ngIf="!(this.db.taskList[this.taskIndex].lName)"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             NOT LISTED
         </p>
         
         <!-- PHONE -->
-        <p  (dblclick)="updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].docID)">
+        <p  (dblclick)="this.db.updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].docID)">
             <span class="label">Phone <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].phoneNums | mask: '(000) 000-0000' ||
             this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' ||
@@ -27,20 +27,20 @@
         </p>
 
         <!-- EMAIL -->
-        <p (dblclick)="updateField('Email', 'email', this.db.taskList[this.taskIndex].docID)">
+        <p (dblclick)="this.db.updateField('Email', 'email', this.db.taskList[this.taskIndex].docID)">
             <span class="label">Email <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].email || 'NOT LISTED' }}
         </p>
 
         <!-- ADDRESS -->
-        <p (dblclick)="updateField('Address', 'address', this.db.taskList[this.taskIndex].docID)">
+        <p (dblclick)="this.db.updateField('Address', 'address', this.db.taskList[this.taskIndex].docID)">
             <span class="label">Address <i class="fa fa-pencil"></i></span> 
             {{ this.db.taskList[this.taskIndex].address || 'NOT LISTED' }}
         </p>
 
 
         <!-- PRICE -->
-        <p (dblclick)="updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
+        <p (dblclick)="this.db.updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
             <span class="label">Price No Tax <i class="fa fa-pencil"> </i> </span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
              'NOT LISTED'}}
         </p>
@@ -51,6 +51,12 @@
                   this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' ">
             <span class="label">Sales Tax</span>
             {{ (this.db.taskList[this.taskIndex].price * 0.06) | mask: 'separator.2':','}}
+        </p>
+
+         <!-- TOTAL PAYMENTS -->
+         <p *ngIf="this.totalPayments">
+          <span class="label">Total Payments</span>
+         {{ this.totalPayments | mask: 'separator.2':','}}
         </p>
 
         <!-- PAID -->
@@ -70,7 +76,7 @@
         </p> -->
 
 
-        <app-task-details-menu class="task-details__contact__menu">&hellip;</app-task-details-menu>
+        <app-task-details-menu [isHidden]="this.db.taskList[this.taskIndex].hideTask" class="task-details__contact__menu">&hellip;</app-task-details-menu>
     </div>
     
     <div class="task-details__info">
@@ -92,7 +98,7 @@
              </div>
             
             <h3>Update No. {{ i + 1 }}</h3>
-            <p><span class="label">Updated On </span> {{update.date |date: 'fullDate'}}</p>
+            <p><span class="label">Updated On </span> {{update.date | date: 'fullDate'}}</p>
             <p><span class="label">Status </span>  {{update.status }}</p>
             <p *ngIf="update.notes"><span class="label">Notes</span> {{update.notes}}</p>
             <p *ngIf="update.deadline"><span class="label">Deadline Is</span> {{update.deadline | date: 'fullDate'}}</p>

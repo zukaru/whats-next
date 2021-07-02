@@ -15,6 +15,7 @@ export class TaskOverviewCardComponent implements OnInit {
   @Input() phone = '(555) 555-5555';
   @Input() status = '✔️ Complete';
   @Input() whoIs: string;
+  @Input() hidden: boolean;
 
   constructor( ) { }
 

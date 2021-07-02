@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TaskModel } from '../models/task-model';
 import { PersistService } from './persist.service';
 
@@ -9,10 +9,15 @@ import { PersistService } from './persist.service';
 })
 export class DatabaseService {
 
+  // Path for querying users
+  USER_ID = 'userID';
+
   //  Used for UI features to determine if there are Tasks
   hasTasks: boolean | undefined = undefined;
 
   hasTasksObs$ = new BehaviorSubject<boolean | undefined>(undefined);
+
+  taskListObs$: Observable<[TaskModel]>
 
 
   taskList: TaskModel[];
@@ -27,8 +32,7 @@ export class DatabaseService {
 
    fetchEntries() {
     return this.afs.collection<TaskModel>('tasks', ref => ref
-    .where('userID', '==', this.persist.getPersist(this.persist.USER_ID))
-    .where('hideTask', '!=', true)
+    .where(this.USER_ID, '==', this.persist.getPersist(this.persist.USER_ID))
     //Query last index of taskUpdates array status does not equal 'hide'
     )
     
@@ -41,13 +45,13 @@ export class DatabaseService {
 
 
   getTaskByID(id: string): TaskModel {
-    return this.taskList.find(el => {
-      return el.docID === id;
+    return this.taskList.find(task => {
+      return task.docID === id;
     });
   }
 
 
-  getTotalPayments(payments) {
+  getTotalPayments(payments): number {
     return payments.reduce((acc: number, val) => {
       return acc + Number(val.payment || 0);
     }, 0)
@@ -76,6 +80,20 @@ export class DatabaseService {
       
     }
     
+  }
+
+  updateField(name: string, field: string, id: string) {
+    let newInfo = prompt(`Please update the ${name}`);
+
+    if(!newInfo) {
+      return
+    }
+
+    this.afs.doc(`tasks/${id}`)
+    .update({[field]: `${newInfo}`})
+    .then((v) => {
+      alert(`Successfully updated ${name}.`)
+    })
   }
 
 }

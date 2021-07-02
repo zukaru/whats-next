@@ -2,6 +2,9 @@
     <div class="card__contact">
         <p class="card__contact__name">{{ fName | titlecase}} {{ lName | titlecase }}</p>
         <p class="card__contact__phone">{{ phone | mask: '(000) 000-0000' }}</p>
+        <p *ngIf="hidden" class="card__contact__phone" style="opacity: 0.7; color: #fd8181">Inactive Task</p>
+        <p *ngIf="!hidden" class="card__contact__phone" style="opacity: 0.7; color: lightgreen">Active Task</p>
+
     </div>
 
    
@@ -19,4 +22,4 @@
     <div class="card__task-info">
         <p class="card__description">{{ description }}</p>
     </div>
-</section>
+</section>`

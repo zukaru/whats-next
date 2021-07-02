@@ -8,10 +8,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./status-form-modal.component.scss']
 })
 export class StatusFormModalComponent implements OnInit, OnDestroy {
-  @Input() isOpen = false;
+  @Input() isOpen = true;
   taskSubmitted = false;
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() submitForm = new EventEmitter();
+  @Output() filesAdded = new EventEmitter<File | FileList>();
+
 
   constructor(
     private renderer: Renderer2,
@@ -35,6 +37,10 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
 
   onFormSubmit(e: NgForm) {
     this.submitForm.emit(e.value);
+  }
+
+  onFileChange(files: FileList) {
+    this.filesAdded.emit(files);
   }
 
 

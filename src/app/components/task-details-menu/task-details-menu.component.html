@@ -1,10 +1,16 @@
 <menu class="menu">
     <button (click)="toggleMenu()" class="menu__toggle">&hellip;</button>
     <ul *ngIf="this.isOpen" class="menu__list">
-        <!-- <li [routerLink]="['/task-details', this.docID, 'edit']" class="menu__list__item">Edit Task</li> -->
         <li (click)="this.closeStatusModal = !this.closeStatusModal" class="menu__list__item">Add Update</li>
-        <li (click)="this.hideTask(this.docID)" class="menu__list__item">Hide Task</li>
+        <li *ngIf="!this.isHidden" (click)="this.hideTask(this.docID)" class="menu__list__item">Hide Task</li>
+        <li *ngIf="this.isHidden" (click)="this.showTask(this.docID)" class="menu__list__item">Show Task</li>
+        <li [routerLink]="['/task-details', this.docID, 'images']" class="menu__list__item">View Images</li>
         <li (click)="this.delete(this.docID)" class="menu__list__item">Delete Task</li>
     </ul>
 </menu>
-<app-status-form-modal *ngIf="this.closeStatusModal" (submitForm)="this.addUpdate($event, docID)" (closeModal)="this.closeStatusModal = !this.closeStatusModal"></app-status-form-modal>
+<app-status-form-modal 
+*ngIf="this.closeStatusModal"
+(filesAdded)="onFilesAdded($event)"
+(submitForm)="this.addUpdate($event, docID)"
+(closeModal)="this.closeStatusModal = !this.closeStatusModal"
+></app-status-form-modal>

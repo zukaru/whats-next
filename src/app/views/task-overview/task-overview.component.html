@@ -15,6 +15,7 @@
             [status]="this.task.statusUpdates[0].status"
             [whoIs]="this.task.statusUpdates[0].whoIs"
             [price]="task.price"
+            [hidden]="task.hideTask"
             *ngFor="let task of this.queriedTaskList"
         ></app-task-overview-card>
     </div>
@@ -33,6 +34,7 @@
         [fName]="task.fName"
         [lName]="task.lName"
         [phone]="task.phoneNums"
+        [hidden]="task.hideTask"
         [deadline]="task.statusUpdates[task.statusUpdates.length - 1].deadline"
         [status]="task.statusUpdates[task.statusUpdates.length - 1].status"
         [whoIs]="task.statusUpdates[task.statusUpdates.length - 1].whoIs"

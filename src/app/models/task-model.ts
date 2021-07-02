@@ -1,3 +1,5 @@
+import { TaskUpdate } from "./task-update";
+
 export interface TaskModel{
     fName: string;
     lName: string;
@@ -5,15 +7,7 @@ export interface TaskModel{
     description: string;
     dateCreated: object | string;
     email: string;
-    statusUpdates: [
-        {
-            date: string;
-            notes: string;
-            status: string;
-            whoIs: string;
-            deadline: string;
-            payment: string;
-        }];
+    statusUpdates: [TaskUpdate];
     address: string;
     price: string;
     userID: string;

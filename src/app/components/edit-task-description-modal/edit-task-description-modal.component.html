@@ -25,6 +25,8 @@
                 class="form__group-textarea__textarea"></textarea>
                 <p class="error" *ngIf="task_description.invalid && (task_description.dirty || task_description.touched)">Please fill with a description of the task.</p>
             </div>
+
+            
             
             <button [disabled]="f.invalid || f.submitted" type="submit" class="form__btn" >Submit</button>
             <p *ngIf="taskSubmitted">Task Entry Submitted, cleaning form.</p>

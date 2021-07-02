@@ -14,6 +14,7 @@ import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FormComponent } from './components/form/form.component';
 import { TaskOverviewCardComponent } from './components/task-overview-card/task-overview-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -24,6 +25,7 @@ import { TaskDetailsMenuComponent } from './components/task-details-menu/task-de
 import { AnimateOnViewDirective } from './directives/animate-on-view.directive';
 import { StatusFormModalComponent } from './components/status-form-modal/status-form-modal.component';
 import { EditTaskDescriptionModalComponent } from './components/edit-task-description-modal/edit-task-description-modal.component';
+import { ImagesComponent } from './views/images/images.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -58,7 +60,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TaskDetailsMenuComponent,
     AnimateOnViewDirective,
     StatusFormModalComponent,
-    EditTaskDescriptionModalComponent
+    EditTaskDescriptionModalComponent,
+    ImagesComponent
     
   ],
   imports: [
@@ -67,6 +70,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     NgxMaskModule.forRoot(),
   ],

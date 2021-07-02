@@ -59,8 +59,8 @@
                     <option value="🛠️ Work Started">🛠️ Work Started</option>
                     <option value="✔️ Complete">✔️ Complete</option>
                     <option value="🏁 Paid, Picked up / Delivered">🏁 Paid, Picked up / Delivered</option>
+                    <option value="📷 Image(s) Added">📷 Image(s) Added</option>
                     <option value="Custom (describe in status notes)">Custom (describe in status notes)</option>
-                    <option value="Hide Task">🙈 Hide Task</option>
                 </select>
                 <p class="error" *ngIf="status.invalid && (status.dirty || status.touched)">Please select a status.</p>
             </div>
@@ -84,6 +84,22 @@
                     ngModel
                     autocomplete="new-password" 
                     type="date" 
+                class="form__group__input">
+            </div>
+
+
+            <div class="form__group" style="border: none;">
+                <label for="image_upload" class="form__group__label">Upload Images</label>
+                <input
+                (change)="this.onFileChange($event.target.files)"
+                style="margin-top: 1em;"
+                    #image_upload
+                    name="image_upload"
+                    ngModel
+                    autocomplete="new-password" 
+                    type="file"
+                    accept="image/any"
+                    multiple="yes"
                 class="form__group__input">
             </div>
             

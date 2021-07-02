@@ -43,7 +43,7 @@ export class AppComponent implements OnInit{
                 // task.amountDue = amountDue;
 
                 task.docID = id;
-                console.log(task.dateCreated)
+                // console.log(task.dateCreated)
                 return task;
               }
             )

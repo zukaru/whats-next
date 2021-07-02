@@ -17,6 +17,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   taskIndex: string;
   amountDue: string;
   hasTaskObSub: Subscription;
+  totalPayments: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,6 +48,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
         }
         
         this.taskIndex = index;
+        this.totalPayments = this.db.getTotalPayments(this.db.taskList[this.taskIndex].statusUpdates)
         console.log(this.db.taskList[this.taskIndex]);
       }
     )
@@ -61,21 +63,19 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     this.isopen = false;
   }
 
-  updateField(name: string, field: string, id: string) {
-    let newInfo = prompt(`Please update the ${name}`);
+  // updateField(name: string, field: string, id: string) {
+  //   let newInfo = prompt(`Please update the ${name}`);
 
-    if(!newInfo) {
-      return
-    }
+  //   if(!newInfo) {
+  //     return
+  //   }
 
-    this.afs.doc(`tasks/${id}`)
-    .update({[field]: `${newInfo}`})
-    .then((v) => {
-      alert(`Successfully updated ${name}.`)
-    })
-
-
-  }
+  //   this.afs.doc(`tasks/${id}`)
+  //   .update({[field]: `${newInfo}`})
+  //   .then((v) => {
+  //     alert(`Successfully updated ${name}.`)
+  //   })
+  // }
 
   deleteStatusUpdate(docID: string, index: number, length) {
     // get task document
