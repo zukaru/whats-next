@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TaskModel } from 'src/app/models/task-model';
+import { CloudStorageService } from 'src/app/services/cloud-storage.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     public db: DatabaseService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private cs: CloudStorageService
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +59,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.hasTaskObSub.unsubscribe();
+    this.cs.files = [];
   }
 
   closeModal() {

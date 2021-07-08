@@ -26,6 +26,7 @@ import { AnimateOnViewDirective } from './directives/animate-on-view.directive';
 import { StatusFormModalComponent } from './components/status-form-modal/status-form-modal.component';
 import { EditTaskDescriptionModalComponent } from './components/edit-task-description-modal/edit-task-description-modal.component';
 import { ImagesComponent } from './views/images/images.component';
+import { AddImagesModalComponent } from './components/add-images-modal/add-images-modal.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -61,7 +62,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AnimateOnViewDirective,
     StatusFormModalComponent,
     EditTaskDescriptionModalComponent,
-    ImagesComponent
+    ImagesComponent,
+    AddImagesModalComponent
     
   ],
   imports: [

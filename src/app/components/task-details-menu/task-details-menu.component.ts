@@ -21,6 +21,7 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
   toggleMenuSub: Subscription;
   isOpen = false;
   closeStatusModal = false;
+  addImageModalIsOpen = false;
   @Input() isHidden: boolean;
 
   constructor(
@@ -108,7 +109,17 @@ export class TaskDetailsMenuComponent implements OnInit, OnDestroy {
       this.toggleMenu();
     })
 
-    this.cs.addNewMedia(this.cs.files, this.docID);
+    
+  }
+
+  addPhotos(docID: string) {
+    if(this.cs.files.length === 0){
+      return
+    }
+    this.cs.addNewMedia(this.cs.files, this.docID)
+    .then(_=> this.cs.files = [])
+    .then(_=> alert('Image(s) Successfully Added!'))
+    .catch(_=> alert('Something went wrong, please try again.'))
   }
 
   onFilesAdded(files: FileList) {

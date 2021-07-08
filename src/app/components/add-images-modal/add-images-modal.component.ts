@@ -3,11 +3,12 @@ import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, Rend
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-status-form-modal',
-  templateUrl: './status-form-modal.component.html',
-  styleUrls: ['./status-form-modal.component.scss']
+  selector: 'app-add-images-modal',
+  templateUrl: './add-images-modal.component.html',
+  styleUrls: ['./add-images-modal.component.scss']
 })
-export class StatusFormModalComponent implements OnInit, OnDestroy {
+export class AddImagesModalComponent implements OnInit, OnDestroy {
+
   taskSubmitted = false;
   @Input() isOpen = true;
   @Output() closeModal = new EventEmitter<boolean>();
@@ -44,6 +45,5 @@ export class StatusFormModalComponent implements OnInit, OnDestroy {
   onFileChange(files: FileList) {
     this.filesAdded.emit(files);
   }
-
 
 }

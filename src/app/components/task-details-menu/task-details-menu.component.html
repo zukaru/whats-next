@@ -2,6 +2,7 @@
     <button (click)="toggleMenu()" class="menu__toggle">&hellip;</button>
     <ul *ngIf="this.isOpen" class="menu__list">
         <li (click)="this.closeStatusModal = !this.closeStatusModal" class="menu__list__item">Add Update</li>
+        <li (click)="this.addImageModalIsOpen = !this.addImageModalIsOpen" class="menu__list__item">Add Image(s)</li>
         <li *ngIf="!this.isHidden" (click)="this.hideTask(this.docID)" class="menu__list__item">Hide Task</li>
         <li *ngIf="this.isHidden" (click)="this.showTask(this.docID)" class="menu__list__item">Show Task</li>
         <li [routerLink]="['/task-details', this.docID, 'images']" class="menu__list__item">View Images</li>
@@ -14,3 +15,12 @@
 (submitForm)="this.addUpdate($event, docID)"
 (closeModal)="this.closeStatusModal = !this.closeStatusModal"
 ></app-status-form-modal>
+
+
+
+<app-add-images-modal
+*ngIf="this.addImageModalIsOpen"
+(closeModal)="this.addImageModalIsOpen = false"
+(filesAdded)="onFilesAdded($event)"
+(submitForm)="this.addPhotos(docID)"
+></app-add-images-modal>

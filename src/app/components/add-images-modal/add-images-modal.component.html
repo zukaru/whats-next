@@ -1,0 +1,34 @@
+<section class="modal" >
+    <div (click)="this.emitCloseModal()" class="modal__close">&#10005;</div>
+
+
+
+        <form  autocomplete="false" class="form" #f="ngForm" (ngSubmit)="this.onFormSubmit(f)" >
+
+        
+    
+            
+
+
+            <div class="form__group" style="border: none;">
+                <label for="image_upload" class="form__group__label">Upload Images</label>
+                <input
+                (change)="this.onFileChange($event.target.files)"
+                style="margin-top: 1em;"
+                    #image_upload
+                    name="image_upload"
+                    ngModel
+                    autocomplete="new-password" 
+                    type="file"
+                    accept="image/any"
+                    multiple="yes"
+                class="form__group__input">
+            </div>
+            
+            <button type="submit" class="form__btn" >Submit</button>
+            <p *ngIf="taskSubmitted">Task Entry Submitted, cleaning form.</p> 
+        
+        </form>
+  
+    
+</section>
