@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
     const userID = event.authResult.user.uid;
     this.persist.setPersist(this.persist.USER_ID, userID);
 
-    this.db.fetchEntries()
+    this.db.fetchTasks()
       .pipe(
         map(
           actions => actions.map(a => a.payload.doc)

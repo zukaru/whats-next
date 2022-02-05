@@ -23,6 +23,7 @@
     "firebase": "^8.0.1",
     "firebaseui": "^4.7.1",
     "firebaseui-angular": "^5.1.0",
+    "mock-firebase-ts": "^2.6.2",
     "ngx-mask": "^11.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

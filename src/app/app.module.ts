@@ -10,7 +10,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { TaskOverviewComponent } from './views/task-overview/task-overview.component';
 import { CreateTaskComponent } from './views/create-task/create-task.component';
-import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
+import { FirebaseUIModule } from 'firebaseui-angular';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -27,22 +27,10 @@ import { StatusFormModalComponent } from './components/status-form-modal/status-
 import { EditTaskDescriptionModalComponent } from './components/edit-task-description-modal/edit-task-description-modal.component';
 import { ImagesComponent } from './views/images/images.component';
 import { AddImagesModalComponent } from './components/add-images-modal/add-images-modal.component';
+import { firebaseUiAuthConfig } from './firebaseconfig'
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
-const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInFlow: 'popup',
-  signInOptions: [
-    {
-      requireDisplayName: false,
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-    },
-    firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-  ],
-  tosUrl: '<your-tos-link>',
-  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
-  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
-};
 
 @NgModule({
   declarations: [

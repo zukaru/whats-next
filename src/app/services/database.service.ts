@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TaskModel } from '../models/task-model';
+import { TaskUpdate } from '../models/task-update';
 import { PersistService } from './persist.service';
 
 @Injectable({
@@ -30,12 +32,11 @@ export class DatabaseService {
   ) { }
 
 
-   fetchEntries() {
+   fetchTasks() {
     return this.afs.collection<TaskModel>('tasks', ref => ref
     .where(this.USER_ID, '==', this.persist.getPersist(this.persist.USER_ID))
     //Query last index of taskUpdates array status does not equal 'hide'
     )
-    
     .snapshotChanges()
   }
 
@@ -51,9 +52,9 @@ export class DatabaseService {
   }
 
 
-  getTotalPayments(payments): number {
-    return payments.reduce((acc: number, val) => {
-      return acc + Number(val.payment || 0);
+  getTotalPayments(payments: TaskUpdate[]): number {
+    return payments.reduce((acc: number, taskUpdate) => {
+      return acc + Number(taskUpdate.payment || 0);
     }, 0)
   }
 
