@@ -1,6 +1,6 @@
 .task-details {
 
-    
+
     width: 100%;
     a {
         color: inherit;
@@ -27,20 +27,20 @@
         align-items: stretch;
         justify-content: center;
         color: var(--color-background-secondary);
-        
+
         position: relative;
         padding: 10em 0;
         padding-top: 17em;
         width: 100%;
         background: linear-gradient(
             to bottom right,
-            var(--color-primary),
-            var(--color-secondary-light),
-        );
+            rgba(0,0,0,.3),
+            rgba(0,0,0,.3),
+        ), url('../../../assets/images/flame_background.jpg'), ;
 
         p {
-            
-            
+
+
             text-align: center;
             width: 10em;
             height: 2em;
@@ -65,24 +65,35 @@
             }
         }
 
+
+
         app-task-details-menu {
             position: absolute;
             bottom: 4em;
-            left: -2em;
-            z-index: 100;
+            left: -6.5em;
+            z-index: 10;
         }
     }
 
 
 
     &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
         width: 100%;
         position: relative;
-        
+
         background: var(--color-background-secondary);
         color: var(--color-background-quarternary);
         margin: 0;
-        padding: 10em 0;
+        border-bottom: 1px dotted var(--color-background-quarternary);
+
+
+
+        app-button-toggle {
+            margin-right: 4em;
+        }
 
 
 
@@ -94,12 +105,11 @@
 
 
         p {
-            padding: 0.5em 10%;
+            padding: 1.5em 1em;
             color: var(--color-text-md);
-            font-size: 20px;
-            letter-spacing: 1px;
+            font-size: 18px;
+            // letter-spacing: 1px;
             font-weight: normal;
-            line-height: 2;
             white-space: pre-wrap;
 
             &::first-letter {
@@ -134,11 +144,11 @@
             // border-left: solid 3px var(--color-secondary-lighter);
 
             &:not(:last-child) {
-                
+
                 margin-bottom: 10px;
             }
 
-            
+
 
             text-align: right;
 
@@ -152,7 +162,7 @@
         &__wrapper {
             display: flex;
             flex-direction: column-reverse;
-        
+
         &__item {
             width: 100%;
             position: relative;
@@ -175,7 +185,7 @@
                     border-radius: 4px;
                     font-size: 16px;
 
-                    
+
                 }
             }
         }}

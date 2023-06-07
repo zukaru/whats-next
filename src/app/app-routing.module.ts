@@ -11,9 +11,9 @@ import { TaskOverviewComponent } from './views/task-overview/task-overview.compo
 
 
 const routes: Routes = [
-  
+
   {
-    path: 'task-overview',
+    path: 'hoods',
     component: TaskOverviewComponent,
     canActivate: [IsLoggedInGuard]
   },
@@ -34,17 +34,17 @@ const routes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   {
-    path:'task-details/:docID',
+    path:'hoods/details/:docID',
     component: TaskDetailsComponent,
     canActivate: [IsLoggedInGuard]
   },
   {
-    path:'task-details/:docID/edit',
+    path:'hoods/details/:docID/edit',
     component: CreateTaskComponent,
     canActivate: [IsLoggedInGuard]
   },
   {
-    path:'task-details/:docID/images',
+    path:'hoods/details/:docID/reports',
     component: ImagesComponent,
     canActivate: [IsLoggedInGuard]
   },

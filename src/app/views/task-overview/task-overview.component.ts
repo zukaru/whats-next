@@ -12,11 +12,13 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class TaskOverviewComponent implements OnInit {
   fetchEntrySub: Subscription;
   sortedTaskList: TaskModel[];
+  staticTaskList: TaskModel[];
   queriedTaskList: TaskModel[] | undefined;
   hideSortedTaskList = false;
   querying = false;
   showNoTaskMsg = false;
-  
+  localTaskList: [];
+
 
   constructor(
     public db: DatabaseService,
@@ -39,33 +41,37 @@ export class TaskOverviewComponent implements OnInit {
        return (
         `${el.fName} ${el.lName}`.toLowerCase().includes(query.toLowerCase())  ||
         `${el.lName} ${el.fName}`.toLowerCase().includes(query.toLowerCase())  ||
-        el.phoneNums.includes(query) || 
+        el.phoneNums.includes(query) ||
         el.description.toLowerCase().includes(query.toLowerCase())
        )
       }
     )
-    
+
     this.querying = false;
   }
 
   ngOnInit(): void {
     console.log(this.route.url)
-    // if(this.route.url === '/task-overview') 
+    console.log(typeof this.db.taskList)
+    if(this.route.url === '/hoods')
       this.db.hasTasksObs$
+      .pipe(
+      )
       .subscribe((v) => {
         if(v) {
-          if(this.route.url === '/task-overview') {
+          if(this.route.url === '/hoods') {
             this.sortedTaskList = [...this.db.taskList];
+            this.staticTaskList = [...this.db.taskList];
             this.sortedTaskList = this.sortedTaskList.filter(task => {
               if (task.hideTask === false) {
                 return task;
-              }  
+              }
             })
           this.sortedTaskList.sort((a,b) => {
             let dateA = new Date(a.dateCreated as string).getTime();
             let dateB = new Date(b.dateCreated as string).getTime();
             return dateB - dateA;
-          }) 
+          })
           }
           if(this.route.url === '/hidden-tasks') {
             this.sortedTaskList = [...this.db.taskList];
@@ -73,19 +79,19 @@ export class TaskOverviewComponent implements OnInit {
               let dateA = new Date(a.dateCreated as string).getTime();
               let dateB = new Date(b.dateCreated as string).getTime();
               return dateB - dateA;
-            }) 
+            })
           }
-          
+
           this.showNoTaskMsg = false;
-        } 
+        }
 
         if(v === false) {
           this.showNoTaskMsg = true;
         }
-        
+
       })
 
-    
+
   }
 
 

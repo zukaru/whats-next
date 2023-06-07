@@ -17,7 +17,7 @@
     transform: scale(0.99);
     max-width: 100rem;
 
-    
+
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
@@ -51,7 +51,7 @@
             width: 80%;
         }
 
-        
+
     }
 
     &__task-info {
@@ -68,9 +68,9 @@
         }
     }
 
-    
 
-   
+
+
 
     &__pricing {
         position: relative;
@@ -82,7 +82,7 @@
         background-clip: padding-box;
         border-bottom: 3px solid transparent;
         max-height: 40%;
-        
+
 
         p {
             width: 95%;
@@ -98,7 +98,7 @@
         span {
             color: var(--color-secondary-dark);
         }
-        
+
 
         &::after {
             position: absolute;
@@ -110,9 +110,9 @@
             border-radius: 31px;
         }
 
-        
 
-        
+
+
 
         &__deadline {
             position: relative;
@@ -136,7 +136,7 @@
         &__status {
             position: relative;
             ::after {
-                content: 'STATUS';
+                content: 'LIGHTS';
                 position: absolute;
                 left: 1em;
                 top: 50%;
@@ -150,13 +150,13 @@
                 }
 
             }
-            
+
         }
 
         &__due {
             position: relative;
             ::after {
-                content: 'PRICE (Without Tax)';
+                content: 'FANS';
                 position: absolute;
                 left: 1em;
                 top: 50%;
@@ -174,6 +174,8 @@
     }
 
     &__whois {
+
+      background: var(--color-secondary);
 
 
         &__name {

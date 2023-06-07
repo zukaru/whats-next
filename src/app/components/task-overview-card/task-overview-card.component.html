@@ -1,25 +1,26 @@
 <section class="card" #self>
     <div class="card__contact">
-        <p class="card__contact__name">{{ fName | titlecase}} {{ lName | titlecase }}</p>
-        <p class="card__contact__phone">{{ phone | mask: '(000) 000-0000' }}</p>
-        <p *ngIf="hidden" class="card__contact__phone" style="opacity: 0.7; color: #fd8181">Inactive Task</p>
-        <p *ngIf="!hidden" class="card__contact__phone" style="opacity: 0.7; color: lightgreen">Active Task</p>
+        <p class="card__contact__name">{{ email | titlecase}}</p>
+        <!-- <p class="card__contact__phone">{{ phone | mask: '(000) 000-0000' }}</p> -->
+        <!-- <p *ngIf="hidden" class="card__contact__phone" style="opacity: 0.7; color: #fd8181">Inactive Task</p>
+        <p *ngIf="!hidden" class="card__contact__phone" style="opacity: 0.7; color: lightgreen">Active Task</p> -->
 
     </div>
 
-   
+
      <div class="card__whois">
-        <p class="card__whois__name">{{ whoIs | uppercase }}</p>
+        <!-- <p class="card__whois__name">{{ whoIs | uppercase }}</p> -->
     </div>
     <div class="card__pricing">
-        <p *ngIf="deadline" class="card__pricing__deadline"><span>{{ deadline | date: 'EEEE, MMMM d' }}</span></p>
-        <p *ngIf="!deadline" class="card__pricing__deadline"><span>Not Listed</span></p>
-        <p class="card__pricing__status"> <span>{{ status }}</span></p>
-        <p *ngIf="price !== '' && price !== 'Paid In Full'" class="card__pricing__due"><span>${{ (price | mask: 'separator' : ',')}}</span></p>
-        <p *ngIf="price === '' " class="card__pricing__due"><span>Not Listed</span></p>
+        <!-- <p *ngIf="deadline" class="card__pricing__deadline"><span>{{ deadline | date: 'EEEE, MMMM d' }}</span></p> -->
+        <!-- <p *ngIf="!deadline" class="card__pricing__deadline"><span>Not Listed</span></p> -->
+        <p class="card__pricing__status"> <span>{{ lights | inferOnOff}}</span></p>
+        <p class="card__pricing__due"> <span>{{ exhaust | inferOnOff }}</span></p>
+        <!-- <p *ngIf="price !== '' && price !== 'Paid In Full'" class="card__pricing__due"><span>${{ (price | mask: 'separator' : ',')}}</span></p> -->
+        <!-- <p *ngIf="price === '' " class="card__pricing__due"><span>Not Listed</span></p> -->
         <!-- <p *ngIf="amtDue === 'Paid In Full' " class="card__pricing__due"><span>🤑Paid In Full🤑</span></p> -->
     </div>
     <div class="card__task-info">
-        <p class="card__description">{{ description }}</p>
+        <!-- <p class="card__description">{{ description }}</p> -->
     </div>
 </section>`

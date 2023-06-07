@@ -38,16 +38,16 @@ export class CloudStorageService {
 
 
     files.forEach((file) => {
-      let imagesRef = storageRef.child(`images/${docID}/${file.name}`);
+      let imagesRef = storageRef.child(`reports/${docID}/${file.name}`);
 
       imagesRef.put(file).then(
         (snapshot) => {
-          
+
         }
       )
 
     })
-    
+
   }
 
 
@@ -57,7 +57,7 @@ export class CloudStorageService {
     let storage = this.firebase.storage();
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
-    let storageRef = storage.ref().child(`images/${docID}`);
+    let storageRef = storage.ref().child(`reports/${docID}`);
 
 
 
@@ -78,12 +78,12 @@ export class CloudStorageService {
     } catch(err) {
       alert('Something went wrong, please try again.')
     }
-    
+
     image.url = url;
     this.images.push(image);
     console.dir(image)
 
-   
+
   }
 
 
@@ -100,12 +100,12 @@ export class CloudStorageService {
       } catch(err) {
         alert('Something went wrong. Please try again.')
       }
-      
-   
+
+
       alert('Image was deleted');
       let index = this.images.findIndex((obj) => obj.fullPath === fullPath);
       this.images.splice(index, 1);
-      
+
     }
   }
 

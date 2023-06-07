@@ -15,12 +15,12 @@ nav {
       font-size: 10px;
     }
 
-    
 
-    
-    
+
+
+
     ul {
-      
+
       list-style-type:none;
       padding:0;
       margin:0;
@@ -28,9 +28,10 @@ nav {
       left:50%;
       top: 600%;
       transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+      -webkit-transition: transform 0.3s ease-in, opacity 0.3s ease-in;
       transform:translate(-50%, -50%);
-      
-    
+
+
       li {
         display: flex;
         transform:translateY(50px);
@@ -38,9 +39,9 @@ nav {
         justify-self: left;
         margin-top: 1.5em;
         padding: 1em 2em;
-        
 
-  
+
+
 
         span {
           color: transparent;
@@ -48,7 +49,7 @@ nav {
           margin-right: 1em;
           font-size: 0.8em;
         }
-        
+
         a {
           display:block;
           font-size:2em;
@@ -57,7 +58,7 @@ nav {
           text-align:center;
           color:var(--color-secondary-dark);
           font-weight:bold;
-          
+
           &:hover {
             // color:var(--color-secondary);
           }
@@ -79,7 +80,7 @@ nav {
   background: var(--color-background-secondary);
   cursor:pointer;
   box-shadow: 0 0px 5px var(--color-box-shadow);
-  
+
   .bar {
     width:15px;
     height:3px;
@@ -87,9 +88,10 @@ nav {
     padding: 0;
     background-color:var(--color-primary);
     transition: transform  0.3s ease-in-out, opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+    -webkit-transition: transform  0.3s ease-in-out, opacity 0.3s ease-in-out, width 0.3s ease-in-out;
     border-radius: 2px;
     transform: rotate(-35deg) translateY(-5px);
-    
+
     &:nth-child(2) {
       width:30px;
       background-color: var(--color-secondary-dark);
@@ -104,7 +106,7 @@ nav {
 
     ul {
       top:50%;
-      
+
       li {
         transform:translateY(0px);
         opacity:1;
@@ -112,13 +114,14 @@ nav {
         @for $i from 1 through 4 {
             $t: $i * 0.1;
             &:nth-child(#{$i}) {
-              transition:all 0.3s cubic-bezier(.6,0,.8,1.5) #{$t}s; 
+              transition:all 0.3s cubic-bezier(.6,0,.8,1.5) #{$t}s;
+              -webkit-transition:all 0.3s cubic-bezier(.6,0,.8,1.5) #{$t}s;
             }
           }
       }
     }
   }
-  
+
   &+label.toggle-btn {
 
     box-shadow: 0 0px 5px var(--color-box-shadow);
@@ -151,7 +154,7 @@ nav {
   color: var(--color-background-tertiary) !important;
   }
   span {
-    
+
     color: transparent;
     text-shadow: 0 0 0 var(--color-background-tertiary) !important;
   }

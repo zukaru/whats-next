@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,8 +15,8 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class TaskDetailsComponent implements OnInit, OnDestroy {
   isopen = false;
   taskDetails: TaskModel;
-  docID: string;
-  taskIndex: string;
+  id: string;
+  taskIndex: number;
   amountDue: string;
   hasTaskObSub: Subscription;
   totalPayments: number;
@@ -24,7 +25,8 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public db: DatabaseService,
     private afs: AngularFirestore,
-    private cs: CloudStorageService
+    private cs: CloudStorageService,
+    private rtdb: AngularFireDatabase
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
 
     // Synchronously get doc ID from params
     this.activatedRoute.params
-    .subscribe(v => this.docID = v.docID);
+    .subscribe(v => this.id = v.docID);
 
     // Asynchronously get notified when
     // taskList array is populated in Database Service
@@ -40,17 +42,14 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     this.hasTaskObSub = this.db.hasTasksObs$
     .subscribe(
       v =>  {
-        
+
         if(v !== true) {
           return
         }
-        let index = this.db.getIndexByID(this.docID).toString();
-        if(index === '-1') {
-          history.back()
-        }
-        
-        this.taskIndex = index;
-        this.totalPayments = this.db.getTotalPayments(this.db.taskList[this.taskIndex].statusUpdates)
+        let index = this.db.getIndexByID(this.id).toString();
+        console.log(index)
+
+        this.taskIndex = Number(index);
         console.log(this.db.taskList[this.taskIndex]);
       }
     )
@@ -83,7 +82,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
   deleteStatusUpdate(docID: string, index: number, length) {
     // get task document
     // remove selected update from statusUpdate array
-    // 
+    //
     let confirmDelete = false;
     confirmDelete = confirm(`You're about to delete status update NO. ${index + 1} `);
 
@@ -94,7 +93,7 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     statusUpdates.splice(index, 1);
 
 
-    this.afs.doc(`tasks/${docID}`)
+    this.afs.doc(`tasks/${this.id}`)
     .update({statusUpdates})
     .then(() => {
       alert('Successfully deleted status!')
@@ -107,6 +106,14 @@ export class TaskDetailsComponent implements OnInit, OnDestroy {
     .then((v) => {
       alert(`Successfully updated Task Description.`)
     })
+  }
+
+  updateDeviceStatus(device: string, status: number) {
+    let newStatus = status === 0 ? 1 : 0;
+    this.rtdb.database.ref(`users/${this.id}`)
+    .update({[device]: newStatus})
+    .then(v => alert(`Updated ${device} successfully`))
+
   }
 
 }

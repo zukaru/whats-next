@@ -1,63 +1,50 @@
-<section *ngIf="this.db.taskList" class="task-details">
-    
+<section *ngIf="this.db.hasTasks" class="task-details">
+
     <div class="task-details__contact">
 
         <!-- FIRST NAME -->
-        <p (dblclick)="this.db.updateField('First Name', 'fName', this.db.taskList[this.taskIndex].docID)" >
-            <span class="label">First Name <i class="fa fa-pencil"></i></span> 
+        <!-- <p (dblclick)="this.db.updateField('First Name', 'fName', this.db.taskList[this.taskIndex].id)" >
+            <span class="label">First Name <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].fName | titlecase }}
-        </p>
+        </p> -->
 
         <!-- LAST NAME -->
-        <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+        <!-- <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].id)"
             *ngIf="this.db.taskList[this.taskIndex].lName"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].lName | titlecase }}
         </p>
-        <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].docID)"
+        <p (dblclick)="this.db.updateField('Last Name', 'lName', this.db.taskList[this.taskIndex].id)"
             *ngIf="!(this.db.taskList[this.taskIndex].lName)"> <span class="label">Last Name <i class="fa fa-pencil"></i></span>
             NOT LISTED
-        </p>
-        
+        </p> -->
+
         <!-- PHONE -->
-        <p  (dblclick)="this.db.updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].docID)">
+        <!-- <p  (dblclick)="this.db.updateField('Phone Number', 'phoneNums', this.db.taskList[this.taskIndex].id)">
             <span class="label">Phone <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].phoneNums | mask: '(000) 000-0000' ||
             this.db.taskList[this.taskIndex].phoneNums[0] | mask: '(000) 000-0000' ||
             'NOT LISTED'}}
-        </p>
+        </p> -->
 
         <!-- EMAIL -->
-        <p (dblclick)="this.db.updateField('Email', 'email', this.db.taskList[this.taskIndex].docID)">
+        <p (dblclick)="this.db.updateField('Email', 'email', this.db.taskList[this.taskIndex].id)">
             <span class="label">Email <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].email || 'NOT LISTED' }}
         </p>
 
         <!-- ADDRESS -->
-        <p (dblclick)="this.db.updateField('Address', 'address', this.db.taskList[this.taskIndex].docID)">
-            <span class="label">Address <i class="fa fa-pencil"></i></span> 
+        <!-- <p (dblclick)="this.db.updateField('Address', 'address', this.db.taskList[this.taskIndex].id)">
+            <span class="label">Address <i class="fa fa-pencil"></i></span>
             {{ this.db.taskList[this.taskIndex].address || 'NOT LISTED' }}
-        </p>
+        </p> -->
 
 
         <!-- PRICE -->
-        <p (dblclick)="this.db.updateField('Price', 'price', this.db.taskList[this.taskIndex].docID)">
+        <!-- <p (dblclick)="this.db.updateField('Price', 'price', this.db.taskList[this.taskIndex].id)">
             <span class="label">Price No Tax <i class="fa fa-pencil"> </i> </span> {{ (this.db.taskList[this.taskIndex].price | mask: 'separator' : ',') ||
              'NOT LISTED'}}
-        </p>
+        </p> -->
 
-
-        <!-- SALES TAX -->
-        <p *ngIf="this.db.taskList[this.taskIndex].price &&
-                  this.db.taskList[this.taskIndex].amountDue !== 'Not Listed' ">
-            <span class="label">Sales Tax</span>
-            {{ (this.db.taskList[this.taskIndex].price * 0.06) | mask: 'separator.2':','}}
-        </p>
-
-         <!-- TOTAL PAYMENTS -->
-         <p *ngIf="this.totalPayments">
-          <span class="label">Total Payments</span>
-         {{ this.totalPayments | mask: 'separator.2':','}}
-        </p>
 
         <!-- PAID -->
         <!-- <p *ngIf="this.db.taskList[this.taskIndex].amountDue !== 'Paid In Full' &&
@@ -78,25 +65,76 @@
 
         <app-task-details-menu [isHidden]="this.db.taskList[this.taskIndex].hideTask" class="task-details__contact__menu">&hellip;</app-task-details-menu>
     </div>
-    
+
     <div class="task-details__info">
 
-        <app-edit-task-description-modal   (submitForm)="this.editDescription($event, this.docID)" [textAreaVal]="this.db.taskList[this.taskIndex].description"></app-edit-task-description-modal>
+      <!-- <app-edit-task-description-modal   (submitForm)="this.editDescription($event, this.id)" [textAreaVal]="this.db.taskList[this.taskIndex].description"></app-edit-task-description-modal> -->
 
-        <p>{{ this.db.taskList[this.taskIndex].description }}</p>
+      <p>System Status</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].micro === 1 " style="color: green">SET</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].micro === 0 " style="color: red;">FIRED</p>
+        <p *ngIf="this.db.taskList[this.taskIndex].micro !== 0 &&  this.db.taskList[this.taskIndex].micro !== 1 " style="font-weight: 600;">No Data</p>
+
+
+
+
+  </div>
+  <div class="task-details__info"><p>Dry Contact</p>
+  <p *ngIf="this.db.taskList[this.taskIndex].dry_contact === 1 " style="color: green">CLOSED</p>
+  <p *ngIf="this.db.taskList[this.taskIndex].dry_contact === 0 " style="color: red;">OPEN</p>
+  <p *ngIf="this.db.taskList[this.taskIndex].dry_contact !== 0 &&  this.db.taskList[this.taskIndex].dry_contact !== 1 " style="font-weight: 600;">No Data</p>
+  </div>
+  <div class="task-details__info"> <p>Maint. Override</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override === 1 " style="color: goldenrod">ENABLED</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override === 0 " style="color: green;">DISABLED</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override !== 0 && this.db.taskList[this.taskIndex].maint_override !== 1" style="font-weight: 600;">No Data</p>
+  </div>
+  <div class="task-details__info"><p>Maint. Override Light</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override_light === 1 " style="opacity: 0.5" >ON</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override_light === 0 " style="opacity: 0.5" >OFF</p>
+    <p *ngIf="this.db.taskList[this.taskIndex].maint_override_light !== 0 &&  this.db.taskList[this.taskIndex].maint_override_light !== 1 " style="font-weight: 600;">No Data</p>
+  </div>
+    <div class="task-details__info">
+
+      <!-- <app-edit-task-description-modal   (submitForm)="this.editDescription($event, this.id)" [textAreaVal]="this.db.taskList[this.taskIndex].description"></app-edit-task-description-modal> -->
+
+      <p>Lights</p>
+      <app-button-toggle *ngIf="this.db.taskList[this.taskIndex].micro" [btnStatus]="this.db.taskList[this.taskIndex].lights | inferTrueFalse" (click)="updateDeviceStatus('lights', this.db.taskList[this.taskIndex].lights)"></app-button-toggle>
+      <p *ngIf="!this.db.taskList[this.taskIndex].micro && !this.db.taskList[this.taskIndex].lights" style="font-weight: 600;">OFF</p>
+      <p *ngIf="!this.db.taskList[this.taskIndex].micro && this.db.taskList[this.taskIndex].lights" style="font-weight: 600;">ON</p>
+
+
+
+
+
+  </div>
+
+    <div class="task-details__info">
+
+        <!-- <app-edit-task-description-modal   (submitForm)="this.editDescription($event, this.id)" [textAreaVal]="this.db.taskList[this.taskIndex].description"></app-edit-task-description-modal> -->
+
+        <p>Fans</p>
+        <app-button-toggle *ngIf="this.db.taskList[this.taskIndex].micro" [btnStatus]="this.db.taskList[this.taskIndex].fans | inferTrueFalse"(click)="updateDeviceStatus('fans', this.db.taskList[this.taskIndex].fans)" ></app-button-toggle>
+        <p *ngIf="!this.db.taskList[this.taskIndex].micro && !this.db.taskList[this.taskIndex].fans" style="font-weight: 600;">OFF</p>
+        <p *ngIf="!this.db.taskList[this.taskIndex].micro && this.db.taskList[this.taskIndex].fans" style="font-weight: 600;">ON</p>
+
+
+
+
 
     </div>
-    <div class="task-details__status">
+
+    <!-- <div class="task-details__status">
         <div class="task-details__status__wrapper">
             <div class="task-details__status__wrapper__item"
              [style.background]="(i % 2 === 0) ? 'var(--color-background-tertiary)' : 'var(--color-background)'"
              [style.color]="(i % 2 === 0) ? 'var(--color-secondary-dark)' : 'var(--color-primary)'"
             *ngFor="let update of db.taskList[this.taskIndex].statusUpdates; let i = index">
             <div *ngIf="(this.db.taskList[this.taskIndex].statusUpdates.length > 1)" class="task-details__status__wrapper__item__controls">
-                <!-- <button (click)="this.isopen = !this.isopen"><i class="fa fa-pencil"></i></button> -->
-                 <button (click)="this.deleteStatusUpdate(this.db.taskList[this.taskIndex].docID, i, db.taskList[this.taskIndex].statusUpdates.length)"><i class="fa fa-trash"></i></button> 
+
+                 <button (click)="this.deleteStatusUpdate(this.db.taskList[this.taskIndex].id, i, db.taskList[this.taskIndex].statusUpdates.length)"><i class="fa fa-trash"></i></button>
              </div>
-            
+
             <h3>Update No. {{ i + 1 }}</h3>
             <p><span class="label">Updated On </span> {{update.date | date: 'fullDate'}}</p>
             <p><span class="label">Status </span>  {{update.status }}</p>
@@ -104,14 +142,14 @@
             <p *ngIf="update.deadline"><span class="label">Deadline Is</span> {{update.deadline | date: 'fullDate'}}</p>
             <p *ngIf="update.payment"><span class="label">Payment</span> ${{ (update.payment | mask: 'separator' : ',')}}</p>
             <p><span class="label">Updated By</span>{{update.whoIs | uppercase}}</p>
-            
-            
-            
-        </div>
-        </div>
-        
 
-    </div>
+
+
+        </div>
+        </div>
+
+
+    </div> -->
 </section>
 <app-status-form-modal *ngIf="this.isopen" (closeModal)="this.isopen = !this.isopen"></app-status-form-modal>
 <app-header></app-header>

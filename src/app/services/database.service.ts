@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList, SnapshotAction } from '@angular/fire/database'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TaskModel } from '../models/task-model';
 import { TaskUpdate } from '../models/task-update';
 import { PersistService } from './persist.service';
+import { Message } from '../models/message';
+import { HoodControl } from '../models/hood-control-model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +25,21 @@ export class DatabaseService {
   taskListObs$: Observable<[TaskModel]>
 
 
-  taskList: TaskModel[];
+  taskList = [];
   activeEntryId: string;
   temporaryEntry: any;
 
   constructor(
     private afs: AngularFirestore,
+    private rtdb: AngularFireDatabase,
     private persist: PersistService
   ) { }
 
+
+
+  testAFS() {
+    return this.rtdb.list<SnapshotAction<HoodControl[]>>("users").snapshotChanges()
+  }
 
    fetchTasks() {
     return this.afs.collection<TaskModel>('tasks', ref => ref
@@ -41,7 +50,7 @@ export class DatabaseService {
   }
 
   getIndexByID(id: string) {
-    return this.taskList.findIndex(el => el.docID === id);
+    return this.taskList.findIndex(el => el.id === id);
   }
 
 
@@ -63,8 +72,8 @@ export class DatabaseService {
   // 'Paid In Full'
   // 'Not Listed'
   calcAmtDue(price: string, payments): string {
-    
-    let totalPayments = Number(this.getTotalPayments(payments));  
+
+    let totalPayments = Number(this.getTotalPayments(payments));
 
       if (( !price )) {
 
@@ -78,9 +87,9 @@ export class DatabaseService {
     } else {
 
       return `${Number(price) - totalPayments}`;
-      
+
     }
-    
+
   }
 
   updateField(name: string, field: string, id: string) {

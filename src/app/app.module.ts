@@ -27,7 +27,10 @@ import { StatusFormModalComponent } from './components/status-form-modal/status-
 import { EditTaskDescriptionModalComponent } from './components/edit-task-description-modal/edit-task-description-modal.component';
 import { ImagesComponent } from './views/images/images.component';
 import { AddImagesModalComponent } from './components/add-images-modal/add-images-modal.component';
-import { firebaseUiAuthConfig } from './firebaseconfig'
+import { firebaseUiAuthConfig } from './firebaseconfig';
+import { InferOnOffPipe } from './infer-on-off.pipe';
+import { ButtonToggleComponent } from './components/button-toggle/button-toggle.component';
+import { InferTrueFalsePipe } from './infer-true-false.pipe'
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -51,7 +54,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     StatusFormModalComponent,
     EditTaskDescriptionModalComponent,
     ImagesComponent,
-    AddImagesModalComponent
+    AddImagesModalComponent,
+    InferOnOffPipe,
+    ButtonToggleComponent,
+    InferTrueFalsePipe
     
   ],
   imports: [

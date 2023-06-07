@@ -10,7 +10,7 @@ import { CloudStorageService } from 'src/app/services/cloud-storage.service';
 export class ImagesComponent implements OnInit, OnDestroy {
   docID: string;
 
-  
+
 
 
   constructor(
@@ -21,8 +21,8 @@ export class ImagesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    
-    this.docID = this.activatedRoute.snapshot.url.join().split(',')[1];
+
+    this.docID = this.activatedRoute.snapshot.url.join().split(',')[2];
     console.log(this.docID)
     this.cloud.fetchMedia(this.docID);
 

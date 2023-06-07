@@ -4,20 +4,20 @@
 
 <section class="image-list" margin-top="200px">
 
-    <p *ngIf="this.cloud.images.length === 0" >No Images Found...</p>
-    <p *ngIf="this.cloud.images.length > 0" >Double Tap Image to Delete</p>
+    <p *ngIf="this.cloud.images.length === 0" >No Reports Found...</p>
+    <p *ngIf="this.cloud.images.length > 0" >Double Tap Report to Delete</p>
 
 
 
-        <ng-container *ngFor="let image of this.cloud.images"> 
+        <ng-container *ngFor="let image of this.cloud.images">
            <img appAnimateOnView (dblclick)="this.cloud.deleteMedia(image.fullPath)" [src]="image.url" alt="" max-width="600px" width="100%" margin-bottom="100px">
         </ng-container>
 
 
 
-            
-      
-    
-    
+
+
+
+
 
 </section>

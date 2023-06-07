@@ -9,8 +9,8 @@
     bottom: 0;
     background: var(--color-background-secondary);
     font-size: 22px;
-    z-index: 5000;
-    padding-top: 20em;
+    z-index: 999999999999999000;
+    padding-top: 4em;
 
     overflow-y: scroll;
 
@@ -20,12 +20,12 @@
         right: 0.5em;
         font-size: 1.5em;
         color: var(--color-text-md);
-        z-index: 5100;
+        z-index: 999999999999999999999999999999999999999999999;
     }
 
 
 
-    
+
 }
 
 
@@ -56,17 +56,17 @@
         margin: 1em;
     }
 
-    
 
-   
-    
+
+
+
 
 
     &__group{
         position: relative;
         height: 2em;
         width: 100%;
-        
+
         border: 3px solid var(--color-primary-light);
         border-top-color: var(--color-primary);
         border-left-color: var(--color-primary);
@@ -74,7 +74,7 @@
         border-radius: 3px;
         z-index: 9;
 
-        
+
 
 
 
@@ -91,7 +91,7 @@
             background: var(--color-background-secondary);
         }
 
-        
+
 
         &>input, select {
             border: none;
@@ -104,13 +104,13 @@
             padding-left: 1em;
 
             &:-webkit-autofill,
-            input:-webkit-autofill:hover, 
-            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
             input:-webkit-autofill:active  {
                 background: transparent !important;
             }
 
-            
+
 
             &:focus {
                 border: none;
@@ -118,7 +118,7 @@
 
             &:active {
                 border: none;
-                
+
             }
 
             &__select-placeholder {
@@ -136,11 +136,11 @@
         }
 
 
-        
 
 
 
-        
+
+
       }
 
 
@@ -150,7 +150,7 @@
         height: 12em;
         width: 100%;
         margin-left: 0.5em;
-        
+
         border: 3px solid var(--color-primary-light) ;
         border-radius: 3px;
         z-index: 9;
@@ -194,7 +194,7 @@
     }
 
 
-    
+
 
     &__btn {
         display: block;
@@ -210,7 +210,7 @@
             to bottom,
             var(--color-secondary-light),
             var(--color-secondary)
-            
+
         );
         color: var(--color-background-secondary);
         border: none;
@@ -222,7 +222,7 @@
             opacity: 0.5;
             transition: opacity 0.3s;
         }
-        
+
     }
 }
 

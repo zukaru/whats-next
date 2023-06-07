@@ -13,44 +13,35 @@ export class AppComponent implements OnInit{
 
   constructor(
     private db: DatabaseService,
-    private router: Router
+    private route: Router
   ) { }
 
   ngOnInit() {
-    
+
+    console.dir(this.db.taskList)
+
     // Fetch tasks (data respresenting to-do tasks) from database
     // If the task list array is empty and it's not the base URL
-    if(this.db.taskList === undefined && this.router.url !== '') { 
-      this.db.fetchTasks()
-      .pipe(
-        // Extracts data from response
-        map(actions => actions.map(a => a.payload.doc))
-      )
+    if(this.db.taskList && this.route.url !== '') {
+      this.db.testAFS()
       .subscribe(
-        (res) => {
-  
-          // Assigns an array of Tasks to taskList property of DataService
-          this.db.taskList = res.map(
-            (d) => {
-              const id = d.id;
-              let task = d.data();
-              // const amountDue = this.db.calcAmtDue(task.price, task.statusUpdates);
-  
-              // task.amountDue = amountDue;
-  
-              task.docID = id;
-              // console.log(task.dateCreated)
-              return task;
+        (v) => {
+          this.db.taskList = v.map(
+            v => {
+              let id = v.key;
+              let obj = v.payload.val();
+              return {id: id, ...obj as Object}
+
             }
           )
-  
-          // Assigns boolean to hasTasks property of DataService for UI features
-          this.db.hasTasks = res.length > 0;
-  
-          // Emits true to subscribers of hasTasksObs$ (BehaviourSubject) property of DataService
-          if(this.db.taskList !== undefined) {
+          console.log(this.db.taskList)
+
+        console.dir(this.db.taskList)
+          this.db.hasTasks = v.length > 0;
+          if (this.db.taskList !== undefined) {
             this.db.hasTasksObs$.next(true);
           }
+
         }
       )
     }
